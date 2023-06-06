@@ -8,7 +8,7 @@ import apiUrl from "../../api"
 
 
 export default function Carousel() {
-  useEffect(
+  /* useEffect(
     () => { axios(apiUrl + 'categories').then(res => setCategories(res.data.categories)).catch(err => console.error(err)) },
     []                                       //array de dependecias vacio ya que necesitamos fechar una unica vez al mostrarse el componente
   )
@@ -34,30 +34,16 @@ export default function Carousel() {
         setCounter((n) => (n + 1) % 4);
       }, 4000);
       return () => clearInterval(tiempo);
-    }, [])
+    }, []) */
 
   return (
-    <div className="flex justify-between items-center w-full h-[16rem] my-8 rounded-md xsm:hidden" style={{ backgroundColor: categories[counter]?.color }}>
+    <>
 
-      <div className='absolute w-[92%] flex content-center my-28 justify-between ' >
-        <img src={flecha1} className="w-[3rem] cursor-pointer" onClick={restar} />
-        <img src={flecha2} className="w-[3rem] cursor-pointer" onClick={sumar} />
-      </div>
 
-      <div className="w-[100%] h-[22rem] flex">
-        <div className="w-[50%]">
-          <img src={categories[counter]?.character_photo} className="w-auto h-[80%] my-4 " />
-        </div>
-        <div className="w-[50%]">
-          <img src={categories[counter]?.cover_photo} className="w-auto h-[75%] my-3 " />
-        </div>
-      </div>
 
-      <div className="h-auto w-[90%] ml-10">
-        <h4 className="text-white text-2xl text-start w-[50%] pl-2">{categories[counter]?.name.toUpperCase()}</h4>
-        <p className="text-white text-sm text-justify w-[60%] pl-2 ">{categories[counter]?.description}</p>
-      </div>
-    </div>
+
+    
+    </>
 
   )
 }
