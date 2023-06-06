@@ -17,9 +17,9 @@ export default function Footer() {
           <span>Get connected with us on social networks:</span>
         </div>
         
-        <div class="flex justify-center">
+        <div style={{ backgroundColor: "transparent" }} class="flex justify-center">
           <a href="#!" class="mr-6 text-neutral-600 dark:text-neutral-200">
-            <svg
+            <svg style={{ backgroundColor: "transparent" }}
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4"
               fill="currentColor"
@@ -28,8 +28,8 @@ export default function Footer() {
                 d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
             </svg>
           </a>
-          <a href="#!" class="mr-6 text-neutral-600 dark:text-neutral-200">
-            <svg
+          <a style={{ backgroundColor: "transparent" }} href="#!" class="mr-6 text-neutral-600 dark:text-neutral-200">
+            <svg style={{ backgroundColor: "transparent" }}
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4"
               fill="currentColor"
@@ -84,13 +84,13 @@ export default function Footer() {
       </div>
     
      
-      <div class=" px-10  py-10 text-center md:text-left bg-[#343434]">
-        <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div style={{ backgroundColor: "transparent" }} class=" px-10  py-10 text-center md:text-left bg-[#343434]">
+        <div style={{ backgroundColor: "transparent" }}  class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
          
-          <div class="">
+          <div style={{ backgroundColor: "transparent" }}  class="">
             <h6
-              class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-              <svg
+               style={{ backgroundColor: "transparent" }}   class="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
+              <svg style={{ backgroundColor: "transparent" }}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
@@ -100,74 +100,74 @@ export default function Footer() {
               </svg>
               Tailwind ELEMENTS
             </h6>
-            <p>
+            <p style={{ backgroundColor: "transparent" }}>
               Here you can use rows and columns to organize your footer
               content. Lorem ipsum dolor sit amet, consectetur adipisicing
               elit.
             </p>
           </div>
         
-          <div class="">
-            <h6
+          <div style={{ backgroundColor: "transparent" }} class="">
+            <h6 style={{ backgroundColor: "transparent" }}
               class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
               Products
             </h6>
-            <p class="mb-4">
-              <a href="#!" class="text-neutral-600 dark:text-neutral-200"
+            <p  style={{ backgroundColor: "transparent" }} class="mb-4">
+              <a style={{ backgroundColor: "transparent" }} href="#!" class="text-neutral-600 dark:text-neutral-200"
                 >Angular</a
               >
             </p>
-            <p class="mb-4">
-              <a href="#!" class="text-neutral-600 dark:text-neutral-200"
+            <p style={{ backgroundColor: "transparent" }}  class="mb-4">
+              <a style={{ backgroundColor: "transparent" }} href="#!" class="text-neutral-600 dark:text-neutral-200"
                 >React</a
               >
             </p>
-            <p class="mb-4">
-              <a href="#!" class="text-neutral-600 dark:text-neutral-200"
+            <p style={{ backgroundColor: "transparent" }} class="mb-4">
+              <a  style={{ backgroundColor: "transparent" }} href="#!" class="text-neutral-600 dark:text-neutral-200"
                 >Vue</a
               >
             </p>
-            <p>
-              <a href="#!" class="text-neutral-600 dark:text-neutral-200"
+            <p style={{ backgroundColor: "transparent" }} >
+              <a style={{ backgroundColor: "transparent" }} href="#!" class="text-neutral-600 dark:text-neutral-200"
                 >Laravel</a
               >
             </p>
           </div>
          
-          <div class="">
-            <h6
+          <div style={{ backgroundColor: "transparent" }} class="">
+            <h6 style={{ backgroundColor: "transparent" }}
               class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
               Useful links
             </h6>
-            <p class="mb-4">
-              <a href="#!" class="text-neutral-600 dark:text-neutral-200"
+            <p style={{ backgroundColor: "transparent" }} class="mb-4">
+              <a style={{ backgroundColor: "transparent" }} href="#!" class="text-neutral-600 dark:text-neutral-200"
                 >Pricing</a
               >
             </p>
-            <p class="mb-4">
-              <a href="#!" class="text-neutral-600 dark:text-neutral-200"
+            <p style={{ backgroundColor: "transparent" }} class="mb-4">
+              <a style={{ backgroundColor: "transparent" }} href="#!" class="text-neutral-600 dark:text-neutral-200"
                 >Settings</a
               >
             </p>
-            <p class="mb-4">
-              <a href="#!" class="text-neutral-600 dark:text-neutral-200"
+            <p style={{ backgroundColor: "transparent" }} class="mb-4">
+              <a style={{ backgroundColor: "transparent" }} href="#!" class="text-neutral-600 dark:text-neutral-200"
                 >Orders</a
               >
             </p>
-            <p>
-              <a href="#!" class="text-neutral-600 dark:text-neutral-200"
+            <p style={{ backgroundColor: "transparent" }}>
+              <a style={{ backgroundColor: "transparent" }} href="#!" class="text-neutral-600 dark:text-neutral-200"
                 >Help</a
               >
             </p>
           </div>
           
-          <div>
-            <h6
+          <div style={{ backgroundColor: "transparent" }}>
+            <h6 style={{ backgroundColor: "transparent" }}
               class="mb-4 flex justify-center font-semibold uppercase md:justify-start">
               Contact
             </h6>
-            <p class="mb-4 flex items-center justify-center md:justify-start">
-              <svg
+            <p style={{ backgroundColor: "transparent" }} class="mb-4 flex items-center justify-center md:justify-start">
+              <svg style={{ backgroundColor: "transparent" }}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
@@ -179,8 +179,8 @@ export default function Footer() {
               </svg>
               New York, NY 10012, US
             </p>
-            <p class="mb-4 flex items-center justify-center md:justify-start">
-              <svg
+            <p style={{ backgroundColor: "transparent" }} class="mb-4 flex items-center justify-center md:justify-start">
+              <svg style={{ backgroundColor: "transparent" }}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
@@ -192,8 +192,8 @@ export default function Footer() {
               </svg>
               info@example.com
             </p>
-            <p class="mb-4 flex items-center justify-center md:justify-start">
-              <svg
+            <p style={{ backgroundColor: "transparent" }} class="mb-4 flex items-center justify-center md:justify-start">
+              <svg style={{ backgroundColor: "transparent" }}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
@@ -205,8 +205,8 @@ export default function Footer() {
               </svg>
               + 01 234 567 88
             </p>
-            <p class="flex items-center justify-center md:justify-start">
-              <svg
+            <p style={{ backgroundColor: "transparent" }} class="flex items-center justify-center md:justify-start">
+              <svg style={{ backgroundColor: "transparent" }}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
@@ -225,10 +225,10 @@ export default function Footer() {
       
       <div class="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
         <span>© 2023 Copyright:</span>
-        <a
+        <a style={{ backgroundColor: "transparent" }}
           class="font-semibold text-neutral-600 dark:text-neutral-400"
          
-          ><Anchor to={'https://github.com/AVILANICO'}>Avila Nicolas</Anchor>,<Anchor to={'https://github.com/FranciscoPedicino'}>Pedicino Francisco</Anchor>,<Anchor to={'https://github.com/AVILANICO'} >Diego Cuellar</Anchor>,<Anchor to={'https://github.com/AVILANICO'}>Hurtado Laureano</Anchor>,<button to={'https://github.com/LuisH05'}>Luis Hernandez</button> 
+          ><Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/AVILANICO'}>Avila Nicolas</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/FranciscoPedicino'}>Pedicino Francisco</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/AVILANICO'} >Diego Cuellar</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/AVILANICO'}>Hurtado Laureano</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/LuisH05'}>Luis Hernandez</Anchor> 
           </a>
       </div>
     </footer>
