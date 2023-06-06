@@ -16,6 +16,7 @@ import Companyform from "../pages/Companies-form.jsx"
 import Authorform from "../pages/Author-form.jsx"
 import Editmanga from "../pages/EditManga.jsx";
 import Mymangas from "../pages/Mymangas.jsx";
+import Video from "../components/video.jsx"
 
 const routers = createBrowserRouter([
   {
@@ -37,6 +38,8 @@ const routers = createBrowserRouter([
       { path: '/new-role', element: <Newrole /> },
       { path: '/company-form', element: <Companyform /> },
       { path: '/authorregister', element: <Authorform /> },
+      { path: '/video', element: <Video/> },
+
     ]
   }
 ])
