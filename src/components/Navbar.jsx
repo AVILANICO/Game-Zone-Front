@@ -2,24 +2,24 @@
 import { useParams } from "react-router-dom";
 import VITE_API from "../../api";
 import axios from "axios";
-import { useState,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { Link as Anchor, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import logo3 from '../assets/image/fondo-5.jpg'
 import logo2 from '../assets/image/fondo-verde.png'
 
 
 
 
 export default function Navbar() {
-  
-    const [open, setOpen] = useState(true);
-  
-    const boton = () => {
-      setOpen(prevOpen => !prevOpen);
-    };
-  
-  /* const [showMenu, setShowMenu] = useState(false);
+
+  const [open, setOpen] = useState(true);
+
+  const boton = () => {
+    setOpen(prevOpen => !prevOpen);
+  };
+
+  const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate()
   let { order, title } = useSelector(store => store.title_order)
 
@@ -41,16 +41,15 @@ export default function Navbar() {
         navigate('/')
       })
       .catch(err => alert(err))
-  } */
-  /* 
-    <nav className="xsm:hidden w-full h-24 absolute flex justify-between items-center bg-black"> */
-  return (
-    <nav   class="bg-[#343434]">
-      <div   class=" bg-[#343434] ">
-        <div  class="relative flex h-16 items-center justify-between bg-[#343434]">
-          <div  class="absolute inset-y-0 left-0 flex items-center sm:hidden bg-[#343434]">
+  }
 
-            <button onClick={boton}  type="button" class="bg-[#343434] inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+  return (
+    <nav class="bg-[#343434]">
+      <div class=" bg-[#343434] ">
+        <div class="relative flex h-16 items-center justify-between bg-[#343434]">
+          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden bg-[#343434]">
+
+            <button onClick={boton} type="button" class="bg-[#343434] inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
               <span class="bg-[#343434] sr-only">Open main menu</span>
 
               <svg class=" bg-[#343434] block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -63,31 +62,42 @@ export default function Navbar() {
               </svg>
             </button>
           </div>
-          <div  class=" bg-[#343434] flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div class=" bg-[#343434] flex flex-shrink-0 items-center">
-              <img class=" bg-[#343434] block h-10 w-auto lg:hidden" src={logo2} alt="Your Company" />
+          <div class=" bg-[#343434] flex flex-1 items-center justify-center sm:items-center sm:justify-start">
+            <div class=" bg-[#343434] flex flex-shrink-0 items-center ml-10">
+              <img class=" bg-[#343434] block h-10   w-auto lg:hidden" src={logo2} alt="Your Company" />
               <img class=" bg-[#343434] hidden h-10 w-auto lg:block" src={logo2} alt="Your Company" />
             </div>
-            <div   class=" bg-[#343434]  hidden sm:ml-6 sm:block">
-              <div class=" bg-[#343434]  flex space-x-4">
-
-                <Anchor href="#" class="bg-[#454545] text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Games</Anchor>
-                <Anchor href="#" class="bg-[#343434]  text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium">Store</Anchor>
-                <Anchor href="#" class="bg-[#343434] text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium">Contact </Anchor>
-
+            <div class="  bg-[#343434]    hidden sm:ml-6 sm:block">
+              <div class=" bg-[#343434] flex-wrap flex justify-center items-center content-center space-x-4">
+                <ul className="flex flex-wrap bg-[#343434] " >
+                  <li><Anchor className="bg-[#454545] text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page" to="/">Home</Anchor></li>
+                  {role == 0 ? (<><li><Anchor className="bg-[#343434]  text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium" to="/new-role">New Role</Anchor></li>
+                  </>) : ("")}
+                  {role == 3 ? (<><li><Anchor className="bg-[#343434] text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium" to="/admin">Panel</Anchor></li>
+                  </>) : ("")}
+                  {role == 1 || role == 2 ? (<><li><Anchor className="bg-[#343434] text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium" to="/game-form">New game</Anchor></li>
+                  </>) : ("")}
+                  {token && <li><Anchor className="bg-[#343434] text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium" to="/games/:pages">Games</Anchor></li>}
+                  {role == 1 || role == 2 ? (<><li><Anchor className="bg-[#343434] text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium" to="/mygames">My Games</Anchor></li> </>) : ("")}
+                  {token && <li><Anchor className="bg-[#343434]  text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium" to="#">Favorites</Anchor></li>}
+                  {!token && <li><Anchor className="bg-[#343434]  text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium" to="/register">Register</Anchor></li>}
+                  {!token && <li><Anchor className="bg-[#343434] text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium" to="/signin">Log In</Anchor></li>}
+                  {token && <li><a className="bg-[#343434]  text-gray-300  hover:border-b border-white hover:text-white px-3 py-2 text-sm font-medium" onClick={backHome}>Sign Out</a></li>}
+                </ul>
               </div>
+
             </div>
           </div>
-          
+
           <div class="bg-[#343434] absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 w-64 justify-around  content-center ">
             <div className=" bg-[#343434] flex justify-center items-center content-center ">
-            <button type="button" class="bg-[#343434]  rounded-full p-1 text-gray-400 hover:text-[#14C18B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">Favorites</button>
-            <button  type="button" class="bg-[#343434]  rounded-full p-1 text-gray-400 hover:text-[#14C18B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-              <span class= " bg-[#343434]  sr-only">View notifications</span>
-              <svg   xmlns=" bg-[#343434] http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="  bg-[#343434] bi bi-heart" viewBox="0 0 16 16">
-                <path className="bg-[#343434]" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-              </svg>
-            </button>
+              <button type="button" class="bg-[#343434]  rounded-full p-1 text-gray-400 hover:text-[#14C18B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">Favorites</button>
+              <button type="button" class="bg-[#343434]  rounded-full p-1 text-gray-400 hover:text-[#14C18B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                <span class=" bg-[#343434]  sr-only">View notifications</span>
+                <svg xmlns=" bg-[#343434] http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="  bg-[#343434] bi bi-heart" viewBox="0 0 16 16">
+                  <path className="bg-[#343434]" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg>
+              </button>
             </div>
             <button type="button" class=" bg-[#343434] rounded-full p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
               <span class="sr-only">View notifications</span>
@@ -105,13 +115,6 @@ export default function Navbar() {
                 </button>
               </div>
 
-
-             {/*  <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-              </div> */}
             </div>
           </div>
         </div>
@@ -121,10 +124,24 @@ export default function Navbar() {
       {open && (
         <div className="sm:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            <a href="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
-            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+            <ul>
+            <li><Anchor className="bg-[#454545] text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page" to="/">Home</Anchor></li>
+                  {role == 0 ? (<><li><Anchor className="bg-gray-900 hover:bg-slate-600  text-white block rounded-md px-3 py-2 text-base font-medium" to="/new-role">New Role</Anchor></li>
+                  </>) : ("")}
+                  {role == 3 ? (<><li><Anchor className="bg-gray-900 hover:bg-slate-600 text-white block rounded-md px-3 py-2 text-base font-medium" to="/admin">Panel</Anchor></li>
+                  </>) : ("")}
+                  {role == 1 || role == 2 ? (<><li><Anchor className="bg-gray-900 hover:bg-slate-600 text-white block rounded-md px-3 py-2 text-base font-medium" to="/game-form">New game</Anchor></li>
+                  </>) : ("")}
+                  {token && <li><Anchor className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium hover:bg-slate-600 " to="/games/:pages">Games</Anchor></li>}
+                  {role == 1 || role == 2 ? (<><li><Anchor className="bg-gray-900 hover:bg-slate-600 text-white block rounded-md px-3 py-2 text-base font-medium" to="/mygames">My Games</Anchor></li> </>) : ("")}
+                  {token && <li><Anchor className="bg-gray-900 hover:bg-slate-600 text-white block rounded-md px-3 py-2 text-base font-medium" to="#">Favorites</Anchor></li>}
+                  {!token && <li><Anchor className="bg-gray-900 hover:bg-slate-600 text-white block rounded-md px-3 py-2 text-base font-medium" to="/register">Register</Anchor></li>}
+                  {!token && <li><Anchor className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" to="/signin">Log In</Anchor></li>}
+                  {token && <li><Anchor className="bg-gray-900 hover:bg-slate-600 text-white block rounded-md px-3 py-2 text-base font-medium" onClick={backHome}>Sign Out</Anchor></li>}
+
+
+
+            </ul>
           </div>
         </div>
       )}
