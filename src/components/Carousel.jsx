@@ -1,18 +1,18 @@
-
 import flecha1 from "../assets/image/flecha1.png"
 import flecha2 from "../assets/image/flecha2.png"
-
-import { useState, useEffect } from "react"  //se recomienda que los hooks se definan en las primeras lineas del componente
+import { useState, useEffect, useRef } from "react"  //se recomienda que los hooks se definan en las primeras lineas del componente
 import axios from "axios"
 import apiUrl from "../../api"
+import ReactPlayer from 'react-player'
 
 
 export default function Carousel() {
+  const divRef = useRef(null);
+
   useEffect(
     () => { axios(apiUrl + 'categories').then(res => setCategories(res.data.categories)).catch(err => console.error(err)) },
     []                                       //array de dependecias vacio ya que necesitamos fechar una unica vez al mostrarse el componente
   )
-
   let [categories, setCategories] = useState([])
   let [counter, setCounter] = useState(0)
   let sumar = () => {
@@ -32,32 +32,31 @@ export default function Carousel() {
     () => {
       const tiempo = setInterval(() => {
         setCounter((n) => (n + 1) % 4);
-      }, 4000);
+      }, 8000);
       return () => clearInterval(tiempo);
     }, [])
 
-  return (
-    <div className="flex justify-between items-center w-full h-[16rem] my-8 rounded-md xsm:hidden" style={{ backgroundColor: categories[counter]?.color }}>
+  let urlVideo = categories[counter]?.video
+  console.log(urlVideo);
 
-      <div className='absolute w-[92%] flex content-center my-28 justify-between ' >
+  return (
+    <div className="relative flex justify-between items-center w-full h-[16rem] my-8 rounded-md xsm:hidden container" ref={divRef}>
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+        <ReactPlayer
+          url={urlVideo}
+          playing={true}
+          loop={true}
+          muted={true}
+          width="100%"
+          height="100%"
+        />
+      </div>
+
+      <div className='absolute w-[100%] flex items-center justify-between px-4 z-20'>
         <img src={flecha1} className="w-[3rem] cursor-pointer" onClick={restar} />
         <img src={flecha2} className="w-[3rem] cursor-pointer" onClick={sumar} />
       </div>
 
-      <div className="w-[100%] h-[22rem] flex">
-        <div className="w-[50%]">
-          <img src={categories[counter]?.character_photo} className="w-auto h-[80%] my-4 " />
-        </div>
-        <div className="w-[50%]">
-          <img src={categories[counter]?.cover_photo} className="w-auto h-[75%] my-3 " />
-        </div>
-      </div>
-
-      <div className="h-auto w-[90%] ml-10">
-        <h4 className="text-white text-2xl text-start w-[50%] pl-2">{categories[counter]?.name.toUpperCase()}</h4>
-        <p className="text-white text-sm text-justify w-[60%] pl-2 ">{categories[counter]?.description}</p>
-      </div>
     </div>
-
   )
 }

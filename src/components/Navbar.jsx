@@ -4,14 +4,11 @@ import VITE_API from "../../api";
 import axios from "axios";
 import { useState } from 'react';
 import { Link as Anchor, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-
 
 export default function Navbar() {
 
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate()
-  let { order, title } = useSelector(store => store.title_order)
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -61,10 +58,10 @@ export default function Navbar() {
               </>) : ("")}
               {role == 3 ? (<><li><Anchor className="flex justify-center px-4 py-2 text-black hover:bg-white hover:text-btn2 hover:rounded-md m-4" to="/admin">Panel</Anchor></li>
               </>) : ("")}
-              {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center px-4 py-2 text-black hover:bg-white hover:text-btn2 hover:rounded-md m-4" to="/manga-form">New manga</Anchor></li>
+              {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center px-4 py-2 text-black hover:bg-white hover:text-btn2 hover:rounded-md m-4" to="/game-form">New game</Anchor></li>
               </>) : ("")}
-              {token && <li><Anchor className="flex justify-center px-4 py-2 text-black hover:bg-white hover:text-btn2 hover:rounded-md m-4" to="/mangas/:pages">Mangas</Anchor></li>}
-              {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center px-4 py-2 text-black hover:bg-white hover:text-btn2 hover:rounded-md m-4" to="/mymangas">My Mangas</Anchor></li> </>) : ("")}
+              {token && <li><Anchor className="flex justify-center px-4 py-2 text-black hover:bg-white hover:text-btn2 hover:rounded-md m-4" to="/games/:pages">Games</Anchor></li>}
+              {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center px-4 py-2 text-black hover:bg-white hover:text-btn2 hover:rounded-md m-4" to="/mygames">My Games</Anchor></li> </>) : ("")}
               {token && <li><Anchor className="flex justify-center px-4 py-2 text-black hover:bg-white hover:text-btn2 hover:rounded-md m-4" to="#">Favorites</Anchor></li>}
               {!token && <li><Anchor className="flex justify-center px-4 py-2 text-black hover:bg-white hover:text-btn2 hover:rounded-md m-4" to="/register">Register</Anchor></li>}
               {!token && <li><Anchor className="flex justify-center px-4 py-2 text-black hover:bg-white hover:text-btn2 hover:rounded-md m-4" to="/signin">Log In</Anchor></li>}
@@ -73,7 +70,6 @@ export default function Navbar() {
           </div>
         )}
       </div>
-      {url === 'chapter' ? (<p className='flex justify-center font-bold h-24 items-center text-white bg-pink-500/90 w-full absolute'>Chapter #{order} - {title}</p>) : ('')}
       <div className="absolute z-10 right-10 top-4">
         <img src={logo} className="w-[4rem] xsm:w-12" alt="Logo-Minga" />
       </div>

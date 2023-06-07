@@ -114,7 +114,7 @@ const Register = (props) => {
               <form className='xxsm:w-[16rem] xxsm:mr-4 xsm:w-full' onSubmit={(e) => handleForm(e)} encType='multipart/form-data'>
                 <div className='flex flex-col items-center'>
                   <span className="text-4xl text-center font-semibold text-gray-900">Welcome!</span>
-                  <h1 className="text-sm text-center text-gray-600 mt-4">Discover manga, manhua and manhwa, track your progress, have fun, read manga.</h1>
+                  <h1 className="text-sm text-center text-gray-600 mt-4">Discover game, manhua and manhwa, track your progress, have fun, read game.</h1>
                 </div>
                 <div className="mt-5">
                   <fieldset className='border-2 rounded-md flex'>

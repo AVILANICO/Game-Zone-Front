@@ -177,7 +177,7 @@ const Signin = (props) => {
                   <form className='xsm:w-3/5' onSubmit={(e) => handleForm(e)}>
                     <div className='flex flex-col items-center'>
                       <p className="text-4xl text-center font-semibold text-gray-900">Welcome <span className='text-fuchsia-400'>back</span>!</p>
-                      <h1 className="text-sm text-center text-gray-600 mt-4">Discover manga, manhua and manhwa, track your progress, have fun, read manga.</h1>
+                      <h1 className="text-sm text-center text-gray-600 mt-4">Discover game, manhua and manhwa, track your progress, have fun, read game.</h1>
                     </div>
                     <div className="mt-5">
                       <fieldset className='border-2 rounded-md flex items-center'>
