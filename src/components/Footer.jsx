@@ -10,9 +10,9 @@ export default function Footer() {
    
   
     <footer
-      class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
+      class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left border-t border-gray-400 ">
       <div
-        class="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
+        class= "   flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
         <div class="mr-12 hidden lg:block">
           <span>Get connected with us on social networks:</span>
         </div>
@@ -223,8 +223,8 @@ export default function Footer() {
       </div>
     
       
-      <div class="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
-        <span>© 2023 Copyright:</span>
+      <div style={{ backgroundColor: "transparent" }} class="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+        <span style={{ backgroundColor: "transparent" }}>© 2023 Copyright:</span>
         <a style={{ backgroundColor: "transparent" }}
           class="font-semibold text-neutral-600 dark:text-neutral-400"
          

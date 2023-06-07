@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom";
 import VITE_API from "../../api";
 import axios from "axios";
-import { useState } from 'react';
+import { useState,useEffect} from 'react';
 import { Link as Anchor, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -12,7 +12,13 @@ import logo2 from '../assets/image/fondo-verde.png'
 
 
 export default function Navbar() {
-
+  
+    const [open, setOpen] = useState(true);
+  
+    const boton = () => {
+      setOpen(prevOpen => !prevOpen);
+    };
+  
   /* const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate()
   let { order, title } = useSelector(store => store.title_order)
@@ -44,7 +50,7 @@ export default function Navbar() {
         <div  class="relative flex h-16 items-center justify-between bg-[#343434]">
           <div  class="absolute inset-y-0 left-0 flex items-center sm:hidden bg-[#343434]">
 
-            <button  type="button" class="bg-[#343434] inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <button onClick={boton}  type="button" class="bg-[#343434] inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
               <span class="bg-[#343434] sr-only">Open main menu</span>
 
               <svg class=" bg-[#343434] block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -76,9 +82,9 @@ export default function Navbar() {
           <div class="bg-[#343434] absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 w-64 justify-around  content-center ">
             <div className=" bg-[#343434] flex justify-center items-center content-center ">
             <button type="button" class="bg-[#343434]  rounded-full p-1 text-gray-400 hover:text-[#14C18B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">Favorites</button>
-            <button type="button" class="bg-[#343434]  rounded-full p-1 text-gray-400 hover:text-[#14C18B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <button  type="button" class="bg-[#343434]  rounded-full p-1 text-gray-400 hover:text-[#14C18B] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
               <span class= " bg-[#343434]  sr-only">View notifications</span>
-              <svg xmlns=" bg-[#343434] http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="  bg-[#343434] bi bi-heart" viewBox="0 0 16 16">
+              <svg   xmlns=" bg-[#343434] http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="  bg-[#343434] bi bi-heart" viewBox="0 0 16 16">
                 <path className="bg-[#343434]" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
               </svg>
             </button>
@@ -112,15 +118,16 @@ export default function Navbar() {
       </div>
 
 
-      <div class="sm:hidden" id="mobile-menu">
-        <div class="space-y-1 px-2 pb-3 pt-2">
-
-          <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+      {open && (
+        <div className="sm:hidden" id="mobile-menu">
+          <div className="space-y-1 px-2 pb-3 pt-2">
+            <a href="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
+            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
+            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
+            <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   )
 }
