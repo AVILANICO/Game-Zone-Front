@@ -127,7 +127,7 @@ export default function Footer() {
             </p>
             <p style={{ backgroundColor: "transparent" }} className="mb-4" >
               <a style={{ backgroundColor: "transparent" }} href="#!" className="text-neutral-600 dark:text-neutral-200"
-                >multiPlayer</a>
+                >MultiPlayer</a>
             </p>
             <p style={{ backgroundColor: "transparent" }}  className="mb-4">
               <a style={{ backgroundColor: "transparent" }} href="#!" className="text-neutral-600 dark:text-neutral-200"
