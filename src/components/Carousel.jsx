@@ -32,7 +32,7 @@ export default function Carousel() {
     () => {
       const tiempo = setInterval(() => {
         setCounter((n) => (n + 1) % 4);
-      }, 8000);
+      }, 10000);
       return () => clearInterval(tiempo);
     }, [])
 
@@ -40,8 +40,8 @@ export default function Carousel() {
   console.log(urlVideo);
 
   return (
-    <div className="relative flex justify-between items-center w-full h-[16rem] my-8 rounded-md xsm:hidden container" ref={divRef}>
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+    <div style={{ backgroundColor: "transparent" }} className="relative flex justify-between items-center w-full h-[30rem] my-8 rounded-md xsm:hidden container" ref={divRef}>
+      <div style={{ backgroundColor: "transparent" }} className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <ReactPlayer
           url={urlVideo}
           playing={true}
@@ -52,11 +52,57 @@ export default function Carousel() {
         />
       </div>
 
-      <div className='absolute w-[100%] flex items-center justify-between px-4 z-20'>
-        <img src={flecha1} className="w-[3rem] cursor-pointer" onClick={restar} />
-        <img src={flecha2} className="w-[3rem] cursor-pointer" onClick={sumar} />
-      </div>
+      <div style={{ backgroundColor: "transparent" }} className='absolute w-[100%] flex items-center justify-between px-4 z-20'>
 
+        <button style={{ backgroundColor: "transparent" }} onClick={restar}
+          className="  hover:scale-110  absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+          type="button"
+          data-te-target="#carouselExampleCaptions"
+          data-te-slide="prev">
+          <span style={{ backgroundColor: "transparent" }} className="inline-block h-8 w-8">
+            <svg style={{ backgroundColor: "transparent" }}
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="h-16 w-16">
+              <path style={{ backgroundColor: "transparent" }}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </span>
+          <span style={{ backgroundColor: "transparent" }}
+            className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+          >Previous</span
+          >
+        </button>
+        <button style={{ backgroundColor: "transparent" }} onClick={sumar}
+          className="hover:scale-110   absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none "
+          type="button"
+          data-te-target="#carouselExampleCaptions"
+          data-te-slide="next">
+          <span style={{ backgroundColor: "transparent" }} className="inline-block h-8 w-8">
+            <svg style={{ backgroundColor: "transparent" }}
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="h-16 w-16">
+              <path style={{ backgroundColor: "transparent" }}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </span>
+          <span style={{ backgroundColor: "transparent" }}
+            className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+          >Next</span
+          >
+        </button>
+      </div>
     </div>
   )
 }
