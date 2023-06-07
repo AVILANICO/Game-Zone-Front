@@ -2,43 +2,34 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import categories_action from '../store/actions/categories'
-import manga_action from '../store/actions/manga'
-import MyMangasCard from '../components/MyMangasCard'
+import game_action from '../store/actions/game'
+import MyGamesCard from '../components/MyGamesCard'
 import Mas9 from '../assets/image/Mas9.avif'
 import { Link as Anchor } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 
 const { categories_read } = categories_action;
-const { manga_read } = manga_action;
+const { game_read } = game_action;
 
-export default function Mymangas() {
+export default function Mygames() {
 
   const categories = useSelector(store => store.categories.categories)
-  const mangas = useSelector(store => store.manga.manga)
+  const games = useSelector(store => store.game.game)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const authorName = mangas.find(each => each.author_id)?.author_id.name;
+  const authorName = games.find(each => each.author_id)?.author_id.name;
   const role = localStorage.getItem('role')
 
 
 
-  //El estado local/inicial newCategories se utiliza para almacenar las categorías seleccionadas por el usuario.
   const [newCategories, setNewCategories] = useState([]);
 
-  //En el efecto useEffect, se despachan las acciones categories_read y manga_read 
-  //cuando el componente se monta por primera vez. Esto asegura que los datos de categorías
-  //y mangas se carguen antes de renderizar el componente.
   useEffect(() => {
     dispatch(categories_read())
-    dispatch(manga_read())
+    dispatch(game_read())
   }, [])
 
-  //El método handleCategoryChange se encarga de agregar o quitar las categorías seleccionadas
-  //del estado newCategories cuando se marca o desmarca una casilla de verificación.
-  //Recibe un evento como argumento y extrae el valor y el estado de verificación del elemento seleccionado. 
-  //Luego, actualiza el estado newCategories utilizando la función setNewCategories y 
-  //el operador de propagación (...) para agregar o eliminar el valor seleccionado del array.
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
     setNewCategories((element) => {
@@ -50,16 +41,14 @@ export default function Mymangas() {
     });
   };
 
-  // Por último, se agrega una función filterMangas que filtra los mangas basándose en 
-  //las categorías seleccionadas.Los mangas filtrados se muestran en el componente MyMangasCard.
-  const filterMangas = () => {
-    let filteredMangas = mangas;
+  const filterGames = () => {
+    let filteredGames = games;
     if (newCategories.length > 0) {
-      filteredMangas = filteredMangas.filter((manga) =>
-        newCategories.includes(manga.category_id._id)
+      filteredGames = filteredGames.filter((game) =>
+        newCategories.includes(game.category_id._id)
       );
     }
-    return filteredMangas;
+    return filteredGames;
   };
 
   const resetFilters = (event) => {
@@ -109,13 +98,13 @@ export default function Mymangas() {
             </div>
             <div className="pb-28 flex justify-center xsm:flex-col xsm:items-center xsm:w-full xsm:gap-6 flex-wrap md:w-full md:h-full lg:w-full gap-4">
               <div className='mr-16 flex justify-center items-end xsm:h-40 xsm:w-full md:h-48 md:w-40'>
-                <Anchor to='/manga-form'>
-                  <img className='xsm:h-28 rounded-3xl xsm:w-28 md:w-40 md:h-40 lg:h-fit lg:w-fit hover:scale-110 transition-all cursor-pointer' src={Mas9} alt="New Manga" title="New Manga" />
+                <Anchor to='/game-form'>
+                  <img className='xsm:h-28 rounded-3xl xsm:w-28 md:w-40 md:h-40 lg:h-fit lg:w-fit hover:scale-110 transition-all cursor-pointer' src={Mas9} alt="New game" title="New game" />
                 </Anchor>
               </div>
-              {filterMangas().length > 0 ? (
-                filterMangas().map((each) => (
-                  <MyMangasCard key={each._id} each={each} categories={categories} />
+              {filterGames().length > 0 ? (
+                filterGames().map((each) => (
+                  <MyGamesCard key={each._id} each={each} categories={categories} />
                 ))
               ) : (
                 <div className="flex flex-row justify-center">

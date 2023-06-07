@@ -3,7 +3,7 @@
     padding: 0;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #1D1D1D;
+    /* background-color: #1D1D1D; */
 }
 
 @tailwind base;

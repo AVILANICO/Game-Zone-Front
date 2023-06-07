@@ -1,9 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
 //importo las acciones
-import actions from "../actions/one_manga.js";
+import actions from "../actions/one_game.js";
 
 //desestructuro la accion para poder utilizarla
-const {one_manga} = actions
+const {one_game} = actions
 
 //defino estado inicial
 let initial_state = {
@@ -16,7 +16,7 @@ const reducer = createReducer (
   (builder) => builder
   //.addCase define la logica necesaria para modificar los estados
   .addCase(
-    one_manga,
+    one_game,
     (state, action) => {
       const new_state = {
         ...state, 
