@@ -1,22 +1,21 @@
 import { Fragment, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Link as Anchor } from 'react-router-dom';
 import { Dialog, Transition } from '@headlessui/react';
 import React from 'react'
-import manga_action from '../store/actions/manga'
+import game_action from '../store/actions/game'
 import Swal from 'sweetalert2';
 
-const { manga_update } = manga_action
+const { game_update } = game_action
 
-export default function Editmanga({ open, setOpen, mangas, categories }) {
+export default function Editgame({ open, setOpen, games, categories }) {
 
   const cancelButtonRef = useRef(null);
   const dispatch = useDispatch()
 
-  const [titleValue, setTitleValue] = useState(mangas.title);
-  const [descriptionValue, setDescriptionValue] = useState(mangas.description);
-  const [coverPhotoValue, setCoverPhotoValue] = useState(mangas.cover_photo);
-  const [categoryIdValue, setCategoryIdValue] = useState(mangas.category_id);
+  const [titleValue, setTitleValue] = useState(games.title);
+  const [descriptionValue, setDescriptionValue] = useState(games.description);
+  const [coverPhotoValue, setCoverPhotoValue] = useState(games.cover_photo);
+  const [categoryIdValue, setCategoryIdValue] = useState(games.category_id);
 
   const handleTitleChange = (event) => {
     setTitleValue(event.target.value)
@@ -42,7 +41,7 @@ export default function Editmanga({ open, setOpen, mangas, categories }) {
     ))
   }
 
-  const editManga = (id) => {
+  const editGame = (id) => {
     const data = {
       title: titleValue,
       description: descriptionValue,
@@ -59,7 +58,7 @@ export default function Editmanga({ open, setOpen, mangas, categories }) {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         Swal.fire('Saved!', '', 'success')
-        dispatch(manga_update({ id, data }))
+        dispatch(game_update({ id, data }))
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')
       }
@@ -107,12 +106,12 @@ export default function Editmanga({ open, setOpen, mangas, categories }) {
               <div className="inline-block align-bottom bg-white text-left rounded-3xl overflow-hidden shadow-xl transform transition-all mb-32 max-w-lg w-full">
                 <div className='flex justify-center bg-white py-8 '>
                   <div className='flex flex-col'>
-                    <h1 className='text-4xl w-72 text-center'>Edit Manga</h1>
+                    <h1 className='text-4xl w-72 text-center'>Edit Game</h1>
 
                     <form className='flex flex-col mt-12 w-40 gap-6' action="">
 
                       <label className='w-40' htmlFor="">
-                        <input onChange={handleTitleChange} className='w-72 h-8 border-b rounded-md border-slate-500' type="text" name="name" id="name" placeholder='Title of the manga' />
+                        <input onChange={handleTitleChange} className='w-72 h-8 border-b rounded-md border-slate-500' type="text" name="name" id="name" placeholder='Title of the game' />
                       </label>
                       <label htmlFor="">
                         <input onChange={handleDescriptionChange} className='w-72 h-8 border-b rounded-md border-slate-500' type="text" name="name" id="name" placeholder='Description' />
@@ -129,7 +128,7 @@ export default function Editmanga({ open, setOpen, mangas, categories }) {
 
                     </form>
                     <div className='flex flex-col items-center mt-12 gap-4'>
-                      <button onClick={() => editManga(mangas._id)} type='submit' className="w-60 h-16 bg-[#34D399] rounded-full cursor-pointer text-white text-lg font-bold hover:bg-green-500 hover:scale-110 transition-all">
+                      <button onClick={() => editGame(games._id)} type='submit' className="w-60 h-16 bg-[#34D399] rounded-full cursor-pointer text-white text-lg font-bold hover:bg-green-500 hover:scale-110 transition-all">
                         Edit
                       </button>
                       <button onClick={() => cancel()} className="w-60 h-16 bg-[#FBDDDC] rounded-full cursor-pointer text-red-400 text-lg font-bold hover:bg-red-400 hover:text-white hover:scale-110 transition-all">

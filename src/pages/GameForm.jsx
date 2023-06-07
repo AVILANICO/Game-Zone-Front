@@ -8,7 +8,7 @@ import Index from './Index'
 import App from '../App'
 import { useNavigate } from 'react-router-dom'
 
-export default function MangaForm() {
+export default function GameForm() {
   useEffect(
     () => { axios(apiUrl + 'categories').then(res => categories(res.data.categories)).catch(err => console.error(err)) },
     []                                    //array de dependecias vacio ya que necesitamos fechar una unica vez al mostrarse el componente
@@ -37,7 +37,7 @@ export default function MangaForm() {
     formData.append('cover_photo', cover_photo.current.files[0]);
     formData.append('description', description.current.value);
 
-    axios.post(VITE_API + "mangas", formData, headers)
+    axios.post(VITE_API + "games", formData, headers)
       .then(res => {
         navigate('/')
         const Toast = Swal.mixin({
@@ -54,7 +54,7 @@ export default function MangaForm() {
         })
         Toast.fire({
           icon: 'success',
-          title: 'Your manga was successfully created',
+          title: 'Your game was successfully created',
         })
       })
       .catch(error => {
@@ -84,7 +84,7 @@ export default function MangaForm() {
         <>
           <section className="grid h-screen place-content-center text-slate-300">
             <div className="mb-10 text-center text-black">
-              <h1 className="text-3xl font-bold">New Manga</h1>
+              <h1 className="text-3xl font-bold">New Game</h1>
             </div>
             <form onSubmit={(e) => handleForm(e)} method='post' encType='multipart/form-data'>
               <div className="flex flex-col items-center justify-center space-y-6 pt-14">

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router-dom'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import inputs_filter_actions from '../store/actions/inputs_filters'
 import apiUrl from "../../api"
@@ -10,15 +10,15 @@ import { Link as Anchor, Link, useNavigate } from "react-router-dom";
 let token = localStorage.getItem("token")
 let headers = { headers: { "Authorization": `bearer ${token}` } }
 
-const {inputs_filter} = inputs_filter_actions
+const { inputs_filter } = inputs_filter_actions
 
-export default function Mangas() {
+export default function Games() {
 
-    const {title,categories}= useSelector(store => store.inputs) 
+    const { title, categories } = useSelector(store => store.inputs)
     /* console.log(title)
     console.log(categories) */
     const dispatch = useDispatch()
-    const [mangas, setMangas] = useState()
+    const [games, setGames] = useState()
     const buscador = useRef()
     const category_id = useRef()
     const [reload, setReload] = useState(false)
@@ -28,22 +28,24 @@ export default function Mangas() {
     // console.log(count)
     useEffect(
         () => {
-            axios(apiUrl + `mangas?title=${buscador.current?.value}&category_id=${categories?.join(',')}&page=${pagAct}`, headers)
+            axios(apiUrl + `games?title=${buscador.current?.value}&category_id=${categories?.join(',')}&page=${pagAct}`, headers)
                 .then(res => {
-                    setMangas(res.data.response)
+                    setGames(res.data.response)
                     setCount(res.data.count)
                 }
-                
+
                 )
                 .catch(err => console.error(err))
         },
-        [reload,pagAct]                                    //array de dependecias vacio ya que necesitamos fechar una unica vez al mostrarse el componente
+        [reload, pagAct]
     )
     useEffect(
-        () => { axios(apiUrl + 'categories')
-        .then(res => categorie(res.data.categories))
-        .catch(err => console.error(err)) },
-        []                                    //array de dependecias vacio ya que necesitamos fechar una unica vez al mostrarse el componente
+        () => {
+            axios(apiUrl + 'categories')
+                .then(res => categorie(res.data.categories))
+                .catch(err => console.error(err))
+        },
+        []
     )
     let [categor, categorie] = useState([])
 
@@ -88,7 +90,7 @@ export default function Mangas() {
     }
 
     function prev() {
-        if (mangas)
+        if (games)
             setNextPag(pagAct - 1)
 
     }
@@ -97,7 +99,7 @@ export default function Mangas() {
         <>
             <div className=" w-full min-h-0 flex flex-col items-center  ">
                 <div className=" w-full h-[100%] flex flex-col justify-center items-center bg-cover bg-top bg-[url(/src/assets/image/fondomanga.png)] xsm:h-[40vh]">
-                    <h1 className="text-[5rem] xsm:text-4xl m-4  text-white font-bold xsm: mb-[12%] mt-10">Mangas</h1>
+                    <h1 className="text-[5rem] xsm:text-4xl m-4  text-white font-bold xsm: mb-[12%] mt-10">Games</h1>
                     <form className="flex justify-center rounded-lg items-center bg-white w-[63%] h-16 xsm:w-[90%] xsm:rounded-full xsm:mb-8  mb-[10%]">
                         <label type="button" className="flex justify-center">
                             <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +107,7 @@ export default function Mangas() {
                                 <path d="M30.8333 31.3333L26.2083 26.7083" stroke="#F97316" strokeWidth="2" strokeLinecap="round" />
                             </svg>
                         </label>
-                        <input defaultValue={title} ref={buscador} onKeyUp={capture} type="text" placeholder=" Find your manga here" className="h-full w-[90%] rounded-lg text-xl xsm:w-[70%] xsm:rounded-full" />
+                        <input defaultValue={title} ref={buscador} onKeyUp={capture} type="text" placeholder=" Find your game here" className="h-full w-[90%] rounded-lg text-xl xsm:w-[70%] xsm:rounded-full" />
                     </form>
                 </div>
                 <div className="w-full min-h-0  bg-slate-300 flex justify-center xsm:pt-[7%]">
@@ -137,9 +139,9 @@ export default function Mangas() {
                             </div>
 
                             <div className='pb-[20vh] flex xsm:flex-col h-[500%] pb-50 xsm:items-center md:flex-wrap w-[70%] gap-[10%] xsm:w-full '>
-                                {mangas && mangas.length > 0 ? (
+                                {games && games.length > 0 ? (
 
-                                    mangas?.map((each =>
+                                    games?.map((each =>
 
                                         <div key={each._id} className='shadow-lg h-[12vw] mt-4 flex flex-row items-center w-[45%] xsm:w-[80%] xsm:h-[40%] bg-white rounded-lg'>
                                             <div className='h-[15vh] w-2 xsm:w-2 xsm:h-[10vh]' style={{ background: each.category_id.color }}>
@@ -149,7 +151,7 @@ export default function Mangas() {
                                                 <h1 className='md:text-[1.5rem]'> {each.title} </h1>
                                                 <p style={{ color: each.category_id.color }}> {each.category_id.name}</p>
                                                 <button className="xsm:hidden mt-10 w-[40%] bg-green-200 hover:bg-green-700 text-green-500 font-bold py-2 px-4 rounded-full">
-                                                    <Anchor to={`/manga/${each._id}/1`}>Read</Anchor>
+                                                    <Anchor to={`/game/${each._id}/1`}>Read</Anchor>
                                                 </button>
                                             </div>
                                             <img className="h-[100%] w-[40%] xsm:h-[20vh] xsm:w-[40%] object-cover rounded-[40px_8px_8px_40px/84px_8px_8px_64px;]" src={each.cover_photo} alt="" />
