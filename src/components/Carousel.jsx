@@ -40,7 +40,7 @@ export default function Carousel() {
   console.log(urlVideo);
 
   return (
-    <div style={{ backgroundColor: "transparent" }} className="relative flex justify-between items-center w-full h-[30rem] my-8 rounded-md xsm:hidden container" ref={divRef}>
+    <div style={{ backgroundColor: "transparent" }} className="relative  flex justify-between items-center min-w-full h-[30rem] my-8 rounded-md xsm:hidden container" ref={divRef}>
       <div style={{ backgroundColor: "transparent" }} className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <ReactPlayer
           url={urlVideo}
