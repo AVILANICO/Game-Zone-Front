@@ -126,6 +126,7 @@ import axios from "axios";
 import { useState, useEffect } from 'react';
 import { Link as Anchor, useNavigate } from "react-router-dom";
 import logo2 from '../assets/image/fondo-verde.png'
+import luis from '../assets/image/luis.png'
 
 
 export default function Navbar() {
@@ -193,9 +194,9 @@ export default function Navbar() {
           </div>
         )}
       </div>
-      <div className="absolute z-10 right-10 top-4">
-        <img className="block h-10   w-auto lg:hidden" src={logo2} alt="Your Company" />
-        <img className="hidden h-10 w-auto lg:block" src={logo2} alt="Your Company" />
+      <div className="absolute z-10 right-10 top-1">
+        <img className="block h-24 w-24    lg:hidden" src={luis} alt="Your Company" />
+        <img className="hidden h-24 w-24  lg:block" src={luis} alt="Your Company" />
       </div>
     </nav>
   )
