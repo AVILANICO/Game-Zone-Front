@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import arroba from '../assets/image/@.png'
-import candado from '../assets/image/lock1.png'
 import { Link as Anchor, useNavigate } from 'react-router-dom'
 import VITE_API from '../../api'
 import { useRef } from 'react'

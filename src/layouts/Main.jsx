@@ -9,7 +9,7 @@ export default function main() { //puedo desestructurar props en {children} y ll
     <>
       <Navbar />
       <div>
-        <Outlet />
+        <Outlet  />
       </div>
       <Footer />
     </>
