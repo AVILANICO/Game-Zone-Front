@@ -18,10 +18,6 @@ const MyGamesCard = ({ each, categories }) => {
     setOpen(true);
   }
 
-  function urlEdit() {
-    navigate(`/edit/${each._id}`)
-  }
-
   function urlDetail() {
     navigate(`/game/${each._id}/1`)
   }

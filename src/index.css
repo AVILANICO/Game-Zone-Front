@@ -18,7 +18,9 @@
   background-color: #3F4245; /* Cambiar el color de fondo */
   color: #FFFFFF; /* Cambiar el color del texto */
 }
-
+.shadow-white {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

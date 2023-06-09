@@ -6,7 +6,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer utilities {
   .shadow-cyan-600{
     box-shadow: 5px 5px 0 theme('colors.orange.300');
