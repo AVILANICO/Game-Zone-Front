@@ -6,7 +6,6 @@ import axios from 'axios'
 import inputs_filter_actions from '../store/actions/inputs_filters'
 import apiUrl from "../../api"
 import { Link as Anchor, Link, useNavigate } from "react-router-dom";
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" />
 
 let token = localStorage.getItem("token")
 let headers = { headers: { "Authorization": `bearer ${token}` } }
@@ -168,7 +167,6 @@ export default function Games() {
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </>

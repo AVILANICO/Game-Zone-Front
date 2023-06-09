@@ -15,7 +15,7 @@ const Signin = (props) => {
   let email = useRef();
   let password = useRef();
 
-  const clientID = '892361509691-n4pmsomkc10vrk2ghsggosstqg5v8pph.apps.googleusercontent.com'
+  const clientID = '86369650977-7ajhqtv8ig3puak0ijsprf63ff1mtub0.apps.googleusercontent.com'
 
   useEffect(() => {
     const start = () => {
@@ -29,11 +29,11 @@ const Signin = (props) => {
 
   const onSuccess = (response) => {
     // console.log(response)
-    const { email, googleId } = response.profileObj;
+    const { email, googleId, imageUrl } = response.profileObj;
 
     let data = {
       email: email,
-      password: googleId,
+      password: googleId
     }
     axios.post(VITE_API + "auth/signin", data)
       .then(res => {
@@ -41,8 +41,6 @@ const Signin = (props) => {
         const role = res.data.user.role;
         const email = res.data.user.email;
         const photo = res.data.user.photo;
-        // const name = res.data.user.name;
-
 
         //sweetAlert
         const Toast = Swal.mixin({
@@ -65,8 +63,7 @@ const Signin = (props) => {
         localStorage.setItem('token', token);
         localStorage.setItem('role', role);
         localStorage.setItem('email', email)
-        localStorage.setItem('photo', photo)
-        // localStorage.setItem('name', name)
+        localStorage.setItem('photo', imageUrl)
 
         setRedirect(true);
         //investigar useNavigate para cambiar el useState()
@@ -111,6 +108,8 @@ const Signin = (props) => {
           toast: true,
           position: 'center',
           showConfirmButton: false,
+          background: '#343434',
+          color: '#FFFFFF',
           timer: 2000,
           timerProgressBar: true,
           didOpen: (toast) => {
@@ -166,37 +165,33 @@ const Signin = (props) => {
       ) : (
         <>
 
-          <div className='h-screen w-full flex justify-center items-center'>
-            <div className='xsm:hidden w-1/2 p-4 flex justify-end h-full bg-center bg-cover bg-[url(/src/assets/image/Rectangle82.png)]'></div >
-            <div className="xsm:w-full xsm:flex flex justify-center w-1/2">
-              <div className="xsm:w-full bg-white min-h-screen w-1/2 flex justify-center items-center">
+          <div className='w-full flex justify-center h-full items-center bg-cover bg-[url(/src/assets/image/gamezone1.jpg)]'>
+            <div className="xsm:w-full xsm:flex min-h-screen flex justify-center items-center w-2/5">
+              <div className="xsm:w-full h-[80vh] w-4/5 flex justify-center items-center rounded-2xl bg-[#343434]/80">
 
                 <div className='xsm:w-full xsm:items-center flex flex-col'>
-                  <form className='xsm:w-3/5' onSubmit={(e) => handleForm(e)}>
-                    <div className='flex flex-col items-center'>
-                      <p className="text-4xl text-center font-semibold text-gray-900">Welcome <span className='text-fuchsia-400'>back</span>!</p>
-                      <h1 className="text-sm text-center text-gray-600 mt-4">Discover game, manhua and manhwa, track your progress, have fun, read game.</h1>
+                  <form className='xsm:w-3/5 flex flex-col gap-6' onSubmit={(e) => handleForm(e)}>
+                    <div className='flex flex-col items-center w-full'>
+                      <h1 className='text-6xl font-semibold text-center text-slate-300'>Welcome to </h1>
+                      <span className="text-6xl font-semibold gamer-title text-slate-300 shadow-lg shadow-yellow-200/50">GAME ZONE!</span>
                     </div>
-                    <div className="mt-5">
-                      <fieldset className='border-2 rounded-md flex items-center'>
-                        <legend className='text-sm ml-2 text-fuchsia-400'>Email</legend>
-                        <input ref={email} className="px-4 w-full  py-2 rounded-md text-sm outline-none" type="email" name="Email" placeholder="DragonballZ@Krowl.com" />
-                        <img className='w-4 h-4 mr-2' src={arroba} alt="profile" />
+                    <div className="mt-8 w-full ">
+                      <fieldset className='flex text-center justify-center '>
+                        <input ref={email} className="border-b-4  px-4 w-4/5 h-12 py-2 rounded-md text-lg outline-none bg-slate-600 text-white font-mono" type="email" name="Email" placeholder="Email" />
+
                       </fieldset>
                     </div>
-                    <div className="mt-5">
-                      <fieldset className='border-2 rounded-md flex items-center'>
-                        <legend className='text-sm ml-2 text-fuchsia-400'>Password</legend>
-                        <input ref={password} className="px-4 w-full  py-2 rounded-md text-sm outline-none" type="password" name="Password" placeholder="************" />
-                        <img className='w-4 h-4 mr-2' src={candado} alt="profile" />
+                    <div className="mt-2 w-full">
+                      <fieldset className='flex text-center justify-center'>
+                        <input ref={password} className="border-b-4 px-4 w-4/5 h-12 py-2 rounded-md text-lg outline-none bg-slate-600 text-white font-mono" type="password" name="Password" placeholder="Password" />
                       </fieldset>
                     </div>
-                    <div>
-                      <input className="mt-4 mb-3 w-full bg-gradient-to-b from-[#F9A8D4] to-[#F472B6] text-white py-2 rounded-xl transition duration-100 shadow-cyan-600 font-bold text-md h-12 cursor-pointer" type='submit' value="Sign in" />
+                    <div className='flex justify-center'>
+                      <input className="mt-4 mb-3 w-4/5 bg-cyan-950 text-slate-300 py-2 rounded-xl font-mono font-bold text-xl h-12 cursor-pointer hover:bg-cyan-800 transition-all" type='submit' value="Login" />
                     </div>
                   </form>
-                  <div>
-                    <GoogleLogin className="flex space-x-2 justify-center items-end w-[100%] border-2 border-gray-300 text-gray-600 py-2 rounded-xl transition duration-100"
+                  <div className='flex justify-center'>
+                    <GoogleLogin className="flex space-x-2 justify-center items-end w-3/5 hover:scale-105 mt-4 border-2 border-gray-300 text-gray-600 py-2 rounded-xl transition duration-100"
                       clientId={clientID}
                       onSuccess={onSuccess}
                       onFailure={onFailure}
@@ -205,11 +200,10 @@ const Signin = (props) => {
                   </div>
                   <div className='xsm:w-3/5 xsm:text-center flex flex-col items-center'>
                     {props.setShow ? (
-                      <span className="mt-6 ">You don't have an account yet? <span className="cursor-pointer text-sm text-fuchsia-400 font-bold" onClick={() => props.setShow(false)}>Sign up</span></span>
+                      <span className="mt-6 text-white text-lg">New User? <span className="cursor-pointer text-slate-400 font-bold text-lg hover:text-cyan-700" onClick={() => props.setShow(false)}>Sign up</span></span>
                     ) : (
-                      <Anchor to="/register" className="mt-6 ">You don't have an account yet? <span className="cursor-pointer text-sm text-fuchsia-400 font-bold">Sign up</span></Anchor>
+                      <Anchor to="/register" className="mt-6 text-white text-lg">New User? <span className="cursor-pointer text-slate-400 font-bold text-lg hover:text-cyan-700">Sign Up</span></Anchor>
                     )}
-                    <Anchor to="/" className="mt-2"> Go back to  <span className="cursor-pointer text-sm text-fuchsia-400 font-bold">Home page</span></Anchor>
                   </div>
                 </div>
               </div>
