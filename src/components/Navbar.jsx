@@ -178,7 +178,7 @@ export default function Navbar() {
               </>) : ("")}
               {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center px-4 py-2 text-white hover:bg-white hover:text-black hover:rounded-md m-4" to="/game-form">New game</Anchor></li>
               </>) : ("")}
-              {token && <li><Anchor className="flex justify-center px-4 py-2 text-white hover:bg-white hover:text-black hover:rounded-md m-4" to="/games/:pages">Games</Anchor></li>}
+              {<li><Anchor className="flex justify-center px-4 py-2 text-white hover:bg-white hover:text-black hover:rounded-md m-4" to="/games/:pages">Games</Anchor></li>}
               {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center px-4 py-2 text-white hover:bg-white hover:text-black hover:rounded-md m-4" to="/mygames">My Games</Anchor></li> </>) : ("")}
               {!token && <li><Anchor className="flex justify-center px-4 py-2 text-white hover:bg-white hover:text-black hover:rounded-md m-4" to="/register">Register</Anchor></li>}
               {!token && <li><Anchor className="flex justify-center px-4 py-2 text-white hover:bg-white hover:text-black hover:rounded-md m-4" to="/signin">Log In</Anchor></li>}
