@@ -1,4 +1,4 @@
-let VITE_API = 'http://localhost:8000/'
+let VITE_API = 'http://localhost:8080/'
 
 if (process.env.NODE_ENV==='production') {
     VITE_API = import.meta.env.VITE_API

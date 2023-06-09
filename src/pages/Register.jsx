@@ -1,8 +1,5 @@
 import React from 'react'
-import arroba from '../assets/image/@.png'
-import profile from '../assets/image/profile.png'
-import camara from '../assets/image/camera.png'
-import candado from '../assets/image/lock1.png'
+
 import VITE_API from '../../api'
 import { useRef } from 'react'
 import axios from 'axios'
