@@ -31,6 +31,8 @@ const routers = createBrowserRouter([
       { path: '/new-role', element: <Newrole /> },
       { path: '/company-form', element: <Companyform /> },
       { path: '/authorregister', element: <Authorform /> },
+     
+
     ]
   }
 ])
