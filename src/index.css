@@ -5,6 +5,19 @@
     font-family: 'Montserrat', sans-serif;
     /* background-color: #1D1D1D; */
 }
+.gamer-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: #00ff00;
+    text-shadow: 2px 2px 4px #000000;
+    letter-spacing: 4px;
+    transform: skewX(-15deg);
+}
+.google-login-button {
+  background-color: #3F4245; /* Cambiar el color de fondo */
+  color: #FFFFFF; /* Cambiar el color del texto */
+}
 
 @tailwind base;
 @tailwind components;

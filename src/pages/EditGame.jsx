@@ -1,5 +1,5 @@
 import { Fragment, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Dialog, Transition } from '@headlessui/react';
 import React from 'react'
 import game_action from '../store/actions/game'
@@ -16,6 +16,7 @@ export default function Editgame({ open, setOpen, games, categories }) {
   const [descriptionValue, setDescriptionValue] = useState(games.description);
   const [coverPhotoValue, setCoverPhotoValue] = useState(games.cover_photo);
   const [categoryIdValue, setCategoryIdValue] = useState(games.category_id);
+  const [priceValue, setPriceValue] = useState(games.price);
 
   const handleTitleChange = (event) => {
     setTitleValue(event.target.value)
@@ -33,6 +34,10 @@ export default function Editgame({ open, setOpen, games, categories }) {
     setCategoryIdValue(event.target.value)
   }
 
+  const handlePriceChange = (event) => {
+    setPriceValue(event.target.value)
+  }
+
   const category = () => {
     return categories?.map(categoria => (
       <option key={categoria?._id} value={categoria?._id}>
@@ -46,7 +51,8 @@ export default function Editgame({ open, setOpen, games, categories }) {
       title: titleValue,
       description: descriptionValue,
       cover_photo: coverPhotoValue,
-      category_id: categoryIdValue
+      category_id: categoryIdValue,
+      price: priceValue
     }
     Swal.fire({
       title: 'Do you want to save the changes?',
@@ -90,7 +96,7 @@ export default function Editgame({ open, setOpen, games, categories }) {
               leave="ease-in duration-200"
               leaveFrom="opacity-100"
               leaveTo="opacity-0">
-              <Dialog.Overlay className="fixed inset-0 bg-gray-300 bg-opacity-75 transition-opacity" />
+              <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-75 transition-opacity" />
             </Transition.Child>
             <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
               &#8203;
@@ -104,23 +110,26 @@ export default function Editgame({ open, setOpen, games, categories }) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
               <div className="inline-block align-bottom bg-white text-left rounded-3xl overflow-hidden shadow-xl transform transition-all mb-32 max-w-lg w-full">
-                <div className='flex justify-center bg-white py-8 '>
+                <div className='flex justify-center bg-[#343434] py-8 '>
                   <div className='flex flex-col'>
-                    <h1 className='text-4xl w-72 text-center'>Edit Game</h1>
+                    <h1 className='text-4xl w-72 text-center text-white font-mono'>EDIT GAME</h1>
 
                     <form className='flex flex-col mt-12 w-40 gap-6' action="">
 
                       <label className='w-40' htmlFor="">
-                        <input onChange={handleTitleChange} className='w-72 h-8 border-b rounded-md border-slate-500' type="text" name="name" id="name" placeholder='Title of the game' />
+                        <input onChange={handleTitleChange} className='font-mono w-72 h-8 border-t rounded-md border-4 border-yellow-600' type="text" name="name" id="name" placeholder='Title of the game' />
                       </label>
                       <label htmlFor="">
-                        <input onChange={handleDescriptionChange} className='w-72 h-8 border-b rounded-md border-slate-500' type="text" name="name" id="name" placeholder='Description' />
+                        <input onChange={handleDescriptionChange} className='font-mono w-72 h-8 border-t rounded-md border-4 border-yellow-600' type="text" name="name" id="name" placeholder='Description' />
                       </label>
                       <label htmlFor="">
-                        <input onChange={handleCoverPhotoChange} className='w-72 h-8 border-b rounded-md border-slate-500' type="text" name="name" id="name" placeholder='Photo' />
+                        <input onChange={handleCoverPhotoChange} className='font-mono w-72 h-8 border-t rounded-md border-4 border-yellow-600' type="text" name="name" id="name" placeholder='Photo URL...' />
                       </label>
                       <label htmlFor="">
-                        <select onChange={handleCategoryIdChange} defaultValue={categoryIdValue} className='w-72 h-8 border-b rounded-md border-slate-500' name="category" id="category"  >
+                        <input onChange={handlePriceChange} className='font-mono w-72 h-8 border-t rounded-md border-4 border-yellow-600' type="text" name="name" id="name" placeholder='Price' />
+                      </label>
+                      <label htmlFor="">
+                        <select onChange={handleCategoryIdChange} defaultValue={categoryIdValue} className='font-mono w-72 h-8 border-t rounded-md border-4 border-yellow-600' name="category" id="category"  >
                           <option>Category</option>
                           {category()}
                         </select>
@@ -128,10 +137,10 @@ export default function Editgame({ open, setOpen, games, categories }) {
 
                     </form>
                     <div className='flex flex-col items-center mt-12 gap-4'>
-                      <button onClick={() => editGame(games._id)} type='submit' className="w-60 h-16 bg-[#34D399] rounded-full cursor-pointer text-white text-lg font-bold hover:bg-green-500 hover:scale-110 transition-all">
+                      <button onClick={(e) => { e.preventDefault(); editGame(games._id) }} type='button' className="w-60 h-16 bg-[#098f5e] rounded-lg cursor-pointer text-white text-2xl font-bold hover:bg-green-500 hover:scale-110 transition-all">
                         Edit
                       </button>
-                      <button onClick={() => cancel()} className="w-60 h-16 bg-[#FBDDDC] rounded-full cursor-pointer text-red-400 text-lg font-bold hover:bg-red-400 hover:text-white hover:scale-110 transition-all">
+                      <button onClick={(e) => { e.preventDefault(); cancel() }} type='button' className="w-60 h-16 bg-[#eb120b] rounded-lg cursor-pointer text-red-200 text-2xl font-bold hover:bg-red-400 hover:text-white hover:scale-110 transition-all">
                         Cancel
                       </button>
                     </div>

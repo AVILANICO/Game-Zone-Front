@@ -1,6 +1,7 @@
 import Button from "../components/Button"
 import Carousel from "../components/Carousel"
 
+
 export default function Index() {
   return (
     <>
