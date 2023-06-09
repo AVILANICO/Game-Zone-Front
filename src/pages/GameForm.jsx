@@ -82,27 +82,29 @@ export default function GameForm() {
     <>
       {role == 1 || role == 2 ? (
         <>
-          <section className="grid h-screen place-content-center text-slate-300">
-            <div className="mb-10 text-center text-black">
-              <h1 className="text-3xl font-bold">New Game</h1>
-            </div>
-            <form onSubmit={(e) => handleForm(e)} method='post' encType='multipart/form-data'>
-              <div className="flex flex-col items-center justify-center space-y-6 pt-14">
-                <input ref={title} type="text" id="title" name="title" placeholder="Insert title" className="w-80 appearance-none  border-0  p-2 px-4  border-b border-gray-500  text-black focus:outline-none focus:ring-0" />
-                <input ref={cover_photo} type="file" id="photo" name="photo" placeholder='hola' className="w-80 appearance-none  border-0  p-2 px-4  border-b border-gray-500  text-black focus:outline-none focus:ring-0 file:bg-fuchsia-400 file:border-none file:rounded-full file:h-12 file:text-white file:cursor-pointer file:shadow-lg file:hover:shadow-fuchsia-600/50 file:hover:bg-fuchsia-500 file:font-semibold" />
-                <div>
-                  <select ref={category} placeholder="Insert order" className="w-80 appearance-none  border-0  p-2 px-4  border-b border-gray-500  text-black" name="categories">
-                    <option value="" key="rr">Insert Category</option>
-                    {options()}
-                  </select>
-                </div>
-                <div>
-                  <input ref={description} type="text" id="Insert description" name="InsertDescription" placeholder="Insert description" className="w-80 appearance-none  border-0  p-2 px-4  border-b border-gray-500 bg-transparent  text-black focus:outline-none focus:ring-0" />
-                </div>
-                <button className="rounded-full bg-pink-500 p-2 px-16 py-4 text-white t-10 font-bold text-lg"> Send</button>
+          <div className="grid h-screen  place-content-center text-slate-300 bg-cover bg-[url(/src/assets/image/newgame.jpeg)]">
+            <div className='bg-[#001D2B]/70 rounded-2xl w-96 h-[70vh] flex flex-col'>
+              <div className=" text-center  mt-10 text-white">
+                <h1 className="text-7xl shadow-lg shadow-black font-bold font-mono">NEW GAME</h1>
               </div>
-            </form>
-          </section>
+              <form onSubmit={(e) => handleForm(e)} method='post' encType='multipart/form-data'>
+                <div className="flex flex-col items-center justify-center space-y-6 pt-4">
+                  <input ref={title} style={{ backgroundColor: "transparent" }} type="text" id="title" name="title" placeholder="Insert title" className="w-80 font-mono appearance-none  border-0  p-2 px-4  border-b border-gray-500 text-white focus:outline-none focus:ring-0" />
+                  <input ref={cover_photo} style={{ backgroundColor: "transparent" }} type="file" id="photo" name="photo" className="w-80 file:w-20 appearance-none  border-0  p-2 px-4  border-b border-gray-500  text-white bg-[#343434] focus:outline-none focus:ring-0 file:bg-cyan-800 file:border-none file:rounded-2xl file:h-12 file:text-white file:cursor-pointer file:shadow-xl file:hover:shadow-yellow-200/50 file:hover:bg-cyan-700 file:font-semibold" />
+                  <div>
+                    <select ref={category} style={{ backgroundColor: "#001D2B" }} placeholder="Insert order" className="w-80 font-mono appearance-none  border-0  p-2 px-4  border-b border-gray-500  text-white" name="categories">
+                      <option value="" key="rr">Insert Category</option>
+                      {options()}
+                    </select>
+                  </div>
+                  <div>
+                    <input ref={description} type="text" id="Insert description" name="InsertDescription" placeholder="Insert description" className="w-80 font-mono appearance-none  border-0  p-2 px-4  border-b border-gray-500 bg-transparent  text-white focus:outline-none focus:ring-0" />
+                  </div>
+                  <button className="rounded-2xl bg-cyan-800 p-2 px-16 py-4 text-white shadow-xl hover:scale-95 hover:shadow-yellow-200/50 t-10 font-bold text-2xl font-mono"> Send</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </>
       ) : (
         <>
