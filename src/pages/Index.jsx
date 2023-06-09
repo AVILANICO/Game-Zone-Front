@@ -1,5 +1,5 @@
 import Button from "../components/Button"
-/* import Carousel from "../components/Carousel" */
+import Carousel from "../components/Carousel"
 
 import { useState } from 'react';
 import HomeCard from "./HomeCard"
@@ -7,16 +7,6 @@ import HomeCard from "./HomeCard"
 
 
 export default function Index() {
-
-
-
-
- 
-
-
-
-
-
 
   return (
     <>
@@ -27,9 +17,9 @@ export default function Index() {
           <Button />
         </div>
         <header className="mx-8 mt-0">
-         {/*  <Carousel /> */}
+          <Carousel />
         </header>
-        <HomeCard/>
+        <HomeCard />
       </div>
     </>
   )

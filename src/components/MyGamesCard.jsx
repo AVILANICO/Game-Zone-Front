@@ -51,7 +51,7 @@ const MyGamesCard = ({ each, categories }) => {
   }
   return (
     <div key={each._id} className='shadow-xl xsm:h-56 xsm:w-full md:w-80 md:h-52 lg:h-96 lg:w-[24rem] mt-4 flex flex-col items-center bg-[#343434] text-white rounded-lg hover:scale-105 transition-all hover:shadow-yellow-200/50'>
-      <img onClick={urlDetail} className="h-full w-full cursor-pointer xsm:h-full object-cover object-top" src={each?.cover_photo} />
+      <img onClick={urlDetail} className="w-[100%] h-[50%] cursor-pointer xsm:h-full object-cover object-top" src={each?.cover_photo} />
       <div className='flex flex-col items-center md:h-40 p-5 w-full h-40 font-semibold'>
         <h1 onClick={urlDetail} className='md:text-xl xsm:text-xl xsm:w-full cursor-pointer text-center'> {each?.title} </h1>
         <h2 className='text-center bg-cyan-800 w-24 rounded-xl hover:scale-105 mt-2'>Price: ${each?.price}</h2>
