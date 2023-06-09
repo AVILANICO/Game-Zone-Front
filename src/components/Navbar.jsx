@@ -125,10 +125,10 @@ import VITE_API from "../../api";
 import axios from "axios";
 import { Link as Anchor, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline"
-// import Carts from "./Carts";
+import Carts from "./Carts";
 import logo2 from '../assets/image/fondo-verde.png'
 
 
@@ -137,34 +137,7 @@ export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const [open, setOpen]  = useState(false);
   const navigate = useNavigate()
-
-  const products = [
-    {
-      id: 1,
-      name: "Raft",
-      href: "#",
-      color: "Survival",
-      price: "$10.00",
-      quantity: 1,
-      imageSrc:
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/648800/header.jpg?t=1655744208",
-      imageAlt:
-        "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-    },
-    {
-      id: 2,
-      name: "Grounded",
-      href: "#",
-      color: "Survival",
-      price: "$35.00",
-      quantity: 1,
-      imageSrc:
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/962130/header.jpg?t=1684963474",
-      imageAlt:
-        "Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
-    },
-    // More products...
-  ];
+  const [carrito, setCarrito] = useState([]);
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -184,6 +157,26 @@ export default function Navbar() {
       })
       .catch(err => alert(err))
   }
+
+  useEffect(
+    () => {
+      axios.get(VITE_API + 'carrito', headers)
+      .then(res => setCarrito(res.data.games))
+      .catch(err => console.log(err))
+    },[]
+  )
+  
+  const products = carrito;
+
+  const handleDeleteOne = async (e) => {
+    try {
+      await axios.delete(VITE_API+'carrito/'+ e.target.id, headers);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
 
   return (
     <nav className="xsm:hidden w-full h-24 absolute flex justify-between items-center">
@@ -223,6 +216,7 @@ export default function Navbar() {
         )}
       </div>
     <button onClick={() => setOpen(!open)} className="bg-yellow-500">Carts</button>
+    {/* <Carts show={open} /> */}
     <Transition.Root show={open} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={setOpen}>
               <Transition.Child
@@ -274,11 +268,11 @@ export default function Navbar() {
                                   className="-my-6 divide-y divide-gray-200"
                               >
                                   {products.map((product) => (
-                                  <li key={product.id} className="flex py-6">
+                                  <li key={product._id} className="flex py-6">
                                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                       <img
-                                          src={product.imageSrc}
-                                          alt={product.imageAlt}
+                                          src={product.cover_photo}
+                                          alt='foto'
                                           className="h-full w-full object-cover object-center"
                                       />
                                       </div>
@@ -288,14 +282,19 @@ export default function Navbar() {
                                           <div className="flex justify-between text-base font-medium text-white">
                                           <h3>
                                               <a href={product.href}>
-                                              {product.name}
+                                              {product.title}
                                               </a>
                                           </h3>
-                                          <p className="ml-4">{product.price}</p>
+                                          <p className="ml-4">$ {product.price}</p>
                                           </div>
                                           <p className="mt-1 text-sm text-gray-500">
                                           {product.color}
                                           </p>
+                                      </div>
+                                      <div>
+                                        <select>
+                                          <option></option>
+                                        </select>
                                       </div>
                                       <div className="flex flex-1 items-end justify-between text-sm">
                                           <p className="text-gray-500">
@@ -304,6 +303,8 @@ export default function Navbar() {
 
                                           <div className="flex">
                                           <button
+                                              onClick={handleDeleteOne}
+                                              id={product._id}
                                               type="button"
                                               className="font-medium text-[#044674] hover:text-indigo-500"
                                           >

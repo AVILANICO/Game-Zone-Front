@@ -9,6 +9,7 @@ import { Link as Anchor, Link, useNavigate } from "react-router-dom";
 
 let token = localStorage.getItem("token")
 let headers = { headers: { "Authorization": `bearer ${token}` } }
+console.log(token);
 
 const { inputs_filter } = inputs_filter_actions
 
@@ -24,6 +25,8 @@ export default function Games() {
     const [reload, setReload] = useState(false)
     const [count, setCount] = useState()
     const [pagAct, setNextPag] = useState(1)
+    const [idcompras, setIdcompras] = useState()
+    
 
     // console.log(count)
     useEffect(
@@ -95,6 +98,17 @@ export default function Games() {
 
     }
 
+
+    
+    const handleComprar = async () => {
+        try {
+            await axios.post('http://localhost:8000/carrito/' + idcompras , headers );
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    // console.log(idcompras);
+    
     return (
         <>
             <div className=" w-full min-h-0 flex flex-col items-center  ">
@@ -150,8 +164,16 @@ export default function Games() {
                                             <div className='flex flex-col p-5 w-[60%] font-bold'>
                                                 <h1 className='md:text-[1.5rem]'> {each.title} </h1>
                                                 <p style={{ color: each.category_id.color }}> {each.category_id.name}</p>
-                                                <button className="xsm:hidden mt-10 w-[40%] bg-green-200 hover:bg-green-700 text-green-500 font-bold py-2 px-4 rounded-full">
+                                                {/* <button className="xsm:hidden mt-10 w-[40%] bg-green-200 hover:bg-green-700 text-green-500 font-bold py-2 px-4 rounded-full">
                                                     <Anchor to={`/game/${each._id}/1`}>Read</Anchor>
+                                                </button> */}
+                                                <button 
+                                                    id={each._id}  
+                                                    onClick={handleComprar}
+                                                    onClickCapture={(e) => {setIdcompras(e.target.id)}}
+                                                    on
+                                                    className="xsm:hidden mt-10 w-[40%] bg-green-200 hover:bg-green-700 text-green-500 font-bold py-2 px-4 rounded-full">
+                                                    comprar
                                                 </button>
                                             </div>
                                             <img className="h-[100%] w-[40%] xsm:h-[20vh] xsm:w-[40%] object-cover rounded-[40px_8px_8px_40px/84px_8px_8px_64px;]" src={each.cover_photo} alt="" />
