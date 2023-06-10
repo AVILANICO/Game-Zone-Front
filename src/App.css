@@ -11,3 +11,23 @@
     box-shadow: 5px 5px 0 theme('colors.orange.300');
   }
 }
+.bgimg-1 {
+position: relative;
+background-repeat: no-repeat;
+background-size: cover;
+background-attachment: fixed;
+background-position:center ;
+background-image: url('./assets/image/calidad5.webp');
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+}
+
+@media (max-width: 767px) {
+  .bgimg-1 {
+    display: none;
+  }
+}
