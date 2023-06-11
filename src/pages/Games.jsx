@@ -9,7 +9,6 @@ import { Link as Anchor, Link, useNavigate } from "react-router-dom";
 
 let token = localStorage.getItem("token")
 let headers = { headers: { "Authorization": `bearer ${token}` } }
-console.log(token);
 
 const { inputs_filter } = inputs_filter_actions
 
@@ -26,7 +25,7 @@ export default function Games() {
     const [count, setCount] = useState()
     const [pagAct, setNextPag] = useState(1)
     const [idcompras, setIdcompras] = useState()
-    
+
 
     // console.log(count)
     useEffect(
@@ -99,19 +98,19 @@ export default function Games() {
     }
 
 
-    
+
     const handleComprar = async () => {
         // let token = localStorage.getItem("token")
         // console.log(token);
         // let headers = { headers: { "Authorization": `bearer ${token}` } }
         try {
-            await axios.post('http://localhost:8000/carrito/' + idcompras , null, headers );
+            await axios.post('http://localhost:8000/carrito/' + idcompras, null, headers);
         } catch (error) {
             console.log(error);
         }
     }
     // console.log(idcompras);
-    
+
     return (
         <>
             <div className=" w-full  flex flex-col items-center bg-[#343434]">
@@ -162,11 +161,11 @@ export default function Games() {
                                                 </Anchor>
 
                                                 <div className=" rounded-md py-2 px-2 mb-4 font-bold flex bg-black flex-wrap">
-                                                    <p className='text-white mr-3'>USD$ {each.price}</p>  <button id={each._id}  
-                                                    onClick={handleComprar}
-                                                    onClickCapture={(e) => {setIdcompras(e.target.id)}} className='bg-green-600 hover:bg-green-700 rounded-md px-1 cursor-pointer flex'>Add to <svg xmlns="http:www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="" viewBox="0 0 16 16">
-                                                        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                                                    </svg> </button>
+                                                    <p className='text-white mr-3'>USD$ {each.price}</p>  <button id={each._id}
+                                                        onClick={handleComprar}
+                                                        onClickCapture={(e) => { setIdcompras(e.target.id) }} className='bg-green-600 hover:bg-green-700 rounded-md px-1 cursor-pointer flex'>Add to <svg xmlns="http:www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="" viewBox="0 0 16 16">
+                                                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                                        </svg> </button>
                                                 </div>
                                             </div>
                                         </div>

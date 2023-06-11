@@ -11,7 +11,7 @@ export default function main() { //puedo desestructurar props en {children} y ll
       <div>
         <Outlet />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

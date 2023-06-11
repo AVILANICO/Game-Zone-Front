@@ -6,7 +6,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline"
 import Carts from "./Carts";
-import logo2 from '../assets/image/fondo-verde.png'
+import logo from '../assets/image/luis.png'
 
 
 export default function Navbar() {
@@ -55,7 +55,7 @@ export default function Navbar() {
 
 
   return (
-    <nav className="xsm:hidden w-full h-16 bg-[#343434] flex justify-between items-center ">
+    <nav className="xsm:hidden w-full h-[8vh] bg-[#343434] flex justify-between items-center ">
       <div>
         <button onClick={handleMenuClick} className="ml-4">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-10 h-10">
@@ -63,7 +63,7 @@ export default function Navbar() {
           </svg>
         </button>
         {showMenu && (
-          <div className="absolute left-16 top-2 h-12 flex items-center bg-none rounded-md py-5 z-10">
+          <div className="absolute left-16 top-0 h-12 flex items-center bg-none rounded-md py-5 z-10">
             <div className="flex justify-between ">
               <ul onClick={handleMenuClick} className="flex gap-6 ">
                 <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/">Home</Anchor></li>
@@ -229,14 +229,14 @@ export default function Navbar() {
           </div>
         </Dialog>
       </Transition.Root>
-      <div className="flex gap-4">
+      <div className="flex items-center gap-4">
         <svg xmlns=" bg-[#343434] http:www.w3.org/2000/svg" width="28" height="28" fill="white" className="bi bi-heart cursor-pointer hover:scale-95" viewBox="0 0 16 16">
           <path className="bg-[#343434]" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
         </svg>
         <svg onClick={() => setOpen(!open)} xmlns="http:www.w3.org/2000/svg" width="36" height="36" fill="white" className="bi bi-cart4 cursor-pointer hover:scale-95" viewBox="0 0 16 16">
           <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
         </svg>
-        <img className="h-10 mr-4" src={logo2} alt="Your Company" />
+        <img className="w-16 mr-4" src={logo} alt="Your Company" />
       </div>
     </nav>
   )
