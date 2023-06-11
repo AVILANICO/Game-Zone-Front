@@ -5,10 +5,20 @@ import shooter from '../assets/image/shooter.png'
 import race from '../assets/image/race.png'
 import multiplayer from '../assets/image/multiplayer.png'
 import need from '../assets/image/need2.jpg'
-import { useState } from 'react';
+import moto from '../assets/image/moto.png'
+import { Navigate,useNavigate} from "react-router-dom";
+
+import { useSelector, useDispatch } from 'react-redux'
+import { useState,useEffect } from 'react';
 
 
 export default function HomeCard() {
+
+
+ 
+
+
+
      // Ocultar todos los contenidos de las pestañas
  const [activeTab, setActiveTab] = useState('sport');
   
@@ -45,31 +55,31 @@ export default function HomeCard() {
           <h2 className=" text-center text-5xl text-white font-bold ">The most purchased by category</h2>
           <div className=" flex h-24 w-[90%] justify-around border-t border-b  mt-20">
             <button onClick={() => toggleTab('sport')}
-              className={`flex cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b]  hover:bg-[#14c18a7b] w-36 ${activeTab === 'sport' ? 'active' : ''
+              className={`flex cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b]  hover:bg-[#14c18a3e] w-36 ${activeTab === 'sport' ? 'active' : ''
                 } tablink`}>
               <h2 className="  text-white font-bold text-2xl text-center" >Sport</h2>
               <img className="h-12" src={sport} alt="" />
             </button >
             <button onClick={() => toggleTab('race')}
-              className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-40  hover:bg-[#14c18a7b] ${activeTab === 'race' ? 'active' : ''
+              className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-40  hover:bg-[#14c18a3e] ${activeTab === 'race' ? 'active' : ''
                 }tablink`}>
               <h2 className=" text-white font-bold text-2xl">Race</h2>
-              <img src={race} alt="" />
+              <img className="h-12 ml-2" src={moto} alt="" />
             </button>
             <button onClick={() => toggleTab('shooter')}
-              className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-44  hover:bg-[#14c18a7b] ${activeTab === 'shooter' ? 'active' : ''
+              className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-44  hover:bg-[#14c18a3e] ${activeTab === 'shooter' ? 'active' : ''
                 }tablink`}>
               <h2 className="  text-white font-bold text-2xl">Shooter</h2>
               <img src={shooter} alt="" />
             </button>
             <button onClick={() => toggleTab('survival')}
-              className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-48  hover:bg-[#14c18a7b] ${activeTab === 'survival' ? 'active' : ''
+              className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-48  hover:bg-[#14c18a3e] ${activeTab === 'survival' ? 'active' : ''
                 }tablink`}>
               <h2 className="  text-white font-bold text-2xl">Survival</h2>
               <img src={survival} alt="" />
             </button>
             <button onClick={() => toggleTab('multiplayer')}
-              className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-56  hover:bg-[#14c18a7b] ${activeTab === 'multiplayer' ? 'active' : ''
+              className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-56  hover:bg-[#14c18a3e] ${activeTab === 'multiplayer' ? 'active' : ''
                 }tablink`}>
               <h2 className="  text-white font-bold text-2xl">Multiplayer</h2>
               <img className="h-12" src={multiplayer} alt="" />
@@ -80,8 +90,10 @@ export default function HomeCard() {
 
           <div id="sport" className={`flex flex-wrap justify-around w-[85%] gap-10 mb-10 mt-10 ${activeTab === 'sport' ? 'block' : 'hidden'}`}>
 
+
             <div className=" transition-transform duration-300 transform hover:scale-105 w-[435px] h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white  rounded-2xl   ">
               <img
+
                 className=" rounded-t-2xl object-cover object-center h-[60%] w-full"
                 src="https://staticg.sportskeeda.com/editor/2022/09/17b6b-16632484983856-1920.jpg" />
               <h1 className="font-semibold text-yellow-50 leading-none text-xl mt-1 capitalize truncate p-4">
@@ -95,7 +107,9 @@ export default function HomeCard() {
               </div>
             </div>
 
-            <div class=" h-[680px]  bg-[#000000b5] shadow-xl hover:shadow-white   transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+
+            <div class=" h-[620px]  bg-[#000000b5] shadow-xl hover:shadow-white   transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+
               <img
                 className=" rounded-t-2xl  h-[60%] object-cover object-center w-full"
                 src="https://onigamers.com/wp-content/uploads/2023/06/EA-Sports-Madden-NFL-24.jpg" />
@@ -110,7 +124,9 @@ export default function HomeCard() {
               </div>
             </div>
 
-            <div className=" h-[680px]    bg-[#000000b5] shadow-xl hover:shadow-white  w-[435px]   transition-transform duration-300 transform hover:scale-105 rounded-2xl  content-center  ">
+
+            <div className=" h-[620px]     bg-[#000000b5] shadow-xl hover:shadow-white  w-[435px]   transition-transform duration-300 transform hover:scale-105 rounded-2xl  content-center  ">
+
               <img className=" h-[60%]  rounded-t-2xl w-full object-cover object-center" src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2022/07/18/16581597162266.jpg" />
               <h1 className="font-semibold text-yellow-50 leading-none p-4 text-xl mt-1 capitalize truncate">
                 FIFA 23
@@ -127,7 +143,8 @@ export default function HomeCard() {
 
           <div id="shooter" className={`flex flex-wrap justify-around w-[85%] gap-10 mb-10 mt-10 ${activeTab === 'shooter' ? 'block' : 'hidden'}`}>
 
-            <div className=" h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl   ">
+            <div className=" h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl   ">
+
               <img
                 className=" rounded-t-2xl object-cover object-center h-[60%] w-full"
                 src="https://images6.alphacoders.com/772/772017.jpg" />
@@ -137,12 +154,14 @@ export default function HomeCard() {
               <div className="max-w-full">
                 <h2 className="text-center font text-white">Event of the month </h2>
                 <p className="text-base text-center font-medium tracking-wide text-white mt-1 w-[90%]">
-                  Love is in the air, and Overwatch 2 celebrates Valentine's Day with a new event: Ultimate Valentine! Take part in a new brawl in the Arcade, earn new cosmetics in special event challenges, and prepare for a dating sim adventure to become the perfect match for Genji or Mercy.
+                Overwatch 2 celebrates Valentine's Day with Ultimate Valentine. New Arcade battle, special challenges to get cosmetics, and a dating sim adventure with Genji or Mercy..
                 </p>
               </div>
             </div>
 
-            <div class=" h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+
+            <div class=" h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+
               <img
                 className=" rounded-t-2xl  h-[60%] object-cover object-center w-full"
                 src="http://wallpapercave.com/wp/wp1810708.jpg" />
@@ -152,14 +171,14 @@ export default function HomeCard() {
               <div className="max-w-full">
                 <h2 className="text-center font text-white">Event of the month </h2>
                 <p className="text-base font-medium tracking-wide text-white text-center mt-1">
-                  Today we released the first major update for the CS2 Limited Test.
-                  New purchase and equipment menu
-                  Go to the equipment menu to customize the weapons you will carry in battle! For the T and CT sides, you can choose four pistols, five mid-tier weapons (submachine guns and heavy weapons), and five rifles (yes, you can bring both M4 rifles).
+                Today we released the first major update for CS2 Limited Test. New purchase and equipment menu. Customize your weapons in the loadout menu for battle. You can choose between pistols, mid-tier weapons, and rifles for both sides (T and CT).
                 </p>
               </div>
             </div>
 
-            <div className=" h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
+
+            <div className=" h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
+
               <img className=" h-[60%]  rounded-t-2xl w-full object-cover object-center" src="https://images.alphacoders.com/923/thumb-1920-923734.png" />
               <h1 className="font-semibold text-yellow-50 leading-none p-4 text-xl mt-1 capitalize truncate">
                 Battlefield V
@@ -167,7 +186,7 @@ export default function HomeCard() {
               <div className="max-w-full">
                 <h2 className="text-center font text-white">Event of the month </h2>
                 <p className="text-base font-medium text-center tracking-wide text-white mt-1">
-                  Battlefield™ V launches on November 20: eight maps set in frozen landscapes, sweltering deserts, and more; Eight exciting game modes, War Stories single player campaign, spectacular weapon gameplay, a vast arsenal of weapons, vehicles and gadgets; progression, customization and specializations for weapons and vehicles and much more.
+                Battlefield™ V launches on November 20 with eight maps, eight exciting game modes, "War Stories" single player campaign, vast arsenal of weapons and vehicles, progression, customization and specializations
                 </p>
               </div>
             </div>
@@ -176,7 +195,9 @@ export default function HomeCard() {
 
           <div id="race" className={`flex flex-wrap justify-around w-[85%] gap-10 mb-10 mt-10 ${activeTab === 'race' ? 'block' : 'hidden'}`}>
 
-            <div className="  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white    ">
+
+            <div className="  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white    ">
+
               <img
                 className=" rounded-t-2xl object-cover object-center h-[60%] w-full"
                 src="https://i.ytimg.com/vi/lXRnR_W0J4o/maxresdefault.jpg" />
@@ -192,7 +213,7 @@ export default function HomeCard() {
               </div>
             </div>
 
-            <div class="h-[40vw] bg-[#000000b5] shadow-xl hover:shadow-white transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+            <div class="h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
               <img
                 className="  rounded-t-2xl  h-[60%] object-cover object-center w-full"
                 src="https://images2.alphacoders.com/517/517806.jpg" />
@@ -207,7 +228,10 @@ export default function HomeCard() {
               </div>
             </div>
 
-            <div className=" h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
+
+            <div className=" h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
+
+
               <img className=" h-[60%]  rounded-t-2xl w-full object-cover object-center" src={need} />
               <h1 className="font-semibold text-yellow-50 leading-none p-4 text-xl mt-1 capitalize truncate">
                 Need for Speed: World
@@ -223,7 +247,10 @@ export default function HomeCard() {
 
           <div id="multiplayer" className={`flex flex-wrap justify-around w-[85%] gap-10 mb-10 mt-10 ${activeTab === 'multiplayer' ? 'block' : 'hidden'}`}>
 
-            <div className=" h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl    ">
+
+            <div className=" h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl    ">
+
+
               <img
                 className=" rounded-t-2xl object-cover object-center h-[60%] w-full"
                 src="https://www.brawlhalla.com/c/uploads/2021/04/Reno_1920x1080.jpg" />
@@ -238,7 +265,9 @@ export default function HomeCard() {
               </div>
             </div>
 
-            <div class=" h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+
+            <div class=" h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+
               <img
                 className=" rounded-t-2xl  h-[60%] object-cover object-center w-full"
                 src="https://images.hdqwalls.com/wallpapers/rocket-league-season-2-gy.jpg" />
@@ -254,7 +283,9 @@ export default function HomeCard() {
               </div>
             </div>
 
-            <div className=" h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
+
+            <div className=" h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
+
               <img className=" h-[60%]  rounded-t-2xl w-full object-cover object-center" src="https://cdn2.unrealengine.com/15br-bplaunch-egs-s3-2560x1440-2560x1440-687570387.jpg" />
               <h1 className="font-semibold text-yellow-50 leading-none p-4 text-xl mt-1 capitalize truncate">
                 Fortnite
@@ -270,7 +301,10 @@ export default function HomeCard() {
 
           <div id="survival" className={`flex flex-wrap justify-around w-[85%] gap-10 mb-10 mt-10 ${activeTab === 'survival' ? 'block' : 'hidden'}`}>
 
-            <div className=" h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl   ">
+
+            <div className=" h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl   ">
+
+
               <img
                 className=" rounded-t-2xl object-cover object-center h-[60%] w-full"
                 src="https://grettogeek.com/wp-content/uploads/2017/09/raft-cover.jpg" />
@@ -285,7 +319,9 @@ export default function HomeCard() {
               </div>
             </div>
 
-            <div class=" h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+
+            <div class=" h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+
               <img
                 className=" rounded-t-2xl  h-[60%] object-cover object-center w-full"
                 src="https://assets-prd.ignimgs.com/2020/07/24/grounded-button-fin-1595554384970.jpg" />
@@ -300,7 +336,9 @@ export default function HomeCard() {
               </div>
             </div>
 
-            <div className=" h-[680px] bg-[#000000b5] shadow-xl hover:shadow-white   transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
+
+            <div className=" h-[620px] bg-[#000000b5] shadow-xl hover:shadow-white   transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
+
               <img className=" h-[60%]  rounded-t-2xl w-full object-cover object-center" src="https://www.spieltimes.com/wp-content/uploads/2021/02/valheim-1200.jpg" />
               <h1 className="font-semibold text-yellow-50 leading-none p-4 text-xl mt-1 capitalize truncate">
                 Valheim
