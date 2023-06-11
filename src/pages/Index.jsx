@@ -1,20 +1,19 @@
 import Button from "../components/Button"
-/* import Carousel from "../components/Carousel" */
+import Carousel from "../components/Carousel"
+import { Navigate,useNavigate} from "react-router-dom";
 
-import { useState } from 'react';
+import { useState, } from 'react';
 import HomeCard from "./HomeCard"
 
 
 
 
 export default function Index() {
-
+  
 
 
 
  
-
-
 
 
 
@@ -28,9 +27,9 @@ export default function Index() {
           <Button />
         </div>
         <header className="mx-8 mt-0">
-         {/*  <Carousel /> */}
+          <Carousel />
         </header>
-        <HomeCard/>
+        <HomeCard  />
       </div>
     </>
   )

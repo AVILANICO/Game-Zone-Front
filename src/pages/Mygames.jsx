@@ -16,6 +16,7 @@ export default function Mygames() {
 
   const categories = useSelector(store => store.categories.categories)
   const games = useSelector(store => store.game.game)
+  console.log(games);
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const authorName = games.find(each => each.author_id)?.author_id.name;
