@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 src/assets/video 
 .env
+src/assets/video

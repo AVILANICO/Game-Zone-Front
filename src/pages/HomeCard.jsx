@@ -6,49 +6,45 @@ import race from '../assets/image/race.png'
 import multiplayer from '../assets/image/multiplayer.png'
 import need from '../assets/image/need2.jpg'
 import moto from '../assets/image/moto.png'
-import { Navigate,useNavigate} from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from 'react-redux'
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 
 export default function HomeCard() {
 
+  // Ocultar todos los contenidos de las pestañas
+  const [activeTab, setActiveTab] = useState('sport');
 
- 
+  // Ocultar todos los contenidos de las pestañas
+  function openTab(tabName, evt)  {
+    // Ocultar todas las tarjetas
+    let tabContents = document.getElementsByClassName('tabcontent');
+    for (let i = 0; i < tabContents.length; i++) {
+      tabContents[i].style.display = 'none';
+    }
 
+    // Eliminar la clase 'active' de todos los botones
+    let tabLinks = document.getElementsByClassName('tablink');
+    for (let i = 0; i < tabLinks.length; i++) {
+      tabLinks[i].className = tabLinks[i].className.replace(' active', '');
+    }
 
+    // Mostrar el contenido de la pestaña seleccionada y marcar el botón como activo
+    document.getElementById(tabName).style.display = 'flex';
+    evt.currentTarget.className += ' active';
+  }
 
-     // Ocultar todos los contenidos de las pestañas
- const [activeTab, setActiveTab] = useState('sport');
-  
- // Ocultar todos los contenidos de las pestañas
- function openTab(tabName, evt) {
-   // Ocultar todas las tarjetas
-   let tabContents = document.getElementsByClassName('tabcontent');
-   for (let i = 0; i < tabContents.length; i++) {
-     tabContents[i].style.display = 'none';
-   }
-
-   // Eliminar la clase 'active' de todos los botones
-   let tabLinks = document.getElementsByClassName('tablink');
-   for (let i = 0; i < tabLinks.length; i++) {
-     tabLinks[i].className = tabLinks[i].className.replace(' active', '');
-   }
-
-   // Mostrar el contenido de la pestaña seleccionada y marcar el botón como activo
-   document.getElementById(tabName).style.display = 'flex';
-   evt.currentTarget.className += ' active';
- }
- function toggleTab(tabName) {
-   if (activeTab === tabName) {
-     // Si se presiona el botón de la pestaña activa nuevamente, se oculta la pestaña
-     setActiveTab(null);
-   } else {
-     // Si se presiona un botón de pestaña diferente, se muestra esa pestaña
-     setActiveTab(tabName);
-   }
- }
+  function toggleTab(tabName) {
+    if (activeTab === tabName) {
+      // Si se presiona el botón de la pestaña activa nuevamente, se oculta la pestaña
+      setActiveTab(null);
+    } else {
+      // Si se presiona un botón de pestaña diferente, se muestra esa pestaña
+      setActiveTab(tabName);
+    }
+  }
   return (
     <>
     <div className="min-h-[60vw]  flex flex-col  items-center xsm:hidden mt-20" >
@@ -332,7 +328,9 @@ export default function HomeCard() {
 
 
         </div>
+
       
+     
     </>
   )
 }
