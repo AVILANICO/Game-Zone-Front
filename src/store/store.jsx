@@ -5,6 +5,7 @@ import companies from './reducers/companies'
 import authors from './reducers/authors'
 import categories_read from "./reducers/categories"
 import game_read from "./reducers/game.js"
+import game_all from './reducers/all_games.js'
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     authors: authors,
     categories: categories_read,
     game: game_read,
+    games:game_all
   }
 })
 export default store;

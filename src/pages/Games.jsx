@@ -6,7 +6,8 @@ import axios from 'axios'
 import inputs_filter_actions from '../store/actions/inputs_filters'
 import apiUrl from "../../api"
 import { Link as Anchor, Link, useNavigate } from "react-router-dom";
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" />
+import Editgame from './EditGame'
+
 
 let token = localStorage.getItem("token")
 let headers = { headers: { "Authorization": `bearer ${token}` } }
@@ -16,8 +17,7 @@ const { inputs_filter } = inputs_filter_actions
 export default function Games() {
 
     const { title, categories } = useSelector(store => store.inputs)
-    /* console.log(title)
-    console.log(categories) */
+    
     const dispatch = useDispatch()
     const [games, setGames] = useState()
     const buscador = useRef()
@@ -25,8 +25,13 @@ export default function Games() {
     const [reload, setReload] = useState(false)
     const [count, setCount] = useState()
     const [pagAct, setNextPag] = useState(1)
+    const [open, setOpen] = useState(false);
+    const alertEdit = () => {
+        setOpen(true);
+      }
 
-    // console.log(count)
+
+   
     useEffect(
         () => {
             axios(apiUrl + `games?title=${buscador.current?.value}&category_id=${categories?.join(',')}&page=${pagAct}`, headers)
@@ -141,9 +146,12 @@ export default function Games() {
                                             <p className='md:text-[1rem] font-bold xsm:text-center'> {each.title} </p>
                                             <p style={{ color: each.category_id.color }}> {each.category_id.name}</p>
                                             <div className='flex justify-between w-[90%] mt-3 flex-wrap '>
-                                                <Anchor className='bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 hover:shadow-sm rounded-md py-2 px-2 mb-4 font-bold flex items-center md:justify-center ' to={`/game/${each._id}/1`}>
+
+                                                <input onClick={() => alertEdit()} className='cursor-pointer' type="button" value="Edit" />
+
+                                               {/*  <Anchor className='bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 hover:shadow-sm rounded-md py-2 px-2 mb-4 font-bold flex items-center md:justify-center ' to={`/game/${each._id}/1`}>
                                                     Details
-                                                </Anchor>
+                                                </Anchor> */}
 
                                                 <div className=" rounded-md py-2 px-2 mb-4 font-bold flex bg-black flex-wrap">
                                                     <p className='text-white mr-3'>USD$ {each.price}</p>  <p className='bg-green-600 hover:bg-green-700 rounded-md px-1 cursor-pointer flex'>Add to <svg xmlns="http:www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="" viewBox="0 0 16 16">
@@ -151,7 +159,9 @@ export default function Games() {
                                                     </svg> </p>
                                                 </div>
                                             </div>
+                                            <Editgame games={each} categories={categor} open={open} setOpen={setOpen} />
                                         </div>
+                                       
                                     ))) : (
                                     <div className='flex flex-row justify-center'>
                                         <h1 className='text-[2rem]'>No matches found in the search</h1>

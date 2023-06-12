@@ -8,7 +8,7 @@ const {one_game} = actions
 //defino estado inicial
 let initial_state = {
   title: '',
-  cover_photo: ''
+  cover_photo: '',
 }
 
 const reducer = createReducer (
