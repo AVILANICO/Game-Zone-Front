@@ -17,7 +17,6 @@ import { useState, useEffect } from 'react';
 
 export default function HomeCard() {
 
-
   // Ocultar todos los contenidos de las pestañas
   const [activeTab, setActiveTab] = useState('sport');
 
@@ -51,9 +50,9 @@ export default function HomeCard() {
   }
   return (
     <>
-      <div className="min-h-[60vw]  flex flex-col  items-center xsm:hidden mt-20" >
-        <h2 className=" text-center text-5xl text-white font-bold ">The most purchased by category</h2>
-        <div className=" flex h-24 w-[95%] justify-around border-t border-b  mt-20">
+      <div className="min-h-[60vw] flex flex-col  items-center xsm:hidden mt-12" >
+        <h2 className=" text-center text-5xl text-white font-bold">THE MOST PURCHASED BY CATEGORY</h2>
+        <div className=" flex h-24 w-[100%] justify-around bg-[#343434]/70 border-t border-b  mt-20">
           <button onClick={() => toggleTab('sport')}
             className={`flex cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b]  hover:bg-[#14c18a3e] w-36 ${activeTab === 'sport' ? 'active' : ''
               } tablink`}>
@@ -91,7 +90,7 @@ export default function HomeCard() {
         <div id="sport" className={`flex flex-wrap justify-around w-[90%] gap-10 mb-10 mt-10 ${activeTab === 'sport' ? 'block' : 'hidden'}`}>
 
           <div className=" transition-transform duration-300 transform hover:scale-105 w-[330px] h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  rounded-2xl   ">
-           <img
+            <img
               className=" rounded-t-2xl  object-fill h-[45%] w-full"
               src="https://staticg.sportskeeda.com/editor/2022/09/17b6b-16632484983856-1920.jpg" />
             <h1 className="font-semibold text-yellow-50 leading-none text-xl mt-1 capitalize truncate p-4">
@@ -100,7 +99,7 @@ export default function HomeCard() {
             <div className="max-w-full">
               <h2 className="text-center font text-white">Event of the month </h2>
               <p className="text-base text-center font-medium tracking-wide text-white mt-1 w-[90%]">
-              In The City, by wearing an NBA jersey, you will earn an extra 2XP for each game. Take this opportunity to get more experience and unlock upgrades on your player!
+                In The City, by wearing an NBA jersey, you will earn an extra 2XP for each game. Take this opportunity to get more experience and unlock upgrades on your player!
               </p>
             </div>
           </div>
@@ -321,19 +320,8 @@ export default function HomeCard() {
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
       </div>
-<Footer/>
-
-
+      <Footer />
     </>
   )
 }
