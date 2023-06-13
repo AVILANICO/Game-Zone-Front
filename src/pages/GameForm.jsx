@@ -82,8 +82,8 @@ export default function GameForm() {
     <>
       {role == 1 || role == 2 || role ==3 ? (
         <>
-          <div className="grid h-screen  place-content-center text-slate-300 bg-cover bg-[url(/src/assets/image/newgame.jpeg)]">
-            <div className='bg-[#001D2B]/70 rounded-2xl w-96 h-[70vh] flex flex-col'>
+          <div className="grid min-h-[92vh]  place-content-center text-slate-300 bg-cover bg-center bg-[url('https://wallpaperset.com/w/full/b/0/a/417136.jpg')]">
+            <div className='bg-[#343434] rounded-2xl w-96 h-[70vh] flex flex-col'>
               <div className=" text-center  mt-10 text-white">
                 <h1 className="text-7xl shadow-lg shadow-black font-bold font-mono">NEW GAME</h1>
               </div>
@@ -92,7 +92,7 @@ export default function GameForm() {
                   <input ref={title} style={{ backgroundColor: "transparent" }} type="text" id="title" name="title" placeholder="Insert title" className="w-80 font-mono appearance-none  border-0  p-2 px-4  border-b border-gray-500 text-white focus:outline-none focus:ring-0" />
                   <input ref={cover_photo} style={{ backgroundColor: "transparent" }} type="file" id="photo" name="photo" className="w-80 file:w-20 appearance-none  border-0  p-2 px-4  border-b border-gray-500  text-white bg-[#343434] focus:outline-none focus:ring-0 file:bg-cyan-800 file:border-none file:rounded-2xl file:h-12 file:text-white file:cursor-pointer file:shadow-xl file:hover:shadow-yellow-200/50 file:hover:bg-cyan-700 file:font-semibold" />
                   <div>
-                    <select ref={category} style={{ backgroundColor: "#001D2B" }} placeholder="Insert order" className="w-80 font-mono appearance-none  border-0  p-2 px-4  border-b border-gray-500  text-white" name="categories">
+                    <select ref={category} style={{ backgroundColor: "#343434" }} placeholder="Insert order" className="w-80 font-mono appearance-none  border-0  p-2 px-4  border-b border-gray-500  text-white" name="categories">
                       <option value="" key="rr">Insert Category</option>
                       {options()}
                     </select>

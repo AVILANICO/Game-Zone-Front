@@ -6,6 +6,7 @@ import axios from "axios";
 import VITE_API from '../../api'
 import React from 'react'
 import Swal from 'sweetalert2';
+import ReactPlayer from "react-player";
 
 
 
@@ -49,21 +50,21 @@ export default function Game() {
 
   return (
     <div className="min-h-[92vh] flex bg-black justify-center">
-      <div className=" w-1/2 xsm:pt-20  flex flex-col items-center justify-center">
-        <img className="xsm:w-72 rounded-lg object-cover object-top xsm:pt-0 xsm:mt-0 xsm:h-80 h-[60vh] w-[60vw]" src={storeGame.cover_photo} alt="fotito" />
-        <p className="mt-8 xsm:w-4/5 w-4/5 text-white">{games.description}</p>
+      <div className=" w-1/2 flex flex-col items-start px-8 mt-4">
+        <img className="rounded-lg object-cover h-[55vh]" src={storeGame.cover_photo} alt="fotito" />
+        <p className="mt-8 xsm:w-4/5 w-full text-white">{games.description}</p>
       </div>
-      <div className="w-1/2 flex flex-col items-center justify-center">
-        <div className="flex flex-col bg-[#343434]/70 w-3/5 h-4/5 rounded-lg">
-          <div className="flex flex-col items-center justify-center gap-4 h-[40%]">
-            <h2 className="text-6xl text-center text-white mt-4 shadow-white">{String(storeGame.title)}</h2>
-            <img src={games.company_id?.logo} className="w-[80%] h-[50%]" alt="" />
+      <div className="w-1/2 flex flex-col items-center justify-evenly">
+        <ReactPlayer url={games.gameplay} width="80%" height="40%" controls playing loop muted />
+        <div className="flex flex-col bg-[#343434]/40 w-4/5 h-1/2 justify-center items-center rounded-lg gap-4">
+          <div className="flex flex-col items-center justify-center gap-4 h-[50%]">
+            <h2 className="text-3xl text-center text-white mt-4">{String(storeGame.title)}</h2>
+            <img src={games.company_id?.logo} className="w-[80%] h-[70%]" alt="" />
           </div>
           <div className="flex flex-col justify-center gap-2 h-[50%]">
-            <p className="text-white text-xl ml-4">{games.category_id?.name}</p>
-            <p className="text-white text-xl ml-4">Company: {games.company_id?.name}</p>
-            <p className='text-white text-2xl ml-4'>USD ${games.price}</p>
-            <div className="rounded-md font-bold flex flex-col gap-4 flex-wrap items-center justify-center mt-2">
+            <p className="text-white text-lg ml-4">{games.company_id?.name}</p>
+            <p className='text-white text-lg ml-4'>USD ${games.price}</p>
+            <div className="rounded-md font-bold flex gap-4 flex-wrap items-center justify-center mt-2">
               <button id={games._id}
                 onClick={handleComprar}
                 onClickCapture={(e) => { setIdcompras(e.target.id) }} className='border-2 w-48 h-12 rounded-md px-1 cursor-pointer flex justify-center items-center shadow-lg hover:shadow-green-200/50 text-white gap-2 hover:bg-green-800 hover:scale-105'>Add to Cart <svg xmlns="http:www.w3.org/2000/svg" width="24" height="24" fill="white" className="" viewBox="0 0 16 16">

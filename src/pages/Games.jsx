@@ -67,11 +67,7 @@ export default function Games() {
         return (
             <div className='flex flex-row gap-5 w-[100%] h-[40%]'>
 
-                <label className='mt-[-0.5rem] xsm:hidden flex flex-row items-center justify-center w-10 h-10 bg-black text-white p-[22px] rounded-[10px] text-[15px] font-bold cursor-pointer' >
-                    All
-                    <input name="category_id" onClick={capture} style={{ appearance: 'none' }} type="checkbox" />
-
-                </label>
+               
 
                 {categor?.map(a => (
 

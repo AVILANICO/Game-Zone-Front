@@ -66,12 +66,12 @@ export default function Navbar() {
           <div className="absolute left-16 top-0 h-12 flex items-center bg-none rounded-md py-5 z-10">
             <div className="flex justify-between ">
               <ul onClick={handleMenuClick} className="flex gap-6 ">
-                <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/">Home</Anchor></li>
-                {role == 0 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/new-role">New Role</Anchor></li>
+                <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/">Home</Anchor></li>
+                {role == 0 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/new-role">New Role</Anchor></li>
                 </>) : ("")}
-                {role == 3 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/admin">Panel</Anchor></li>
+                {role == 3 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/admin">Panel</Anchor></li>
                 </>) : ("")}
-                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/game-form">New game</Anchor></li>
+                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/game-form">New game</Anchor></li>
                 </>) : ("")}
                 {role == 0 || role== 1 || role == 2 ? (<li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/games/:pages">Games</Anchor></li>):("") }
                 {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/mygames">My Games</Anchor></li> </>) : ("")}
