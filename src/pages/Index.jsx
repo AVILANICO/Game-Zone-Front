@@ -9,7 +9,7 @@ import HomeCard from "./HomeCard"
 
 
 export default function Index() {
-
+  
 
   return (
     <>
