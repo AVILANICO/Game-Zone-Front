@@ -13,7 +13,7 @@ export default function NewRole() {
                             <img src="./src/assets/image/aut.jpg" className="lg:inline-block w-20 h-9 self-center m-2" />
                             <div className="m-2">
                                 <h1 className="font-bold">Join as an Author!</h1>
-                                <p className="text-sm">I'm a reader writting a manga</p>
+                                <p className="text-sm">I'm a reader writting a game</p>
                             </div>
                         </div>
                     </label>
@@ -31,7 +31,7 @@ export default function NewRole() {
                 </Anchor>
             </div>
             <div className='hidden sm:flex sm:flex-col h-screen w-1/2 bg-[url(/src/assets/image/role.png)] bg-no-repeat bg-center bg-cover'>
-                <p className='text-white font-montserrat font-medium text-2xl leading-7	mt-[15vh] px-[10%]'>Minga.com is the best place to find manga reviews. We’ve been super impress by the quality of applicants.</p>
+                <p className='text-white font-montserrat font-medium text-2xl leading-7	mt-[15vh] px-[10%]'>Minga.com is the best place to find game reviews. We’ve been super impress by the quality of applicants.</p>
                 <p className='text-white font-montserrat font-normal text-base leading-5 mt-[15vh] px-[10%]'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="text-white/50 w-6 h-6 inline-block">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
