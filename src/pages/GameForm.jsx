@@ -80,7 +80,7 @@ export default function GameForm() {
 
   return (
     <>
-      {role == 1 || role == 2 ? (
+      {role == 1 || role == 2 || role ==3 ? (
         <>
           <div className="grid h-screen  place-content-center text-slate-300 bg-cover bg-[url(/src/assets/image/newgame.jpeg)]">
             <div className='bg-[#001D2B]/70 rounded-2xl w-96 h-[70vh] flex flex-col'>

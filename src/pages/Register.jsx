@@ -10,7 +10,6 @@ import { GoogleLogin } from 'react-google-login'
 import { useEffect } from 'react'
 
 const Register = (props) => {
-  let name = useRef()
   let email = useRef()
   let password = useRef()
   let photo = useRef()
@@ -73,7 +72,6 @@ const Register = (props) => {
     e.preventDefault()
 
     const formData = new FormData();
-    formData.append('name', name.current.value);
     formData.append('email', email.current.value);
     formData.append('photo', photo.current.files[0]);
     formData.append('password', password.current.value);
@@ -111,45 +109,36 @@ const Register = (props) => {
 
   return (
     <>
-      <div className='xsm:w-full h-screen w-full flex justify-center items-center bg-center bg-cover bg-[url(/src/assets/image/imagen-gamer2.jpg)]'>
-        <div className="xsm:w-full xsm:mt-40 flex justify-center w-full">
-          <div className="min-h-screen flex justify-center items-center w-[50vw]">
-            <div className='xsm:w-screen  xsm:items-center flex flex-col items-center w-full bg-[#343434]/80 rounded-3xl'>
-              <form className='xxsm:w-[16rem]  w-4/5 flex flex-col items-center xxsm:mr-4 xsm:w-full' onSubmit={(e) => handleForm(e)} encType='multipart/form-data'>
-                <div className='flex flex-col items-center w-full'>
-                  <span className="text-6xl mt-4 font-semibold text-center gamer-title text-slate-300 shadow-lg shadow-yellow-200/50">GAME ZONE</span>
+      <div className='flex bg-black'>
+        <div className="xsm:w-full xsm:mt-40 flex justify-center w-1/2">
+          <div className="flex justify-center items-center w-[30vw]">
+            <div className='xsm:w-screen h-4/5 xsm:items-center flex flex-col items-center w-full bg-[#343434]/90 rounded-2xl'>
+              <form className='xxsm:w-[16rem] w-[100%] flex flex-col items-center xsm:mr-4 xsm:w-full gap-4' onSubmit={(e) => handleForm(e)} encType='multipart/form-data'>
+                <div className='flex flex-col items-center w-[100%]'>
+                  <span className="text-6xl mt-4 w-full font-semibold text-center font-mono text-slate-300">GAME ZONE</span>
                 </div>
-                <div className="mt-6 w-full">
+                <div className="mt-2 w-full">
                   <fieldset className='flex text-center justify-center'>
-                    <legend className='text-xl ml-2 text-slate-300 font-mono'>Full Name</legend>
-                    <input ref={name} className="px-4 w-4/5 h-12 py-2 rounded-md text-sm outline-none bg-slate-600 text-white" type="text" name="Name" placeholder="Krowl Bell" />
+                    <input ref={email} className="border-b-4 px-4 w-4/5 h-12 py-2 text-xl rounded-md outline-none bg-slate-600 text-white " type="email" name="Email" placeholder="Email" />
                   </fieldset>
                 </div>
-                <div className="mt-6 w-full">
-                  <fieldset className='flex text-center justify-center'>
-                    <legend className='text-xl ml-2 text-slate-300 font-mono'>Email</legend>
-                    <input ref={email} className="px-4 w-4/5 h-12 py-2 rounded-md text-sm outline-none bg-slate-600 text-white " type="email" name="Email" placeholder="DragonballZ@Krowl.com" />
-                  </fieldset>
-                </div>
-                <div className="mt-4 w-4/5 flex">
-                  <fieldset className='flex text-center w-full '>
-                    <legend className='text-xl text-slate-300 font-mono'>Photo</legend>
-                    <input ref={photo} className="px-4 w-full  py-2 rounded-md text-sm outline-none file:bg-cyan-800 file:border-none file:rounded-full file:h-12 file:text-white file:cursor-pointer file:shadow-lg file:hover:shadow-yellow-200/50 file:hover:bg-cyan-700 file:font-semibold text-white file:transition-all" type="file" name="photo" placeholder="Image" />
+                <div className="mt-2 w-4/5 flex">
+                  <fieldset className='flex w-full '>
+                    <input ref={photo} className="w-full py-2 rounded-md outline-none file:bg-cyan-800 file:border-none file:rounded-full file:h-12 file:text-white file:cursor-pointer file:shadow-lg file:hover:shadow-yellow-200/50 file:hover:bg-cyan-700 file:font-semibold text-white file:transition-all" type="file" name="photo" placeholder="Image" />
                   </fieldset>
                 </div>
                 <div className="mt-2 w-full">
                   <fieldset className='flex text-center justify-center'>
-                    <legend className='text-xl ml-2 text-slate-300 font-mono'>Password</legend>
-                    <input ref={password} className="px-4 w-4/5 h-12 py-2 rounded-md text-sm outline-none bg-slate-600 text-white" type="password" name="Password" placeholder="************" />
+                    <input ref={password} className="border-b-4 px-4 w-4/5 h-12 py-2 text-xl rounded-md outline-none bg-slate-600 text-white" type="password" name="Password" placeholder="Password" />
                   </fieldset>
                 </div>
-                <div className=" w-full flex justify-center">
-                  <input className="mt-10 mb-3 w-4/5 bg-cyan-950 text-slate-300 py-2 rounded-xl font-mono font-bold text-xl h-12 cursor-pointer hover:bg-cyan-800 transition-all" type='submit' value="Create Account" />
+                <div className=" w-full flex justify-center mt-4">
+                  <input className="w-4/5 bg-cyan-950 text-slate-300 shadow-lg hover:shadow-yellow-200/50 py-2 rounded-xl font-bold text-xl h-12 cursor-pointer hover:bg-cyan-800 transition-all" type='submit' value="Create Account" />
                 </div>
               </form>
-              <div>
+              <div className='flex justify-center w-full mt-8'>
                 <GoogleLogin
-                  className="w-full google-login-button hover:scale-105 transition-all"
+                  className="flex space-x-2 justify-center items-end hover:scale-105 border-2 border-gray-300 text-gray-600 py-2 rounded-xl transition duration-100 w-4/5"
                   clientId={clientID}
                   buttonText="Sign up with Google"
                   onSuccess={onSuccess}
@@ -159,14 +148,15 @@ const Register = (props) => {
               </div>
               <div className='flex flex-col items-center'>
                 {props.setShow ? (
-                  <span className="my-4 text-lg text-white font-mono"> Already have an account? <span className="cursor-pointer text-lg text-cyan-600 font-bold font-mono hover:text-teal-700 " onClick={() => props.setShow(true)}>Log in</span></span>
+                  <span className="my-4 text-lg text-white"> Already have an account? <span className="cursor-pointer text-lg text-cyan-600 font-bold hover:text-teal-700 " onClick={() => props.setShow(true)}>Log in</span></span>
                 ) : (
-                  <Anchor to="/signin" className="my-4 text-white text-lg font-mono">Already have an account? <span className="cursor-pointer text-lg text-white font-bold font-mono hover:text-teal-700">Sign in</span></Anchor>
+                  <Anchor to="/signin" className="my-4 text-white text-lg">Already have an account? <span className="cursor-pointer text-lg text-white font-bold hover:text-teal-700">Sign in</span></Anchor>
                 )}
               </div>
             </div>
           </div>
         </div >
+        <div className='xsm:w-full h-[92vh] w-1/2 flex justify-center items-center bg-center bg-cover bg-[url(/src/assets/image/imagen-gamer2.jpg)]'></div>
       </div>
     </>
   )
