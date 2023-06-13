@@ -17,7 +17,11 @@ export default function Game() {
   const dispatch = useDispatch()
   const [games, setGames] = useState([]);
   const [idcompras, setIdcompras] = useState()
+<<<<<<< HEAD
   console.log(games.gameplay);
+=======
+  // console.log(games.company_id.logo);
+>>>>>>> 2c44052b6884c6cf72cbb846f49e52d850e0c68b
   useEffect(() => {
     axios.get(VITE_API + `games/${id}`)
       .then(res => {

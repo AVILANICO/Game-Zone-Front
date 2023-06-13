@@ -5,7 +5,6 @@ import HomeCard from "./HomeCard"
 
 export default function Index() {
 
-
   return (
     <>
       <div className="bg-black">
@@ -18,7 +17,6 @@ export default function Index() {
           <Carousel />
         </div>
         <HomeCard />
-        <Footer />
       </div>
     </>
   )

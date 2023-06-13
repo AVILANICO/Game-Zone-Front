@@ -6,7 +6,10 @@ import race from '../assets/image/race.png'
 import multiplayer from '../assets/image/multiplayer.png'
 import need from '../assets/image/need2.jpg'
 import moto from '../assets/image/moto.png'
-import { Navigate, useNavigate } from "react-router-dom";
+import Footer from '../components/Footer'
+
+import { Link as Anchor, useNavigate } from "react-router-dom";
+
 
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react';
@@ -84,11 +87,11 @@ export default function HomeCard() {
 
         {/*  card */}
 
-        <div id="sport" className={`flex flex-wrap justify-around w-[85%] gap-10 mb-10 mt-10 ${activeTab === 'sport' ? 'block' : 'hidden'}`}>
+        <div id="sport" className={`flex flex-wrap justify-around w-[90%] gap-10 mb-10 mt-10 ${activeTab === 'sport' ? 'block' : 'hidden'}`}>
 
-          <div className=" transition-transform duration-300 transform hover:scale-105 w-[435px] h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white  rounded-2xl   ">
+          <div className=" transition-transform duration-300 transform hover:scale-105 w-[330px] h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  rounded-2xl   ">
             <img
-              className=" rounded-t-2xl object-fill h-[60%] w-full"
+              className=" rounded-t-2xl  object-fill h-[45%] w-full"
               src="https://staticg.sportskeeda.com/editor/2022/09/17b6b-16632484983856-1920.jpg" />
             <h1 className="font-semibold text-yellow-50 leading-none text-xl mt-1 capitalize truncate p-4">
               NBA 2K23
@@ -96,14 +99,14 @@ export default function HomeCard() {
             <div className="max-w-full">
               <h2 className="text-center font text-white">Event of the month </h2>
               <p className="text-base text-center font-medium tracking-wide text-white mt-1 w-[90%]">
-                Earn 2XP for all games played while wearing an NBA jersey in The City
+                In The City, by wearing an NBA jersey, you will earn an extra 2XP for each game. Take this opportunity to get more experience and unlock upgrades on your player!
               </p>
             </div>
           </div>
 
-          <div class=" h-[620px]  bg-[#343434]/70 shadow-xl hover:shadow-white   transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+          <div class=" h-[500px]  bg-[#000000b5] shadow-xl hover:shadow-white   transition-transform duration-300 transform hover:scale-105 w-[330px]  rounded-2xl ">
             <img
-              className=" rounded-t-2xl  h-[60%] object-fill w-full"
+              className=" rounded-t-2xl  h-[45%]  object-fill w-full"
               src="https://onigamers.com/wp-content/uploads/2023/06/EA-Sports-Madden-NFL-24.jpg" />
             <h1 className="font-semibold p-4  text-yellow-50 leading-none text-xl mt-1 capitalize truncate">
               Madden NFL
@@ -116,15 +119,15 @@ export default function HomeCard() {
             </div>
           </div>
 
-          <div className=" h-[620px]     bg-[#343434]/70 shadow-xl hover:shadow-white  w-[435px]   transition-transform duration-300 transform hover:scale-105 rounded-2xl  content-center  ">
-            <img className=" h-[60%]  rounded-t-2xl w-full object-fill" src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2022/07/18/16581597162266.jpg" />
+          <div className=" h-[500px]     bg-[#000000b5] shadow-xl hover:shadow-white  w-[330px]   transition-transform duration-300 transform hover:scale-105 rounded-2xl  content-center  ">
+            <img className=" h-[45%]  rounded-t-2xl w-full  object-fill" src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2022/07/18/16581597162266.jpg" />
             <h1 className="font-semibold text-yellow-50 leading-none p-4 text-xl mt-1 capitalize truncate">
               FIFA 23
             </h1>
             <div className="max-w-full h-[40%]">
               <h2 className="text-center font text-white">Event of the month </h2>
-              <p className="w-[90%]  text-base  text-center tracking-wide text-white mt-1">
-                EA SPORTS™ y adidas se han unido para ofrecer a quienes cumplan los requisitos en FIFA 23 un código de descuento exclusivo del 30% en artículos seleccionados de adidas. Visita adidas.es/fifa_23 para obtener más
+              <p className="w-[90%]  text-base  p-3 tracking-wide text-white mt-1">
+                EA SPORTS™ and adidas have teamed up to offer FIFA 23 qualifiers an exclusive 30% discount code on select adidas items. Visit adidas.es/fifa_23 for more
               </p>
             </div>
           </div>
@@ -133,9 +136,9 @@ export default function HomeCard() {
 
         <div id="shooter" className={`flex flex-wrap justify-around w-[85%] gap-10 mb-10 mt-10 ${activeTab === 'shooter' ? 'block' : 'hidden'}`}>
 
-          <div className=" h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl   ">
+          <div className=" h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[330px] rounded-2xl   ">
             <img
-              className=" rounded-t-2xl object-fill h-[60%] w-full"
+              className=" rounded-t-2xl  object-fill h-[45%] w-full"
               src="https://images6.alphacoders.com/772/772017.jpg" />
             <h1 className="font-semibold text-yellow-50 leading-none text-xl mt-1 capitalize truncate p-4">
               Overwatch
@@ -148,9 +151,9 @@ export default function HomeCard() {
             </div>
           </div>
 
-          <div class=" h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+          <div class=" h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[330px]  rounded-2xl ">
             <img
-              className=" rounded-t-2xl  h-[60%] object-fill w-full"
+              className=" rounded-t-2xl  h-[45%]  object-fill w-full"
               src="http://wallpapercave.com/wp/wp1810708.jpg" />
             <h1 className="font-semibold p-4  text-yellow-50 leading-none text-xl mt-1 capitalize truncate">
               Counter Strike: Global Ofensive
@@ -163,8 +166,8 @@ export default function HomeCard() {
             </div>
           </div>
 
-          <div className=" h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
-            <img className=" h-[60%]  rounded-t-2xl w-full object-fill" src="https://images.alphacoders.com/923/thumb-1920-923734.png" />
+          <div className=" h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[330px] rounded-2xl  content-center  ">
+            <img className=" h-[45%]  rounded-t-2xl w-full  object-fill" src="https://images.alphacoders.com/923/thumb-1920-923734.png" />
             <h1 className="font-semibold text-yellow-50 leading-none p-4 text-xl mt-1 capitalize truncate">
               Battlefield V
             </h1>
@@ -180,9 +183,9 @@ export default function HomeCard() {
 
         <div id="race" className={`flex flex-wrap justify-around w-[85%] gap-10 mb-10 mt-10 ${activeTab === 'race' ? 'block' : 'hidden'}`}>
 
-          <div className="  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white    ">
+          <div className="  transition-transform duration-300 transform hover:scale-105 w-[330px] rounded-2xl h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white    ">
             <img
-              className=" rounded-t-2xl object-fill h-[60%] w-full"
+              className=" rounded-t-2xl  object-fill h-[45%] w-full"
               src="https://i.ytimg.com/vi/lXRnR_W0J4o/maxresdefault.jpg" />
             <h1 className="font-semibold text-yellow-50 leading-none text-xl mt-1 capitalize truncate p-4">
               F1 Championship Season 2007
@@ -196,9 +199,9 @@ export default function HomeCard() {
             </div>
           </div>
 
-          <div class="h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+          <div class="h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white transition-transform duration-300 transform hover:scale-105 w-[330px]  rounded-2xl ">
             <img
-              className="  rounded-t-2xl  h-[60%] object-fill w-full"
+              className="  rounded-t-2xl  h-[45%]  object-fill w-full"
               src="https://images2.alphacoders.com/517/517806.jpg" />
             <h1 className="font-semibold p-4  text-yellow-50 leading-none text-xl mt-1 capitalize truncate">
               GRID Autosport
@@ -211,8 +214,8 @@ export default function HomeCard() {
             </div>
           </div>
 
-          <div className=" h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
-            <img className=" h-[60%]  rounded-t-2xl w-full object-fill" src={need} />
+          <div className=" h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[330px] rounded-2xl  content-center  ">
+            <img className=" h-[45%]  rounded-t-2xl w-full  object-fill" src={need} />
             <h1 className="font-semibold text-yellow-50 leading-none p-4 text-xl mt-1 capitalize truncate">
               Need for Speed: World
             </h1>
@@ -227,9 +230,9 @@ export default function HomeCard() {
 
         <div id="multiplayer" className={`flex flex-wrap justify-around w-[85%] gap-10 mb-10 mt-10 ${activeTab === 'multiplayer' ? 'block' : 'hidden'}`}>
 
-          <div className=" h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl    ">
+          <div className=" h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[330px] rounded-2xl    ">
             <img
-              className=" rounded-t-2xl object-fill h-[60%] w-full"
+              className=" rounded-t-2xl  object-fill h-[45%] w-full"
               src="https://www.brawlhalla.com/c/uploads/2021/04/Reno_1920x1080.jpg" />
             <h1 className="font-semibold text-yellow-50 leading-none text-xl mt-1 capitalize truncate p-4">
               Brawlhalla
@@ -242,9 +245,9 @@ export default function HomeCard() {
             </div>
           </div>
 
-          <div class=" h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+          <div class=" h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[330px]  rounded-2xl ">
             <img
-              className=" rounded-t-2xl  h-[60%] object-fill w-full"
+              className=" rounded-t-2xl  h-[45%]  object-fill w-full"
               src="https://images.hdqwalls.com/wallpapers/rocket-league-season-2-gy.jpg" />
             <h1 className="font-semibold p-4  text-yellow-50 leading-none text-xl mt-1 capitalize truncate">
               Rocket League
@@ -258,8 +261,8 @@ export default function HomeCard() {
             </div>
           </div>
 
-          <div className=" h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
-            <img className=" h-[60%]  rounded-t-2xl w-full object-fill" src="https://cdn2.unrealengine.com/15br-bplaunch-egs-s3-2560x1440-2560x1440-687570387.jpg" />
+          <div className=" h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[330px] rounded-2xl  content-center  ">
+            <img className=" h-[45%]  rounded-t-2xl w-full  object-fill" src="https://cdn2.unrealengine.com/15br-bplaunch-egs-s3-2560x1440-2560x1440-687570387.jpg" />
             <h1 className="font-semibold text-yellow-50 leading-none p-4 text-xl mt-1 capitalize truncate">
               Fortnite
             </h1>
@@ -274,9 +277,9 @@ export default function HomeCard() {
 
         <div id="survival" className={`flex flex-wrap justify-around w-[85%] gap-10 mb-10 mt-10 ${activeTab === 'survival' ? 'block' : 'hidden'}`}>
 
-          <div className=" h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl   ">
+          <div className=" h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[330px] rounded-2xl   ">
             <img
-              className=" rounded-t-2xl object-fill h-[60%] w-full"
+              className=" rounded-t-2xl  object-fill h-[45%] w-full"
               src="https://grettogeek.com/wp-content/uploads/2017/09/raft-cover.jpg" />
             <h1 className="font-semibold text-yellow-50 leading-none text-xl mt-1 capitalize truncate p-4">
               Raft
@@ -289,9 +292,9 @@ export default function HomeCard() {
             </div>
           </div>
 
-          <div class=" h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[435px]  rounded-2xl ">
+          <div class=" h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white  transition-transform duration-300 transform hover:scale-105 w-[330px]  rounded-2xl ">
             <img
-              className=" rounded-t-2xl  h-[60%] object-fill w-full"
+              className=" rounded-t-2xl  h-[45%]  object-fill w-full"
               src="https://assets-prd.ignimgs.com/2020/07/24/grounded-button-fin-1595554384970.jpg" />
             <h1 className="font-semibold p-4  text-yellow-50 leading-none text-xl mt-1 capitalize truncate">
               Grounded
@@ -304,21 +307,21 @@ export default function HomeCard() {
             </div>
           </div>
 
-          <div className=" h-[620px] bg-[#343434]/70 shadow-xl hover:shadow-white   transition-transform duration-300 transform hover:scale-105 w-[435px] rounded-2xl  content-center  ">
-            <img className=" h-[60%]  rounded-t-2xl w-full object-fill" src="https://www.spieltimes.com/wp-content/uploads/2021/02/valheim-1200.jpg" />
+          <div className=" h-[500px] bg-[#000000b5] shadow-xl hover:shadow-white   transition-transform duration-300 transform hover:scale-105 w-[330px] rounded-2xl  content-center  ">
+            <img className=" h-[45%]  rounded-t-2xl w-full  object-fill" src="https://www.spieltimes.com/wp-content/uploads/2021/02/valheim-1200.jpg" />
             <h1 className="font-semibold text-yellow-50 leading-none p-4 text-xl mt-1 capitalize truncate">
               Valheim
             </h1>
             <div className="max-w-full">
               <h2 className="text-center text-white  ">Event of the month </h2>
               <p className="  text-base font-medium text-center tracking-wide text-white mt-1">
-                "Desafío de los Dioses"
-                .In "Valheim", players are faced with epic challenges for a week. They must join forces to defeat powerful bosses and overcome divine trials in different biomes. New legendary weapons and sacred equipment are introduced. The event culminates in an epic battle against an ancient god.
+                In "Valheim", during the "Challenge of the Gods" event, players must face epic challenges for a week. They must defeat powerful bosses, overcome divine trials, and obtain legendary weapons and sacred equipment. The event culminates in an epic battle against an ancient god.
               </p>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
