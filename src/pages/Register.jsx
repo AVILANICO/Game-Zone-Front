@@ -96,8 +96,6 @@ const Register = (props) => {
           icon: 'success',
           title: 'Check your email to verify your account!',
         })
-
-        navigate('/signin')
       })
       .catch(err => {
         Swal.fire({

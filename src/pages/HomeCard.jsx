@@ -127,7 +127,7 @@ export default function HomeCard() {
             </h1>
             <div className="max-w-full h-[40%]">
               <h2 className="text-center font text-white">Event of the month </h2>
-              <p className="w-[90%]  text-base  p-3 tracking-wide text-white mt-1">
+              <p className="text-base  p-3 tracking-wide text-white mt-1 text-center">
                 EA SPORTS™ and adidas have teamed up to offer FIFA 23 qualifiers an exclusive 30% discount code on select adidas items. Visit adidas.es/fifa_23 for more
               </p>
             </div>

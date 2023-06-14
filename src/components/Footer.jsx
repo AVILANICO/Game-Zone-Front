@@ -217,7 +217,7 @@ export default function Footer() {
         <span >© 2023 Copyright:</span>
         <Anchor
           className="font-semibold text-neutral-600 dark:text-neutral-400">
-          <Anchor to={'https://github.com/AVILANICO'}>Avila Nicolass</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/FranciscoPedicino'}>Pedicino Francisco</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/DiegoCuellar777'} >Diego Cuellar</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/AVILANICO '}>Hurtado Laureano</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/LuisH05'}>Luis Hernandez</Anchor>
+          <Anchor to={'https://github.com/AVILANICO'}>Avila Nicolass</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/FranciscoPedicino'}> Pedicino Francisco</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/DiegoCuellar777'} > Diego Cuellar</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/AVILANICO '}> Hurtado Laureano</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/LuisH05'}> Luis Hernandez</Anchor>
         </Anchor>
       </div>
     </footer>
