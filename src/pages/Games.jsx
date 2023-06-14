@@ -150,6 +150,7 @@ export default function Games() {
         // let headers = { headers: { "Authorization": `bearer ${token}` } }
         try {
             await axios.post('http://localhost:8000/carrito/' + idcompras, null, headers);
+            toast.success('Producto agregado al carrito')
         } catch (error) {
             console.log(error);
         }
@@ -263,7 +264,7 @@ export default function Games() {
                             </div>
                         </div>
                     </div>
-
+                    <Toaster />
                 </div>
 
             ) : (

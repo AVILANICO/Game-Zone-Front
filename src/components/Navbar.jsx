@@ -73,10 +73,10 @@ export default function Navbar() {
                 </>) : ("")}
                 {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/game-form">New game</Anchor></li>
                 </>) : ("")}
-                {role == 0 || role== 1 || role == 2 ? (<li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/games/:pages">Games</Anchor></li>):("") }
-                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/mygames">My Games</Anchor></li> </>) : ("")}
-                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/register">Register</Anchor></li>}
-                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/signin">Log In</Anchor></li>}
+                {role == 0 || role == 1 || role == 2 ? (<li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/games/:pages">Games</Anchor></li>) : ("")}
+                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/mygames">My Games</Anchor></li> </>) : ("")}
+                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/register">Register</Anchor></li>}
+                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/signin">Log In</Anchor></li>}
                 {token && <li><a className="flex justify-center py-2 text-white cursor-pointer hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" onClick={backHome}>Sign Out</a></li>}
                 {token &&
                   <div className="flex items-center gap-2">
