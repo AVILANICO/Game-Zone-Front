@@ -50,7 +50,7 @@ export default function AdminPanel() {
         <>
             <div className="w-full  bg-[#EAEAEA] ">
                 <div className='flex h-12' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)' }} >
-                    <p className='text-3xl font-mono rounded relative bottom-8 pt-10 px-2 '>ADMIN PANEL</p>
+                    <p className='text-3xl font-mono rounded  flex items-center px-2 '>ADMIN PANEL</p>
                 </div>
                 <div className='flex mt-9'>
                     <div className='h-[3rem] w-[10%] bg-white rounded-xl'>
