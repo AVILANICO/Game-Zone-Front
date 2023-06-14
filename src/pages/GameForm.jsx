@@ -124,7 +124,7 @@ export default function GameForm() {
 
   return (
     <>
-      {role == 1 || role == 2 ? (
+      {role == 1 || role == 2 || role ==3 ? (
         <>
           <div className="grid min-h-[92vh] place-content-center text-slate-300 bg-cover bg-center bg-[url('https://wallpaperset.com/w/full/b/0/a/417136.jpg')]">
             <div className='bg-[#343434] rounded-2xl w-[30vw] h-[85vh] flex flex-col'>

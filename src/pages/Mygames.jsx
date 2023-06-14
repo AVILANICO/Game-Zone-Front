@@ -21,6 +21,7 @@ export default function Mygames() {
   const authorName = games.find(each => each.author_id)?.author_id.name;
   const authorPhoto = games.find(each => each.author_id)?.author_id?.cover_photo
   const role = localStorage.getItem('role')
+  console.log(authorName)
 
   const [newCategories, setNewCategories] = useState([]);
 
