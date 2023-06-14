@@ -19,4 +19,8 @@ const reducer = createReducer(initialstate,
         }
     )
 )
+<<<<<<< HEAD
 export default reducer  
+=======
+export default reducer  
+>>>>>>> 7a8bc62841b37a98e1ba6fd90771e711630e28d1

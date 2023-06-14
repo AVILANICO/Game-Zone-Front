@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import actions from "../actions/game";
 
-const { game_read, game_delete, game_update } = actions 
+const { game_read, game_delete, game_update} = actions 
 
 let inicialState={
     game:[]

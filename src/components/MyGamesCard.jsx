@@ -50,12 +50,15 @@ const MyGamesCard = ({ each, categories }) => {
     })
   }
   return (
-    <div key={each._id} className='shadow-xl xsm:h-56 xsm:w-full md:w-80 md:h-52 lg:h-96 lg:w-[24rem] mt-4 flex flex-col items-center bg-[#343434] text-white rounded-lg hover:scale-105 transition-all hover:shadow-yellow-200/50'>
-      <img onClick={urlDetail} className="h-full w-full cursor-pointer xsm:h-full object-cover object-top" src={each?.cover_photo} />
+    <div key={each._id} className='shadow-xl xsm:h-56 xsm:w-full md:w-80 md:h-52 lg:h-96 lg:w-96 mt-4 flex flex-col items-center bg-[#343434] text-white rounded-lg transition-all hover:shadow-yellow-200/50'>
+      <img onClick={urlDetail} className="w-[100%] h-[50%] cursor-pointer xsm:h-full object-cover object-top" src={each?.cover_photo} />
       <div className='flex flex-col items-center md:h-40 p-5 w-full h-40 font-semibold'>
         <h1 onClick={urlDetail} className='md:text-xl xsm:text-xl xsm:w-full cursor-pointer text-center'> {each?.title} </h1>
-        <h2 className='text-center bg-cyan-800 w-24 rounded-xl hover:scale-105 mt-2'>Price: ${each?.price}</h2>
-        <div className='flex gap-4 justify-center'>
+        <div className="flex gap-4">
+          <h2 className='text-center bg-cyan-800 w-24 rounded-xl mt-2'>Stock: {each?.stock}</h2>
+          <h2 className='text-center bg-cyan-800 w-24 rounded-xl mt-2'>Price: ${each?.price}</h2>
+        </div>
+        <div className='flex gap-4 justify-center mt-4'>
           <button onClick={() => alertEdit()} className="mt-4 w-20 bg-[#06832c] text-[#ffffff] hover:bg-[#00571d] hover:text-white cursor-pointer font-bold py-2 px-4 rounded-lg hover:scale-110 transition-all">
             Edit
           </button>

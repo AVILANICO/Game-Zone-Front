@@ -21,6 +21,7 @@ export default function Mygames() {
   const authorName = games.find(each => each.author_id)?.author_id.name;
   const authorPhoto = games.find(each => each.author_id)?.author_id?.cover_photo
   const role = localStorage.getItem('role')
+  console.log(authorName)
 
   const [newCategories, setNewCategories] = useState([]);
 
@@ -49,6 +50,8 @@ export default function Mygames() {
     }
     return filteredGames;
   };
+  console.log(filterGames());
+
 
   const resetFilters = (event) => {
     event.preventDefault();
@@ -60,12 +63,12 @@ export default function Mygames() {
       {role == 1 || role == 2 ? (
 
         <div className="w-full flex flex-col items-center bg-black">
-          <div className="w-full h-[50vh] xsm:h-80 flex flex-col justify-center items-center" style={{ backgroundImage: `url(${authorPhoto})`, backgroundPosition: 'top', backgroundSize: 'cover' }}>
+          <div className="w-full h-[75vh] xsm:h-80 flex flex-col justify-center items-center" style={{ backgroundImage: `url(${authorPhoto})`, backgroundPosition: 'top', backgroundSize: 'cover' }}>
             <h1 style={{ textShadow: '8px 8px 8px rgb(0, 0, 0)' }} className="text-[5rem] m-4 text-white font-bold mt-10 rounded-2xl">
               {authorName ? authorName.charAt(0).toUpperCase() + authorName.slice(1) : ''}
             </h1>
           </div>
-          <div className="min-h-screen bg-[#1D1D1D] w-[90%] flex flex-col items-center rounded-3xl xsm:w-full">
+          <div className="min-h-screen bg-[#1D1D1D] w-full flex flex-col items-center  xsm:w-full">
             <div className="flex gap-4 p-6 w-full justify-center items-center h-full">
               <form className="flex justify-center gap-2 h-full w-[50vw]">
                 <div className="flex items-center justify-center xsm:gap-1 gap-6 w-full h-20 rounded-3xl">
@@ -88,9 +91,11 @@ export default function Mygames() {
                         borderRadius: '26px',
                         fontSize: "18px",
                         textAlign: "center",
-                        ...(newCategories.includes(each._id) ? { backgroundColor: each.color, color: "white" } : {})
+                        ...(newCategories.includes(each._id) ? { backgroundColor: '#155E75', color: "white" } : {})
                       }}>
+
                         {each.name.charAt(0).toUpperCase() + each.name.slice(1)}
+
                         <input name="category_id" onChange={handleCategoryChange} style={{ appearance: 'none' }} type="checkbox" value={each._id} id={each._id} checked={newCategories.includes(each._id)} />
                       </label>
                     </div>

@@ -5,10 +5,10 @@ import { useSelector } from "react-redux";
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline"
-import logo2 from '../assets/image/fondo-verde.png'
 import { useDispatch } from "react-redux";
 import cartActions from '../store/actions/carts'
 import priceActions from '../store/actions/change_price'
+import logo from '../assets/image/luis.png'
 
 const { carts } = cartActions
 const { changePrice } = priceActions
@@ -21,7 +21,7 @@ export default function Navbar() {
   let prueba = useSelector(store => store.cart.cart)
   let dispatch = useDispatch()
   let option = []
-
+  const [carrito, setCarrito] = useState([]);
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -77,10 +77,18 @@ export default function Navbar() {
   const products = prueba;
   // console.log(products);
   const totalPrice = products.reduce((total, product) => total + product.price, 0);
+  useEffect(
+    () => {
+      axios.get(VITE_API + 'carrito', headers)
+        .then(res => setCarrito(res.data.games))
+        .catch(err => console.log(err))
+    }, []
+  )
+
 
 
   return (
-    <nav className="xsm:hidden w-full h-16 bg-[#343434] flex justify-between items-center ">
+    <nav className="xsm:hidden w-full h-[8vh] bg-[#343434] flex justify-between items-center ">
       <div>
         <button onClick={handleMenuClick} className="ml-4">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-10 h-10">
@@ -88,20 +96,20 @@ export default function Navbar() {
           </svg>
         </button>
         {showMenu && (
-          <div className="absolute left-16 top-2 h-12 flex items-center bg-none rounded-md py-5 z-10">
+          <div className="absolute left-16 top-0 h-12 flex items-center bg-none rounded-md py-5 z-10">
             <div className="flex justify-between ">
               <ul onClick={handleMenuClick} className="flex gap-6 ">
-                <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/">Home</Anchor></li>
-                {role == 0 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/new-role">New Role</Anchor></li>
+                <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/">Home</Anchor></li>
+                {role == 0 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/new-role">New Role</Anchor></li>
                 </>) : ("")}
-                {role == 3 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/admin">Panel</Anchor></li>
+                {role == 3 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/admin">Panel</Anchor></li>
                 </>) : ("")}
-                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/game-form">New game</Anchor></li>
+                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/game-form">New game</Anchor></li>
                 </>) : ("")}
-                <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/games/:pages">Games</Anchor></li>
-                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/mygames">My Games</Anchor></li> </>) : ("")}
-                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/register">Register</Anchor></li>}
-                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/signin">Log In</Anchor></li>}
+                {role == 0 || role == 1 || role == 2 ? (<li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/games/:pages">Games</Anchor></li>) : ("")}
+                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/mygames">My Games</Anchor></li> </>) : ("")}
+                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/register">Register</Anchor></li>}
+                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/signin">Log In</Anchor></li>}
                 {token && <li><a className="flex justify-center py-2 text-white cursor-pointer hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" onClick={backHome}>Sign Out</a></li>}
                 {token &&
                   <div className="flex items-center gap-2">
@@ -264,7 +272,7 @@ export default function Navbar() {
         <svg onClick={hanldelOpenCarrito} xmlns="http:www.w3.org/2000/svg" width="36" height="36" fill="white" className="bi bi-cart4 cursor-pointer hover:scale-95" viewBox="0 0 16 16">
           <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
         </svg>
-        <img className="h-10 mr-4" src={logo2} alt="Your Company" />
+        <img className="w-16 mr-4" src={logo} alt="Your Company" />
       </div>
     </nav>
   )

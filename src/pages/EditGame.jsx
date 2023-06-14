@@ -17,6 +17,7 @@ export default function Editgame({ open, setOpen, games, categories }) {
   const [coverPhotoValue, setCoverPhotoValue] = useState(games.cover_photo);
   const [categoryIdValue, setCategoryIdValue] = useState(games.category_id);
   const [priceValue, setPriceValue] = useState(games.price);
+  const [stockValue, setStockValue] = useState(games.stock);
 
   const handleTitleChange = (event) => {
     setTitleValue(event.target.value)
@@ -38,6 +39,10 @@ export default function Editgame({ open, setOpen, games, categories }) {
     setPriceValue(event.target.value)
   }
 
+  const handleStockChange = (event) => {
+    setStockValue(event.target.value)
+  }
+
   const category = () => {
     return categories?.map(categoria => (
       <option key={categoria?._id} value={categoria?._id}>
@@ -52,8 +57,20 @@ export default function Editgame({ open, setOpen, games, categories }) {
       description: descriptionValue,
       cover_photo: coverPhotoValue,
       category_id: categoryIdValue,
-      price: priceValue
+      price: priceValue,
+      stock: stockValue
     }
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'center',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
     Swal.fire({
       title: 'Do you want to save the changes?',
       showDenyButton: true,
@@ -63,10 +80,10 @@ export default function Editgame({ open, setOpen, games, categories }) {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire('Saved!', '', 'success')
+        Toast.fire('Saved!', '', 'success')
         dispatch(game_update({ id, data }))
       } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info')
+        Toast.fire('Changes are not saved', '', 'info')
       }
     })
     setOpen(false)
@@ -127,6 +144,9 @@ export default function Editgame({ open, setOpen, games, categories }) {
                       </label>
                       <label htmlFor="">
                         <input onChange={handlePriceChange} className='font-mono w-72 h-8 border-t rounded-md border-4 border-yellow-600' type="text" name="name" id="name" placeholder='Price' />
+                      </label>
+                      <label htmlFor="">
+                        <input onChange={handleStockChange} className='font-mono w-72 h-8 border-t rounded-md border-4 border-yellow-600' type="text" name="name" id="name" placeholder='Stock' />
                       </label>
                       <label htmlFor="">
                         <select onChange={handleCategoryIdChange} defaultValue={categoryIdValue} className='font-mono w-72 h-8 border-t rounded-md border-4 border-yellow-600' name="category" id="category"  >
