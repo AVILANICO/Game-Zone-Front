@@ -52,7 +52,7 @@ export default function Games() {
 			<div className='flex gap-12'>
 				{categor?.map(a => (
 					<div key={a._id}>
-						<label className='cursor-pointer font-bold hover:scale-105' htmlFor={a._id} key={a._id} style={{ height: "5rem", backgroundColor: a.hover, color: a.color, padding: '1rem', borderRadius: '10px', fontSize: "12px", textAlign: "center", ...(categories.includes(a._id) ? { backgroundColor: a.color, color: "white" } : {}) }}>
+						<label className='cursor-pointer font-bold hover:scale-105' htmlFor={a._id} key={a._id} style={{ height: "5rem", backgroundColor: a.hover, color: a.color, padding: '1rem', borderRadius: '10px', fontSize: "12px", textAlign: "center", ...(categories.includes(a._id) ? { backgroundColor: '#155E75', color: "white" } : {}) }}>
 							{a.name.charAt(0).toUpperCase() + a.name.slice(1)}
 							<input className='hover:scale-105' name="category_id" onClick={capture} style={{ appearance: 'none' }} type="checkbox" value={a._id} id={a._id} />
 						</label>
@@ -120,18 +120,21 @@ export default function Games() {
 											<img className='w-[100vw] h-[12rem] ' style={{ borderRadius: '10px 10px 0 0' }} src={each.cover_photo} />
 
 											<p className='md:text-[1rem] font-bold xsm:text-center'> {each.title} </p>
-											<p style={{ color: each.category_id.color }}> {each.category_id.name}</p>
+											<p style={{ color: 'black' }}> {each.category_id.name}</p>
 											<div className='flex justify-between w-[90%] mt-3 flex-wrap '>
 												<Anchor className='bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 hover:shadow-sm rounded-md py-2 px-2 mb-4 font-bold flex items-center md:justify-center ' to={`/game/${each._id}/1`}>
 													Details
 												</Anchor>
 
+												<p className='rounded-md py-2 px-2 mb-4 font-bold flex bg-black flex-wrap text-white'>Stock:{each.stock}</p>
 												<div className=" rounded-md py-2 px-2 mb-4 font-bold flex bg-black flex-wrap">
-													<p className='text-white mr-3'>USD$ {each.price}</p>  <button id={each._id}
+													<p className='text-white mr-3'>USD$ {each.price}</p>
+													<button id={each._id}
 														onClick={handleComprar}
 														onClickCapture={(e) => { setIdcompras(e.target.id) }} className='bg-green-600 hover:bg-green-700 rounded-md px-1 cursor-pointer flex'>Add to <svg xmlns="http:www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="" viewBox="0 0 16 16">
 															<path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-														</svg> </button>
+														</svg>
+													</button>
 												</div>
 											</div>
 										</div>
