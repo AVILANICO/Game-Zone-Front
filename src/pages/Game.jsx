@@ -18,6 +18,7 @@ export default function Game() {
   const [games, setGames] = useState([]);
   const [idcompras, setIdcompras] = useState()
   const navigate = useNavigate()
+
   useEffect(() => {
     axios.get(VITE_API + `games/${id}`)
       .then(res => {
