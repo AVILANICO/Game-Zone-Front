@@ -153,9 +153,6 @@ export default function Games() {
                         <div className='flex h-12 w-full' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)' }} >
                             <p className='text-3xl  font-mono rounded flex items-center px-2 '>ADMIN PANEL</p>
                         </div>
-
-
-
                         <div className="rounded-[2rem] w-[90%] mt-2  bg-white xsm:w-full xsm:rounded-[4rem]">
                             <div className='flex flex-col items-center min-h-[100vh]  xsm:mt-[10%] w-[100%]'>
                                 <div className='flex flex-row md:pl-[15%] md:mt-[2%] md:mb-0 md:gap-5    xsm:mt-3 xsm:gap-3 justify-between w-[90%] '>
@@ -222,8 +219,6 @@ export default function Games() {
                                         {pagAct > count ? null : (<input className="bg-black hover:bg-[#18181b] text-white font-bold py-2 px-4 rounded-full w-[15%] " type="button" value="next" onClick={next} />)}
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
