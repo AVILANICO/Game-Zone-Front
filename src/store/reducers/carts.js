@@ -1,43 +1,22 @@
-// const cart = [];
+import { createReducer } from "@reduxjs/toolkit"
+import actions from '../actions/carts'
 
-// const handleCart =(state= cart, action) => {
-//     const product = action.payload;
-//     switch (action) {
-//         case ADDITEM:
-//             //check if product already exists
-//             const exist = state.find((x)=>x.id === product.id)
-//             if (exist) {
-//                 // increase the quantity
-//                 return state.map((x) =>
-//                 x.id === product.id ? {...x, qty: x.qty + 1} : x
-//                 );
-//             }else {
-//                 const product = action.payload;
-//                 return[
-//                     ...state,
-//                     {
-//                         ...product,
-//                         qty: 1,
-//                     }
-//                 ]
-//             }
-//             break;
+const { carts } = actions
+const initialstate = {
+    cart:[]
+}
 
-//             case "DELETEITEM":
-//                 const exist1 = state.find((x)=> x.id === action.payload);
-//                 if(exist1.qty === 1){
-//                     return state.filter((x)=> x.id !== exist1.qty);
-//                 }else {
-//                     return state.map((x)=> 
-//                     x.id === product.id ? {...x, qty: x.qty - 1} : x
-//                     );
-//                 }
-    
-//         default:
-//             break;
-//     }
-// }
-
-// export default handleCart;
-
-
+const reducer = createReducer(initialstate,
+    (builder)=>builder
+    .addCase(
+        carts.fulfilled,
+        (state,action)=>{
+            let newState={
+                ...state,
+                cart:action.payload.cart
+            }
+            return newState
+        }
+    )
+)
+export default reducer  

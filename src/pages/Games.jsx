@@ -7,17 +7,21 @@ import inputs_filter_actions from '../store/actions/inputs_filters'
 import apiUrl from "../../api"
 import { Link as Anchor, Link, useNavigate } from "react-router-dom";
 
+import cartActions from '../store/actions/carts'
+import priceActions from '../store/actions/change_price'
+import { Toaster, toast } from 'react-hot-toast'
+
+const {captureCart} = cartActions
+const {changePrice} = priceActions
+
 let token = localStorage.getItem("token")
 let headers = { headers: { "Authorization": `bearer ${token}` } }
-console.log(token);
 
 const { inputs_filter } = inputs_filter_actions
 
 export default function Games() {
 
     const { title, categories } = useSelector(store => store.inputs)
-    /* console.log(title)
-    console.log(categories) */
     const dispatch = useDispatch()
     const [games, setGames] = useState()
     const buscador = useRef()
@@ -28,7 +32,6 @@ export default function Games() {
     const [idcompras, setIdcompras] = useState()
     
 
-    // console.log(count)
     useEffect(
         () => {
             axios(apiUrl + `games?title=${buscador.current?.value}&category_id=${categories?.join(',')}&page=${pagAct}`, headers)
@@ -101,16 +104,13 @@ export default function Games() {
 
     
     const handleComprar = async () => {
-        // let token = localStorage.getItem("token")
-        // console.log(token);
-        // let headers = { headers: { "Authorization": `bearer ${token}` } }
         try {
             await axios.post('http://localhost:8000/carrito/' + idcompras , null, headers );
+            toast.success('Producto agregado al carrito')
         } catch (error) {
-            console.log(error);
+            toast.error(error.response.data.message);
         }
     }
-    // console.log(idcompras);
     
     return (
         <>
@@ -187,7 +187,7 @@ export default function Games() {
                     </div>
                 </div>
             </div>
-
+                <Toaster/>
         </>
 
     )

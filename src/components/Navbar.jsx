@@ -5,16 +5,23 @@ import { useSelector } from "react-redux";
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline"
-import Carts from "./Carts";
 import logo2 from '../assets/image/fondo-verde.png'
+import { useDispatch } from "react-redux";
+import cartActions from '../store/actions/carts'
+import priceActions from '../store/actions/change_price'
 
+const { carts } = cartActions
+const { changePrice } = priceActions
 
 export default function Navbar() {
 
   const [showMenu, setShowMenu] = useState(false);
   const [open, setOpen]  = useState(false);
   const navigate = useNavigate()
-  const [carrito, setCarrito] = useState([]);
+  let prueba = useSelector(store => store.cart.cart)
+  let dispatch = useDispatch()
+  let option = []
+
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -34,24 +41,42 @@ export default function Navbar() {
       .catch(err => alert(err))
   }
 
-  useEffect(
-    () => {
-      axios.get(VITE_API + 'carrito', headers)
-      .then(res => setCarrito(res.data.games))
-      .catch(err => console.log(err))
-    },[]
-  )
-  
-  const products = carrito;
 
+  async function handleQuantity(e){
+    e.target.disabled = true
+    try {
+      let body ={cantidad:e.target.value}
+      await axios.put(VITE_API + 'carrito/' + e.target.id, body, headers)
+      dispatch(changePrice())
+    } catch (error) {
+      console.log(error);
+      e.target.disabled=false
+    }
+  }
+  
   const handleDeleteOne = async (e) => {
     try {
       await axios.delete(VITE_API+'carrito/'+ e.target.id, headers);
+      
+      dispatch(carts())
+      dispatch(changePrice())
+
     } catch (error) {
       console.log(error);
+      Toast.fire({
+        icon: 'error',
+        title: error.response.data.message,
+      })
     }
   }
 
+  const hanldelOpenCarrito = async (e) => {
+    setOpen(!open)
+    dispatch(carts())
+  }
+  const products = prueba;
+  // console.log(products);
+  const totalPrice = products.reduce((total, product) => total + product.price, 0);
 
 
   return (
@@ -162,14 +187,20 @@ export default function Navbar() {
                                           {product.color}
                                           </p>
                                       </div>
-                                      <div>
-                                        <select>
-                                          <option></option>
-                                        </select>
-                                      </div>
                                       <div className="flex flex-1 items-end justify-between text-sm">
                                           <p className="text-gray-500">
-                                          Qty {product.quantity}
+                                          <select onChange={handleQuantity} id={product._id} className="py-1 px-2 border mr-6 focus:outline-none">
+                                          {
+                                            option.map((each,index) => {
+                                            return each.value!=product.cantidad?(
+
+                                            <option key={index}>{each.value}</option>
+                                            ):(
+                                            <option key={index} selected>{each.value}</option>
+                                            )
+                                            })
+                                          }
+                                        </select>
                                           </p>
 
                                           <div className="flex">
@@ -177,7 +208,7 @@ export default function Navbar() {
                                               onClick={handleDeleteOne}
                                               id={product._id}
                                               type="button"
-                                              className="font-medium text-[#044674] hover:text-indigo-500"
+                                              className="font-medium text-white hover:text-[#044674]"
                                           >
                                               Remove
                                           </button>
@@ -194,7 +225,7 @@ export default function Navbar() {
                           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                           <div className="flex justify-between text-base font-medium text-white">
                               <p>Subtotal</p>
-                              <p>$262.00</p>
+                              $ {totalPrice}
                           </div>
                           <p className="mt-0.5 text-sm text-gray-500">
                               Shipping and taxes calculated at pay.
@@ -230,7 +261,7 @@ export default function Navbar() {
           </Dialog>
       </Transition.Root>
       <div className="flex gap-4">
-        <svg onClick={() => setOpen(!open)} xmlns="http:www.w3.org/2000/svg" width="36" height="36" fill="white" className="bi bi-cart4 cursor-pointer hover:scale-95" viewBox="0 0 16 16">
+        <svg onClick={hanldelOpenCarrito} xmlns="http:www.w3.org/2000/svg" width="36" height="36" fill="white" className="bi bi-cart4 cursor-pointer hover:scale-95" viewBox="0 0 16 16">
           <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
         </svg>
         <img className="h-10 mr-4" src={logo2} alt="Your Company" />
