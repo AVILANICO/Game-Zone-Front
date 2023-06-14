@@ -8,6 +8,8 @@ import React from 'react'
 import Swal from 'sweetalert2';
 import ReactPlayer from "react-player";
 
+
+
 const { one_game } = actionsGame;
 
 export default function Game() {
