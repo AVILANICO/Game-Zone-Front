@@ -62,20 +62,20 @@ export default function AuthorForm() {
     }
 
     return (
-        <form onSubmit={handleForm} className='h-screen bg-white flex flex-col items-center justify-center'>
+        <form onSubmit={handleForm} className='h-[92vh] bg-white flex flex-col items-center justify-center'>
             <h1 className='flex justify-center text-[2.5rem]'>New Author</h1>
             <img
-                className="rounded-full object-cover object-center h-16 w-16"
-                src="./src/assets/image/companies.png"
+                className="rounded-full object-cover object-center h-40 w-40"
+                src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                 alt="user avatar"
             />
             <div className='mt-5 flex flex-col items-center justify-center w-[60%]  text-black font-montserrat font-normal	text-base'>
-                <input className='w-full border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="Insert name" ref={name} />
-                <input className='w-full border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="Insert last name" ref={last_name} />
-                <input className='w-full border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="City, country" ref={cityCountry} />
-                <input className='w-full border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder={$currentDate} readOnly id="date-input" ref={date} />
-                <input className='w-full border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="url" placeholder="URL profile image" onChange={handleProfileImageChange} ref={photo} />
-                <button className="text-white not-italic font-medium text-2xl leading-[95.19%] bg-gradient-to-r from-btn1 from-(-13.10%) to-btn2 to-58.69% rounded-full flex flex-row justify-center items-center gap-2.5 w-60 h-[55px] p-4 mt-5" type="submit">Send</button>
+                <input className='w-3/5 border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="Insert name" ref={name} />
+                <input className='w-3/5 border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="Insert last name" ref={last_name} />
+                <input className='w-3/5 border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="City, country" ref={cityCountry} />
+                <input className='w-3/5 border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder={$currentDate} readOnly id="date-input" ref={date} />
+                <input className='w-3/5 border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="url" placeholder="URL profile image" onChange={handleProfileImageChange} ref={photo} />
+                <button className="text-white not-italic font-medium text-2xl leading-[95.19%] bg-[#0184D6] hover:bg-[#10387D] rounded-full flex flex-row justify-center items-center gap-2.5 w-60 h-[55px] p-4 mt-5" type="submit">Send</button>
             </div>
         </form>
     );

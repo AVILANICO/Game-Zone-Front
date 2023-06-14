@@ -12,6 +12,13 @@ import Swal from 'sweetalert2'
 const { game_delete } = game_action
 
 
+import cartActions from '../store/actions/carts'
+import priceActions from '../store/actions/change_price'
+import { Toaster, toast } from 'react-hot-toast'
+
+const { captureCart } = cartActions
+const { changePrice } = priceActions
+
 let token = localStorage.getItem("token")
 let headers = { headers: { "Authorization": `bearer ${token}` } }
 
@@ -33,7 +40,6 @@ export default function Games() {
     const [idcompras, setIdcompras] = useState()
     const [open, setOpen] = useState(false);
     const role = localStorage.getItem('role')
-
 
 
 
@@ -263,7 +269,7 @@ export default function Games() {
             ) : (
                 <div className=" w-full  flex flex-col items-center bg-black">
                     <div className=" w-full h-auto flex flex-col justify-center items-center  xsm:h-[40vh] ">
-                        <div className='my-10'>
+                        <div className=''>
                             <div className='rounded-2xl bg-black '>
                                 <iframe className='h-[15rem] w-[30rem] cursor-none' src="https://giphy.com/embed/UctoTPBIjNQaIryi6l" ></iframe>
                                 {/* <iframe className='' src="https://giphy.com/embed/VcASvyhKDRDguQ0bHX"></iframe> */}
@@ -284,7 +290,7 @@ export default function Games() {
                         </form> */}
 
                         <div className="rounded-[2rem] w-[90%]  bg-[#343434]  xsm:w-full xsm:rounded-[4rem]">
-                            <div className='flex flex-col items-center min-h-[120vh] mt-4 xsm:mt-[10%] w-[100%]'>
+                            <div className='flex flex-col items-center min-h-[120vh] xsm:mt-[10%] w-[100%]'>
                                 <div className='flex flex-row w-[85%] md:pl-[15%] md:mt-[2%] md:mb-5 md:gap-5  xsm:mt-3 xsm:gap-3 justify-start'>
 
                                     <form className='flex flex-row  h-[5vh] xsm:pt-5 xsm:pb-[2rem]  ' ref={category_id}>

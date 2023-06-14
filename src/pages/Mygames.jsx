@@ -91,7 +91,7 @@ export default function Mygames() {
                         borderRadius: '26px',
                         fontSize: "18px",
                         textAlign: "center",
-                        ...(newCategories.includes(each._id) ? { backgroundColor: each.color, color: "white" } : {})
+                        ...(newCategories.includes(each._id) ? { backgroundColor: '#155E75', color: "white" } : {})
                       }}>
 
                         {each.name.charAt(0).toUpperCase() + each.name.slice(1)}

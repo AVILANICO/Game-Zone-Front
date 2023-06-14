@@ -54,7 +54,10 @@ const MyGamesCard = ({ each, categories }) => {
       <img onClick={urlDetail} className="w-[100%] h-[50%] cursor-pointer xsm:h-full object-cover object-top" src={each?.cover_photo} />
       <div className='flex flex-col items-center md:h-40 p-5 w-full h-40 font-semibold'>
         <h1 onClick={urlDetail} className='md:text-xl xsm:text-xl xsm:w-full cursor-pointer text-center'> {each?.title} </h1>
-        <h2 className='text-center bg-cyan-800 w-24 rounded-xl mt-2'>Price: ${each?.price}</h2>
+        <div className="flex gap-4">
+          <h2 className='text-center bg-cyan-800 w-24 rounded-xl mt-2'>Stock: {each?.stock}</h2>
+          <h2 className='text-center bg-cyan-800 w-24 rounded-xl mt-2'>Price: ${each?.price}</h2>
+        </div>
         <div className='flex gap-4 justify-center mt-4'>
           <button onClick={() => alertEdit()} className="mt-4 w-20 bg-[#06832c] text-[#ffffff] hover:bg-[#00571d] hover:text-white cursor-pointer font-bold py-2 px-4 rounded-lg hover:scale-110 transition-all">
             Edit
