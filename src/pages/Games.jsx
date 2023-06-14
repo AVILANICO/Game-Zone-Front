@@ -8,6 +8,7 @@ import apiUrl from "../../api"
 import { Link as Anchor, Link, useNavigate } from "react-router-dom";
 import game_action from '../store/actions/game'
 import Swal from 'sweetalert2'
+import gamon from '../assets/image/gameon.png'
 
 const { game_delete } = game_action
 
@@ -263,7 +264,7 @@ export default function Games() {
                             </div>
                         </div>
                     </div>
-
+                    <Toaster />
                 </div>
 
             ) : (
@@ -271,15 +272,15 @@ export default function Games() {
                     <div className=" w-full h-auto flex flex-col justify-center items-center  xsm:h-[40vh] ">
                         <div className=''>
                             <div className='rounded-2xl bg-black '>
-                                <iframe className='h-[15rem] w-[30rem] cursor-none' src="https://giphy.com/embed/UctoTPBIjNQaIryi6l" ></iframe>
-                                {/* <iframe className='' src="https://giphy.com/embed/VcASvyhKDRDguQ0bHX"></iframe> */}
+                                <img src={gamon} className='h-[15rem] w-[30rem]' alt="" />
+                               
                             </div>
 
                             {/* <h1 className='text-center mt-6 text-[4rem] font-bold text-[#14532d]' style={{ fontFamily: 'Dancing Script, cursive' }}>Games</h1> */}
 
                         </div>
 
-                        {/* <form className="flex justify-center rounded-lg items-center  bg-white w-[63%] h-10 xsm:w-[90%] xsm:rounded-full xsm:mb-8 ">
+                       {/*  <form className="flex justify-center rounded-lg items-center  bg-white w-[63%] h-10 xsm:w-[90%] xsm:rounded-full xsm:mb-8 ">
                             <label type="button" className="flex justify-center" htmlFor='search'>
                                 <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="16.9584" cy="17.4584" r="10.7917" stroke="#4ade80" strokeWidth="2" />
