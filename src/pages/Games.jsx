@@ -29,6 +29,7 @@ let headers = { headers: { "Authorization": `bearer ${token}` } }
 export default function Mygames() {
 
   const games_all = useSelector(store => store.game_all.games)
+  console.log(games_all);
   const categorias = useSelector(store => store.categories.categories)
   const navigate = useNavigate()
   const dispatch = useDispatch()

@@ -18,9 +18,30 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate()
   let prueba = useSelector(store => store.cart.cart)
+  console.log(prueba);
   let dispatch = useDispatch()
-  let option = []
   const [carrito, setCarrito] = useState([]);
+  let stockGames = useSelector(store => store.cart.cart)
+  let stockArray = stockGames.map(product => product.stock);
+  console.log(stockGames)
+  console.log(stockArray);
+
+  let resultArray = stockArray.map(cantidad => Array.from({ length: cantidad }, (_, index) => index + 1));
+  console.log(resultArray);
+
+  let arreglosInternos = [].concat(...resultArray);
+
+  console.log(arreglosInternos);
+
+  const [stockQuantities, setStockQuantities] = useState([]);
+
+  useEffect(() => {
+    const quantities = arreglosInternos;
+    setStockQuantities(quantities);
+  }, [stockGames]);
+
+  // console.log(stockQuantities);
+
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -41,15 +62,37 @@ export default function Navbar() {
   }
 
 
+  // async function handleQuantity(e) {
+  //   e.target.disabled = true
+  //   try {
+  //     let body = { cantidad: e.target.value }
+  //     await axios.put(VITE_API + 'carrito/' + e.target.id, body, headers)
+  //     dispatch(changePrice())
+  //   } catch (error) {
+  //     console.log(error);
+  //     e.target.disabled = false
+  //   }
+  // }
+
+  const [realQuantiti, setRealQuantiti] = useState(1)
+  console.log(realQuantiti);
+
   async function handleQuantity(e) {
-    e.target.disabled = true
+    e.target.disabled = true;
+    setRealQuantiti(e.target.value)
     try {
-      let body = { cantidad: e.target.value }
-      await axios.put(VITE_API + 'carrito/' + e.target.id, body, headers)
-      dispatch(changePrice())
+      let quantity = e.target.value;
+      let productId = e.target.id;
+      let product = products.find((p) => p._id === productId);
+      let totalPrice = quantity * product.price;
+      console.log(totalPrice);
+
+      let body = { cantidad: quantity, price: totalPrice };
+      await axios.put(VITE_API + 'carrito/' + productId, body, headers);
+      dispatch(changePrice());
     } catch (error) {
       console.log(error);
-      e.target.disabled = false
+      e.target.disabled = false;
     }
   }
 
@@ -74,8 +117,10 @@ export default function Navbar() {
     dispatch(carts())
   }
   const products = prueba;
-  // console.log(products);
-  const totalPrice = products.reduce((total, product) => total + product.price, 0);
+
+
+  const totalPrice = products.reduce((total, product) => total + product.price * realQuantiti, 0);
+
   useEffect(
     () => {
       axios.get(VITE_API + 'carrito', headers)
@@ -186,7 +231,7 @@ export default function Navbar() {
                                             {product.title}
                                           </a>
                                         </h3>
-                                        <p className="ml-4">$ {product.price}</p>
+                                        <p className="ml-4">$ {product.price * realQuantiti}</p>
                                       </div>
                                       <p className="mt-1 text-sm text-gray-500">
                                         {product.color}
@@ -194,20 +239,12 @@ export default function Navbar() {
                                     </div>
                                     <div className="flex flex-1 items-end justify-between text-sm">
                                       <p className="text-gray-500">
-                                        {/* <select onChange={handleQuantity} id={product._id} className="py-1 px-2 border mr-6 focus:outline-none">
-                                          {
-                                            option.map((each, index) => {
-                                              return each.value != product.cantidad ? (
-
-                                                <option key={index}>{each.value}</option>
-                                              ) : (
-                                                <option key={index} selected>{each.value}</option>
-                                              )
-                                            })
-                                          }
-                                        </select> */}
+                                        <select onChange={handleQuantity} id={product._id} className="py-1 px-2 border mr-6 focus:outline-none">
+                                          {stockQuantities.map((quantity, index) => (
+                                            <option key={index} value={quantity}>{quantity}</option>
+                                          ))}
+                                        </select>
                                       </p>
-
                                       <div className="flex">
                                         <button
                                           onClick={handleDeleteOne}
