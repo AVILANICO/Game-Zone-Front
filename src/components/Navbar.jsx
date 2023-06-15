@@ -105,7 +105,8 @@ export default function Navbar() {
   )
 
   return (
-    <nav className="xsm:hidden w-full h-16 bg-[#343434] flex justify-between items-center ">
+
+    <nav className="w-full h-[8vh] bg-[#343434] flex justify-between items-center ">
       <div>
         <button onClick={handleMenuClick} className="ml-4">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="white" className="w-10 h-10">
@@ -113,21 +114,21 @@ export default function Navbar() {
           </svg>
         </button>
         {showMenu && (
-          <div className="absolute left-16 top-2 h-12 flex items-center bg-none rounded-md py-5 z-10">
-            <div className="flex justify-between ">
-              <ul onClick={handleMenuClick} className="flex gap-6 ">
-                <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/">Home</Anchor></li>
-                {role == 0 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/new-role">New Role</Anchor></li>
+          <div className="absolute left-16 top-1 h-12 flex items-center bg-none rounded-md py-5 z-10">
+            <div className="flex justify-between">
+              <ul onClick={handleMenuClick} className="flex gap-6 xsm:flex-col xsm:gap-0 xsm:relative top-20 left-1 xsm:bg-gray-700 rounded-md xsm:h-[13rem] xsm:items-center xsm:justify-evenly  xxsm:flex-col xxsm:gap-0 xxsm:relative xxsm:bg-gray-700 xxsm:h-[13rem] xxsm:items-center xxsm:justify-evenly">
+                <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl mb-4 xsm:mb-2 xsm:px-4 xxsm:mb-2 xxsm:px-4" to="/">Home</Anchor></li>
+                {role == 0 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl  xsm:mb-2 xxsm:mb-2" to="/new-role">New Role</Anchor></li>
                 </>) : ("")}
-                {role == 3 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/admin">Panel</Anchor></li>
+                {role == 3 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl xsm:mb-2 xxsm:mb-2" to="/admin">Panel</Anchor></li>
                 </>) : ("")}
-                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" to="/game-form">New game</Anchor></li>
+                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl xsm:mb-2 xxsm:mb-2" to="/game-form">New game</Anchor></li>
                 </>) : ("")}
-                {role == 0 || role == 1 || role == 2 ? (<li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/games/:pages">Games</Anchor></li>) : ("")}
-                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/mygames">My Games</Anchor></li> </>) : ("")}
-                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/register">Register</Anchor></li>}
-                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl" to="/signin">Log In</Anchor></li>}
-                {token && <li><a className="flex justify-center py-2 text-white cursor-pointer hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-8 rounded-xl" onClick={backHome}>Sign Out</a></li>}
+                {role == 0 || role == 1 || role == 2 ? (<li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl xsm:mb-2 xxsm:mb-2" to="/games/:pages">Games</Anchor></li>) : ("")}
+                {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl xsm:mb-2 xxsm:mb-2" to="/mygames">My Games</Anchor></li> </>) : ("")}
+                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl  mb-4 xsm:mb-2 xxsm:mb-2" to="/register">Register</Anchor></li>}
+                {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl  mb-4 xsm:mb-2 xxsm:mb-2" to="/signin">Log In</Anchor></li>}
+                {token && <li><a className="flex justify-center py-2 text-white cursor-pointer hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl xsm:mb-2 xxsm:mb-2" onClick={backHome}>Sign Out</a></li>}
                 {token &&
                   <div className="flex items-center gap-2">
                     <img className="w-8 h-8 object-cover rounded-full" src={photo} alt="imgUsuario" />
@@ -291,11 +292,11 @@ export default function Navbar() {
               </div>
           </Dialog>
       </Transition.Root>
-      <div className="flex gap-4">
-        <svg onClick={hanldelOpenCarrito} xmlns="http:www.w3.org/2000/svg" width="36" height="36" fill="white" className="bi bi-cart4 cursor-pointer hover:scale-95" viewBox="0 0 16 16">
+      <div className="flex">
+        <svg onClick={hanldelOpenCarrito} xmlns="http:www.w3.org/2000/svg" width="36" height="auto" fill="white" className="bi bi-cart4 cursor-pointer hover:scale-95 mt-4" viewBox="0 0 16 16">
           <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
         </svg>
-        <img className="h-10 mr-4" src={logo} alt="Your Company" />
+        <img className="h-20 w-20 mr-4 xsm:h-auto xsm:mr-0" src={logo} alt="Your Company " />
       </div>
     </nav>
   )
