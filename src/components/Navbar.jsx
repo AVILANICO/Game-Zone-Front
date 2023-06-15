@@ -93,7 +93,6 @@ export default function Navbar() {
           </svg>
         </button>
         {showMenu && (
-
           <div className="absolute left-16 top-1 h-12 flex items-center bg-none rounded-md py-5 z-10">
             <div className="flex justify-between ">
               <ul onClick={handleMenuClick} className="flex gap-6 ">
@@ -195,9 +194,7 @@ export default function Navbar() {
                                     </div>
                                     <div className="flex flex-1 items-end justify-between text-sm">
                                       <p className="text-gray-500">
-
                                         {/* <select onChange={handleQuantity} id={product._id} className="py-1 px-2 border mr-6 focus:outline-none">
-
                                           {
                                             option.map((each, index) => {
                                               return each.value != product.cantidad ? (
@@ -208,9 +205,7 @@ export default function Navbar() {
                                               )
                                             })
                                           }
-
                                         </select> */}
-
                                       </p>
 
                                       <div className="flex">

@@ -5,7 +5,9 @@ import VITE_API from "../../../api";
 
 const game_all = createAsyncThunk ('game_all', async()=>{
     try {
-      let res = await axios.get(VITE_API + 'games')
+          let token = localStorage.getItem('token')
+          let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+          let res = await axios.get(VITE_API + 'games', headers)
         
         return{
           games:res.data.response
@@ -14,7 +16,7 @@ const game_all = createAsyncThunk ('game_all', async()=>{
       return{
         games:[]
       }
-     
+    
     }
   })
 
