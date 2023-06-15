@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import cartActions from '../store/actions/carts'
 import priceActions from '../store/actions/change_price'
 import logo from '../assets/image/luis.png'
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+
 const { carts } = cartActions
 const { changePrice } = priceActions
 
@@ -41,6 +43,10 @@ export default function Navbar() {
   }, [stockGames]);
 
   // console.log(stockQuantities);
+
+
+  const [preferenceId, setPreferenceId] = useState(null);
+  initMercadoPago('TEST-c564dc63-10fa-48f4-bc68-76bb45a91dfc');
 
 
   const handleMenuClick = () => {
@@ -116,6 +122,21 @@ export default function Navbar() {
     setOpen(!open)
     dispatch(carts())
   }
+
+
+  const createPreference = async () => {
+    let data = {
+      unit_price: totalPrice,
+    }
+    try {
+      await axios.post(VITE_API + 'payment', data, headers)
+        .then(response => setPreferenceId(response.data.preferenceId))
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const products = prueba;
 
 
@@ -130,6 +151,7 @@ export default function Navbar() {
   )
 
   return (
+
     <nav className="w-full h-[8vh] bg-[#343434] flex justify-between items-center ">
       <div>
         <button onClick={handleMenuClick} className="ml-4">
@@ -154,8 +176,8 @@ export default function Navbar() {
                 {!token && <li><Anchor className="flex justify-center py-2 text-white hover:scale-105 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl  mb-4 xsm:mb-2 xxsm:mb-2" to="/signin">Log In</Anchor></li>}
                 {token && <li><a className="flex justify-center py-2 text-white cursor-pointer hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl xsm:mb-2 xxsm:mb-2" onClick={backHome}>Sign Out</a></li>}
                 {token &&
-                  <div className="flex items-center gap-2 mt-1">
-                    <img className="w-8 h-8 object-c6ver rounded-full" src={photo} alt="imgUsuario" />
+                  <div className="flex items-center gap-2">
+                    <img className="w-8 h-8 object-cover rounded-full" src={photo} alt="imgUsuario" />
                     <p className="text-xl text-white">{email}</p>
                   </div>}
               </ul>
@@ -263,7 +285,13 @@ export default function Navbar() {
                           </div>
                         </div>
                       </div>
-
+                      {/* <div className="mt-6 ">
+                              <button
+                              className="flex items-center justify-center rounded-md border border-transparent bg-[#044674] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-500"
+                              >
+                              Delete All
+                              </button>
+                          </div> */}
                       <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                         <div className="flex justify-between text-base font-medium text-white">
                           <p>Subtotal</p>
@@ -272,14 +300,14 @@ export default function Navbar() {
                         <p className="mt-0.5 text-sm text-gray-500">
                           Shipping and taxes calculated at pay.
                         </p>
-                        <div className="mt-6">
-                          <a
-                            href="#"
-                            className="flex items-center justify-center rounded-md border border-transparent bg-[#044674] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-500"
+                        <div className="mt-6 flex items-center justify-center rounded-md border border-transparent bg-[#044674] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-500">
+                          <button
+                            onClick={createPreference}
                           >
                             Process to pay
-                          </a>
+                          </button>
                         </div>
+                        {preferenceId && <Wallet initialization={{ preferenceId }} />}
                         <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                           <p>
                             or
