@@ -79,6 +79,7 @@ export default function Navbar() {
     dispatch(carts())
   }
 
+
   const createPreference = async () => {
     let data = {
       unit_price: totalPrice,
@@ -91,6 +92,7 @@ export default function Navbar() {
       console.log(error);
     }
   }
+
   const products = prueba;
   // console.log(products);
   const totalPrice = products.reduce((total, product) => total + product.price, 0);
