@@ -8,15 +8,14 @@ import apiUrl from "../../api"
 import { Link as Anchor, Link, useNavigate } from "react-router-dom";
 import game_action from '../store/actions/game'
 import Swal from 'sweetalert2'
-
 const { game_delete } = game_action
 
-import cartActions from '../store/actions/carts'
-import priceActions from '../store/actions/change_price'
+// import cartActions from '../store/actions/carts'
+// import priceActions from '../store/actions/change_price'
 import { Toaster, toast } from 'react-hot-toast'
 
-const { captureCart } = cartActions
-const { changePrice } = priceActions
+// const { captureCart } = cartActions
+// const { changePrice } = priceActions
 
 
 let token = localStorage.getItem("token")
@@ -137,8 +136,9 @@ export default function Games() {
 
     
     const handleComprar = async () => {
+        let url = 'http://localhost:8000/carrito/'
         try {
-            await axios.post('http://localhost:8000/carrito/' + idcompras , null, headers );
+            await axios.post( url + idcompras , null, headers );
             toast.success('Producto agregado al carrito')
         } catch (error) {
             toast.error(error.response.data.message);
@@ -222,7 +222,6 @@ export default function Games() {
                             </div>
                         </div>
                     </div>
-                    <Toaster />
                 </div>
 
             ) : (
@@ -312,8 +311,7 @@ export default function Games() {
 
                 </div>
             )}
-
-
+            <Toaster />
         </>
 
     )

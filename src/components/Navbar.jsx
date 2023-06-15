@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import cartActions from '../store/actions/carts'
 import priceActions from '../store/actions/change_price'
 import logo from '../assets/image/luis.png'
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+
 const { carts } = cartActions
 const { changePrice } = priceActions
 
@@ -21,6 +23,10 @@ export default function Navbar() {
   let dispatch = useDispatch()
   let option = []
   const [carrito, setCarrito] = useState([]);
+
+  const [preferenceId, setPreferenceId] = useState(null);
+  initMercadoPago('TEST-c564dc63-10fa-48f4-bc68-76bb45a91dfc');
+
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -39,7 +45,6 @@ export default function Navbar() {
       })
       .catch(err => alert(err))
   }
-
 
   async function handleQuantity(e){
     e.target.disabled = true
@@ -72,6 +77,19 @@ export default function Navbar() {
   const hanldelOpenCarrito = async (e) => {
     setOpen(!open)
     dispatch(carts())
+  }
+
+  const createPreference = async () => {
+    let data = {
+      unit_price: totalPrice,
+    }
+    try {
+        await axios.post(VITE_API + 'payment', data, headers)
+      .then(response => setPreferenceId(response.data.preferenceId))
+
+    } catch (error) {
+      console.log(error);
+    }
   }
   const products = prueba;
   // console.log(products);
@@ -226,7 +244,13 @@ export default function Navbar() {
                               </div>
                           </div>
                           </div>
-
+                          {/* <div className="mt-6 ">
+                              <button
+                              className="flex items-center justify-center rounded-md border border-transparent bg-[#044674] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-500"
+                              >
+                              Delete All
+                              </button>
+                          </div> */}
                           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                           <div className="flex justify-between text-base font-medium text-white">
                               <p>Subtotal</p>
@@ -235,14 +259,14 @@ export default function Navbar() {
                           <p className="mt-0.5 text-sm text-gray-500">
                               Shipping and taxes calculated at pay.
                           </p>
-                          <div className="mt-6">
-                              <a
-                              href="#"
-                              className="flex items-center justify-center rounded-md border border-transparent bg-[#044674] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-500"
+                          <div className="mt-6 flex items-center justify-center rounded-md border border-transparent bg-[#044674] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-500">
+                              <button
+                              onClick={createPreference}
                               >
                               Process to pay
-                              </a>
+                              </button>
                           </div>
+                              {preferenceId && <Wallet initialization={{ preferenceId }} />}
                           <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                               <p>
                               or
@@ -269,7 +293,7 @@ export default function Navbar() {
         <svg onClick={hanldelOpenCarrito} xmlns="http:www.w3.org/2000/svg" width="36" height="36" fill="white" className="bi bi-cart4 cursor-pointer hover:scale-95" viewBox="0 0 16 16">
           <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
         </svg>
-        <img className="h-10 mr-4" src={logo2} alt="Your Company" />
+        <img className="h-10 mr-4" src={logo} alt="Your Company" />
       </div>
     </nav>
   )
