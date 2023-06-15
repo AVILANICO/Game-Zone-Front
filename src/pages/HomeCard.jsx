@@ -55,31 +55,31 @@ export default function HomeCard() {
         <h2 className=" text-center text-5xl text-white font-bold">THE MOST PURCHASED BY CATEGORY</h2>
         <div className=" flex h-24 w-[100%] justify-around bg-[#343434]/70 border-t border-b  mt-20">
           <button onClick={() => toggleTab('sport')}
-            className={`flex cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b]  hover:bg-[#14c18a3e] w-36 ${activeTab === 'sport' ? 'active' : ''
+            className={`flex flex-wrap cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b]  hover:bg-[#14c18a3e] w-36 ${activeTab === 'sport' ? 'active' : ''
               } tablink`}>
             <h2 className="  text-white font-bold text-2xl text-center" >Sport</h2>
             <img className="h-12" src={sport} alt="" />
           </button >
           <button onClick={() => toggleTab('race')}
-            className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-40  hover:bg-[#14c18a3e] ${activeTab === 'race' ? 'active' : ''
+            className={`flex flex-wrap  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-40  hover:bg-[#14c18a3e] ${activeTab === 'race' ? 'active' : ''
               }tablink`}>
             <h2 className=" text-white font-bold text-2xl">Race</h2>
             <img className="h-12 ml-2" src={moto} alt="" />
           </button>
           <button onClick={() => toggleTab('shooter')}
-            className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-44  hover:bg-[#14c18a3e] ${activeTab === 'shooter' ? 'active' : ''
+            className={`flex flex-wrap  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-44  hover:bg-[#14c18a3e] ${activeTab === 'shooter' ? 'active' : ''
               }tablink`}>
             <h2 className="  text-white font-bold text-2xl">Shooter</h2>
             <img src={shooter} alt="" />
           </button>
           <button onClick={() => toggleTab('survival')}
-            className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-48  hover:bg-[#14c18a3e] ${activeTab === 'survival' ? 'active' : ''
+            className={`flex flex-wrap  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-48  hover:bg-[#14c18a3e] ${activeTab === 'survival' ? 'active' : ''
               }tablink`}>
             <h2 className="  text-white font-bold text-2xl">Survival</h2>
             <img src={survival} alt="" />
           </button>
           <button onClick={() => toggleTab('multiplayer')}
-            className={`flex  cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-56  hover:bg-[#14c18a3e] ${activeTab === 'multiplayer' ? 'active' : ''
+            className={`flex flex-wrap cursor-pointer items-center justify-center hover:border-b-8 border-[#17e1a17b] w-56  hover:bg-[#14c18a3e] ${activeTab === 'multiplayer' ? 'active' : ''
               }tablink`}>
             <h2 className="  text-white font-bold text-2xl">Multiplayer</h2>
             <img className="h-12" src={multiplayer} alt="" />
