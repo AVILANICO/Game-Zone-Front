@@ -11,7 +11,7 @@ export default function NewRole() {
                         <div className="flex">
                             <img src="./src/assets/image/need.jpg" className="lg:inline-block w-40 h-20 self-center m-2" />
                             <div className="m-2 flex items-center">
-                                <h1 className="font-bold text-white text-xl">Join as a Salesman!</h1>
+                                <h1 className="font-bold text-white text-xl">Join as a Seller!</h1>
                             </div>
                         </div>
                     </label>
