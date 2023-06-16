@@ -240,7 +240,7 @@ export default function Navbar() {
                                             {product.title}
                                           </a>
                                         </h3>
-                                        <p className="ml-4">$ {(product.price * realQuantiti).toFixed(1).toLocaleString('es-ES')}</p>
+                                        <p className="ml-4">$ {(product.price * realQuantiti).toFixed(1)}</p>
                                       </div>
                                       <p className="mt-1 text-sm text-gray-500">
                                         {product.color}
