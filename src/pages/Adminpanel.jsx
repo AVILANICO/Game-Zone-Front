@@ -48,12 +48,12 @@ export default function AdminPanel() {
 
     return (
         <>
-            <div className="w-full  bg-[#EAEAEA] ">
-                <div className='flex h-12' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)' }} >
+            <div className="w-[100%]  bg-[#EAEAEA] ">
+                <div className='flex h-12 ' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)' }} >
                     <p className='text-3xl font-mono rounded  flex items-center px-2 '>ADMIN PANEL</p>
                 </div>
-                <div className='flex mt-9'>
-                    <div className='h-[3rem] w-[10%] bg-white rounded-xl'>
+                <div className='flex mt-9 xsm:flex-col xxsm:flex-col'>
+                    <div className='h-[3rem] w-[10%] bg-white rounded-xl xsm:flex xsm:justify-center xsm:w-full xsm:mb-2   xxsm:flex xxsm:justify-center xxsm:w-full xxsm:mb-2'>
                         <div className={`rounded-t border border-black  ${boton ? ' bg-gray-100  font-bold cursor-pointer' : 'bg-[#636363] text-white font-bold cursor-pointer pointer-events-none'} `}>
                             <label htmlFor="" className="w-[100%]  flex" onClick={handleOptions}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="" className="w-6 h-5 fill-black">
@@ -87,11 +87,11 @@ export default function AdminPanel() {
                     </div>
                     {boton === false ?
                         (
-                            <div className="flex flex-col  items-center w-[90%]">
+                            <div className="flex flex-col  items-center  w-screen">
 
 
 
-                                <div className="lg:w-[65%] w-full h-auto bg-gray-100 border-2 border-gray-200 shadow-sm rounded-[5px_5px_5px_5px] mb-8">
+                                <div className=" w-[90%] h-auto  bg-gray-100 border-2  border-gray-200 shadow-sm rounded-[5px_5px_5px_5px] mb-8">
                                     <div className="w-full border-b-2  rounded-[10px_10px_5px_5px]">
                                         <button className={`${view ? 'w-1/2 bg-white justify-center text-black font-bold cursor-pointer' : ' w-1/2 bg-[#636363] rounded-[10px_0px_0px_0px] text-white font-bold cursor-pointer pointer-events-none'} `}>
                                             <label htmlFor="" className="flex flex-row justify-center w-full " onClick={handleClick}>
@@ -124,7 +124,7 @@ export default function AdminPanel() {
                                                                         <p>{company.name}</p>
                                                                     </div>
                                                                     <div className="col-span-2 justify-center items-center">
-                                                                        <p className="w-full sm:w-auto sm:inline-block text-center">{company.website}</p>
+                                                                        <p className="w-[90%] text-center xsm:text-sm xxsm:text-sm">{company.website}</p>
                                                                     </div>
                                                                     <div className="col-span-2 flex justify-center items-center gap-x-1 sm:gap-x-4">
                                                                         <img className="w-6 h-6 rounded-full mr-2 sm:mr-0" src={company.logo} alt="" />

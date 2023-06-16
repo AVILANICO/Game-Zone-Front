@@ -123,34 +123,35 @@ export default function Mygames() {
         <>
             {role == 3 ? (
                 <div className=" w-full  flex flex-col items-center bg-black">
-                    <div className=" w-full h-auto flex flex-col justify-center items-center  xsm:h-[40vh] ">
+                    <div className=" w-full h-auto flex flex-col justify-center items-center  ">
                         <div className='flex justify-center h-20 w-full mt-12' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)' }}>
                             <p className='text-5xl  font-mono rounded flex items-center px-2 text-white border-b'>ADMIN PANEL</p>
                         </div>
                         <div className="rounded-[2rem] w-4/5 mt-2  bg-black xsm:w-full xsm:rounded-[4rem]">
                             <div className='flex flex-col items-center min-h-[100vh]  xsm:mt-[10%] w-full'>
                                 <div className='flex w-full '>
-                                    <div className="flex gap-4 w-full h-full">
-                                        <form className="flex gap-4 h-full w-full mt-10">
-                                            <Anchor to={'/admin'} className='relative cursor-pointer bg-[#e2504b]  rounded-xl transition hover:-translate-y-1 hover:scale-110 duration-300 flex items-center w-10 h-10 justify-center top-5'>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-                                                </svg>
-                                            </Anchor>
-                                            <div className="flex items-center justify-center xsm:gap-1 gap-4 w-full h-20 rounded-3xl">
-                                                <button onClick={resetFilters} className="hover:scale-125 transition-all flex flex-row items-center justify-center w-10 h-10 bg-[#999999] text-white p-[1rem] rounded-full text-[12px] cursor-pointer" style={{ backgroundColor: newCategories.length === 0 ? 'green' : '' }}>
+                                    <div className="flex gap-4 p-6 w-full justify-center items-center h-full">
+                                        
+                                        <form className="flex justify-center gap-4 h-full w-[80vw]">
+                                        <Anchor to={'/admin'} className='relative cursor-pointer bg-[#e2504b]  rounded-xl transition hover:-translate-y-1 hover:scale-110 duration-300 flex items-center w-10 h-10 justify-center xxsm:hidden xsm:hidden'>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                                            </svg>
+                                        </Anchor>
+                                            
+                                            <div className="flex flex-wrap items-center justify-center xsm:gap-1 gap-4 w-full h-22 xxsm:h-[7rem] rounded-3xl">
+                                                <button onClick={resetFilters} className="hover:scale-125 transition-all flex flex-row items-center justify-center w-10 h-10 bg-[#999999] text-white p-[1.5rem] rounded-full text-[12px] cursor-pointer" style={{ backgroundColor: newCategories.length === 0 ? '#071A2D' : '' }}>
                                                     All
                                                     <input name="category_id" onChange={handleCategoryChange} style={{ appearance: 'none' }} type="checkbox" checked={newCategories.length === 0} />
                                                 </button>
                                                 {categorias?.map((each) => (
-                                                    <div key={each._id} className=' hover:scale-110 transition-all xsm:w-20' >
-                                                        <label className="cursor-pointer" htmlFor={each._id} key={each._id} style={{
+                                                    <div key={each._id} className=' hover:scale-110 transition-all ' >
+                                                        <label className="cursor-pointer p-[1rem] xsm:py-[7px]  xxsm:py-[9px]" htmlFor={each._id} key={each._id} style={{
                                                             height: "2rem",
                                                             backgroundColor: each.hover,
                                                             color: each.color,
-                                                            padding: '1rem',
                                                             borderRadius: '26px',
-                                                            fontSize: "18px",
+                                                            fontSize: "16px",
                                                             textAlign: "center",
                                                             ...(newCategories.includes(each._id) ? { backgroundColor: '#155E75', color: "white" } : {})
                                                         }}>
@@ -161,7 +162,7 @@ export default function Mygames() {
                                                         </label>
                                                     </div>
                                                 ))}
-                                                <div className='flex border items-center border-[#EAEAEA] ml-5' style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)', borderRadius: '10px' }}>
+                                                <div className='flex border items-center border-[#EAEAEA] ml-5 xsm:mb-1 xsm:mt-4' style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)', borderRadius: '10px' }}>
                                                     <label type="button" className="flex justify-center  " htmlFor='search'>
                                                         <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <circle cx="16.9584" cy="17.4584" r="10.7917" stroke="#4ade80" strokeWidth="2" />
@@ -174,14 +175,14 @@ export default function Mygames() {
                                         </form>
                                     </div>
                                 </div>
-                                <div className="my-10 flex justify-center xsm:flex-col xsm:items-center xsm:w-full xsm:gap-6 flex-wrap md:w-full md:h-full lg:w-full gap-8">
+                                <div className="pb-28 flex justify-center xsm:flex-col xsm:items-center xsm:w-full  xsm:gap-6 flex-wrap md:w-full md:h-full lg:w-full gap-8">
                                     {filterGames().length > 0 ? (
                                         filterGames().map((each) => (
-                                            <div key={each._id} className='h-[47vh] w-[25vw] mt-4  flex flex-col items-center justify-around rounded-md bg-[#2488ed30]' >
-                                                <img className='w-[100%] h-[60%] rounded-sm' src={each.cover_photo} />
+                                            <div key={each._id} className='h-[45vh] xsm:h-auto w-[23vw] mt-4 xsm:mt-0 md:w-[28vw]  flex flex-col items-center xsm:w-[80%] xxsm:w-[70%] justify-around rounded-md bg-[#2488ed30]' >
+                                                <img className='w-[100%] h-[60%] rounded-sm xsm:h-[50%]' src={each.cover_photo} />
                                                 <p className='md:text-[1rem] text-white font-bold xsm:text-center'> {each.title} </p>
                                                 <p style={{ color: '#0174DF' }}> {each.category_id.name}</p>
-                                                <div className='flex justify-between w-[90%] mt-3 flex-wrap items-center'>
+                                                <div className='flex justify-between w-[90%] mt-3 xxsm:flex-wrap  items-center'>
                                                     <div className='flex justify-evenly w-[100%] mt-4  flex-wrap  items-center'>
                                                         <Anchor className='bg-black hover:bg-slate-700 hover:scale-110 transition-all rounded-md py-1 px-2 mb-4 font-bold flex items-center md:justify-center text-[#ffffff] ' to={`/game/${each._id}/1`}>
                                                             Details
@@ -207,25 +208,24 @@ export default function Mygames() {
             ) : (
                 <div className="w-full flex flex-col items-center bg-black">
                     <div className=' bg-black w-full flex justify-center'>
-                        <img className='h-[25vh] w-[25vw]' src={gameon} ></img>
+                        <img className='h-[25vh] w-[25vw] xsm:w-full xxsm:w-[80%] xsm:h-[22vh]' src={gameon} ></img>
                     </div>
                     <div className="min-h-screen bg-black w-4/5 flex flex-col items-center  xsm:w-full">
                         <div className="flex gap-4 p-6 w-full justify-center items-center h-full">
                             <form className="flex justify-center gap-4 h-full w-[80vw]">
-                                <div className="flex items-center justify-center xsm:gap-1 gap-4 w-full h-20 rounded-3xl">
-                                    <button onClick={resetFilters} className="hover:scale-125 transition-all flex flex-row items-center justify-center w-10 h-10 bg-[#999999] text-white p-[1rem] rounded-full text-[12px] cursor-pointer" style={{ backgroundColor: newCategories.length === 0 ? 'green' : '' }}>
+                                <div className="flex flex-wrap items-center justify-center xsm:gap-1 gap-4 w-full h-22 xxsm:h-[7rem] rounded-3xl">
+                                    <button onClick={resetFilters} className="hover:scale-125 transition-all flex flex-row items-center justify-center w-10 h-10 bg-[#999999] text-white p-[1.5rem] xsm:p-[3px] xxsm:p-[3px] rounded-full text-[12px] cursor-pointer" style={{ backgroundColor: newCategories.length === 0 ? '#071A2D' : '' }}>
                                         All
                                         <input name="category_id" onChange={handleCategoryChange} style={{ appearance: 'none' }} type="checkbox" checked={newCategories.length === 0} />
                                     </button>
                                     {categorias?.map((each) => (
-                                        <div key={each._id} className=' hover:scale-110 transition-all xsm:w-20' >
-                                            <label className="cursor-pointer" htmlFor={each._id} key={each._id} style={{
+                                        <div key={each._id} className=' hover:scale-110 transition-all ' >
+                                            <label className="cursor-pointer p-[1rem] xsm:py-[7px]  xxsm:py-[9px]" htmlFor={each._id} key={each._id} style={{
                                                 height: "2rem",
                                                 backgroundColor: each.hover,
                                                 color: each.color,
-                                                padding: '1rem',
                                                 borderRadius: '26px',
-                                                fontSize: "18px",
+                                                fontSize: "16px",
                                                 textAlign: "center",
                                                 ...(newCategories.includes(each._id) ? { backgroundColor: '#155E75', color: "white" } : {})
                                             }}>
@@ -236,7 +236,7 @@ export default function Mygames() {
                                             </label>
                                         </div>
                                     ))}
-                                    <div className='flex border items-center border-[#EAEAEA] ml-5' style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)', borderRadius: '10px' }}>
+                                    <div className='flex border items-center border-[#EAEAEA] ml-5 xsm:mb-1 xsm:mt-4' style={{ boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)', borderRadius: '10px' }}>
                                         <label type="button" className="flex justify-center  " htmlFor='search'>
                                             <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="16.9584" cy="17.4584" r="10.7917" stroke="#4ade80" strokeWidth="2" />
@@ -248,23 +248,23 @@ export default function Mygames() {
                                 </div>
                             </form>
                         </div>
-                        <div className="pb-28 flex justify-center xsm:flex-col xsm:items-center xsm:w-full xsm:gap-6 flex-wrap md:w-full md:h-full lg:w-full gap-8">
+                        <div className="pb-28 flex justify-center xsm:flex-col xsm:items-center xsm:w-full  xsm:gap-6 flex-wrap md:w-full md:h-full lg:w-full gap-8">
                             {filterGames().length > 0 ? (
                                 filterGames().map((each) => (
-                                    <div key={each._id} className='h-[45vh] w-[23vw] mt-4  flex flex-col items-center justify-around rounded-md bg-[#2488ed30]' >
-                                        <img className='w-[100%] h-[60%] rounded-sm' src={each.cover_photo} />
+                                    <div key={each._id} className='h-[45vh] xsm:h-auto w-[23vw] mt-4 xsm:mt-0 md:w-[28vw]  flex flex-col items-center xsm:w-[80%] xxsm:w-[70%] justify-around rounded-md bg-[#2488ed30]' >
+                                        <img className='w-[100%] h-[60%] rounded-sm xsm:h-[50%]' src={each.cover_photo} />
 
                                         <p className='md:text-[1rem] text-white font-bold xsm:text-center'> {each.title} </p>
                                         <p style={{ color: '#0174DF' }}> {each.category_id.name}</p>
-                                        <div className='flex justify-between w-[90%] mt-3 flex-wrap items-center'>
-                                            <Anchor className='bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 hover:shadow-sm rounded-md py-2 px-2 mb-4 font-bold flex items-center md:justify-center ' to={`/game/${each._id}/1`}>
+                                        <div className='flex justify-between w-[90%] mt-3 xxsm:flex-wrap  items-center'>
+                                            <Anchor className='bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 hover:shadow-sm rounded-md py-2 px-2 mb-4 xsm:mb-2 font-bold flex items-center md:justify-center xsm:text-sm' to={`/game/${each._id}/1`}>
                                                 Details
                                             </Anchor>
 
-                                            <div className=" rounded-md py-2 px-2 mb-4 font-bold flex bg-black flex-wrap">
-                                                <p className='text-white mr-3'>USD$ {each.price}</p>  <button id={each._id}
+                                            <div className=" rounded-md py-2 px-2 mb-4 xsm:mb-2 font-bold flex bg-black justify-center">
+                                                <p className='text-white mr-3 xsm:text-sm'>USD${each.price}</p>  <button id={each._id}
                                                     onClick={handleComprar}
-                                                    onClickCapture={(e) => { setIdcompras(e.target.id) }} className='bg-blue-500 hover:bg-blue-600 rounded-md px-1 cursor-pointer flex'>Add to <svg xmlns="http:www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="" viewBox="0 0 16 16">
+                                                    onClickCapture={(e) => { setIdcompras(e.target.id) }} className='bg-blue-500 hover:bg-blue-600 rounded-md px-1 cursor-pointer flex xsm:text-sm md:text-sm'>Add to <svg xmlns="http:www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="" viewBox="0 0 16 16">
                                                         <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
                                                     </svg> </button>
                                             </div>

@@ -165,13 +165,13 @@ const Signin = (props) => {
       ) : (
         <>
           <div className='flex h-[92vh]'>
-            <div className='flex justify-center w-1/2 items-center bg-cover bg-[url(/src/assets/image/gamezone1.jpg)]'></div >
-            <div className="xsm:w-full xsm:flex flex justify-center items-center w-1/2">
+            <div className='flex justify-center xsm:hidden xxsm:hidden w-1/2 items-center bg-cover bg-[url(/src/assets/image/gamezone1.jpg)]'></div >
+            <div className="xsm:w-full xxsm:w-full xsm:flex flex justify-center items-center w-1/2">
               <div className="xsm:w-full h-[92vh] w-full flex justify-center items-center bg-black">
-                <div className='xsm:w-full xsm:items-center w-3/5 h-4/5 flex bg-[#343434]/80 flex-col justify-center rounded-xl'>
+                <div className='xsm:w-[80%] xsm:h-[90%] xsm:items-center w-3/5 h-4/5 flex bg-[#343434]/80 flex-col justify-center rounded-xl'>
                   <form className='xsm:w-3/5 flex flex-col gap-8' onSubmit={(e) => handleForm(e)}>
                     <div className='flex flex-col items-center w-full'>
-                      <h1 className='text-6xl font-semibold text-center text-slate-300'>WELCOME</h1>
+                      <h1 className='text-5xl xsm:text-4xl xxsm:text-5xl font-semibold text-center text-slate-300'>WELCOME</h1>
                     </div>
                     <div className="mt-2 w-full ">
                       <fieldset className='flex text-center justify-center '>

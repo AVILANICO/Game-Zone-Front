@@ -21,10 +21,10 @@ export default function GameForm() {
   const dispatch = useDispatch()
 
   let getCompanies = store.companies.active
-  console.log(getCompanies)
+  
 
   let getAuthors = store.authors.active
-  console.log(getAuthors);
+ 
 
   useEffect(() => {
     dispatch(get_authors())
@@ -127,8 +127,8 @@ export default function GameForm() {
       {role == 1 || role == 2 || role ==3 ? (
         <>
           <div className="grid min-h-[92vh] place-content-center text-slate-300 bg-cover bg-center bg-[url('https://wallpaperset.com/w/full/b/0/a/417136.jpg')]">
-            <div className='bg-[#343434] rounded-2xl w-[30vw] h-[85vh] flex flex-col'>
-              <div className=" text-center  mt-4 text-white">
+            <div className='bg-[#343434] rounded-2xl xsm:rounded w-full xsm:w-full xxsm:w-full xxsm:rounded h-[auto] flex flex-col'>
+              <div className=" text-center xsm:mt-0 xxsm:mt-0  mt-4 text-white">
                 <h1 className="text-5xl shadow-lg shadow-black font-bold font-mono">NEW GAME</h1>
               </div>
               <form onSubmit={(e) => handleForm(e)} method='post' encType='multipart/form-data'>
@@ -164,7 +164,7 @@ export default function GameForm() {
                     <input ref={price} type="number" id="Insert price" name="InsertPrice" placeholder="Price" className="w-32 font-mono appearance-none  border-0  p-2 px-4  border-b border-gray-500 bg-transparent  text-white focus:outline-none focus:ring-0" />
                     <input ref={stock} type="number" id="Insert stock" name="InsertStock" placeholder="Stock" className="w-32 font-mono appearance-none  border-0  p-2 px-4  border-b border-gray-500 bg-transparent  text-white focus:outline-none focus:ring-0" />
                   </div>
-                  <button className="rounded-2xl bg-cyan-800 p-2 px-16 py-4 text-white shadow-xl hover:scale-95 hover:shadow-yellow-200/50 t-10 font-bold text-2xl font-mono">Send</button>
+                  <button className="rounded-2xl bg-cyan-800 p-2 px-16 py-4 xsm:py-2 xxsm:py-2 text-white shadow-xl hover:scale-95 hover:shadow-yellow-200/50 t-10 font-bold text-2xl font-mono">Send</button>
                 </div>
               </form>
             </div>

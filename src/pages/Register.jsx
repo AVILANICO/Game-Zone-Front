@@ -108,16 +108,16 @@ const Register = (props) => {
   return (
     <>
       <div className='flex bg-black'>
-        <div className="xsm:w-full xsm:mt-40 flex justify-center w-1/2">
-          <div className="flex justify-center items-center w-[30vw]">
-            <div className='xsm:w-screen h-4/5 xsm:items-center flex flex-col items-center w-full bg-[#343434]/90 rounded-2xl'>
-              <form className='w-[100%] flex flex-col items-center xsm:mr-4 xsm:w-full gap-4' onSubmit={(e) => handleForm(e)} encType='multipart/form-data'>
+        <div className="xsm:w-full xxsm:w-full  flex justify-center w-1/2 h-[auto] xsm:h-screen xxsm:h-screen">
+          <div className="flex justify-center  items-center w-[30vw] xsm:w-[100%] xsm:h-screen xxsm:w-[100%] xxsm:h-screen">
+            <div className='xsm:w-[80%] xxsm:w-[80%] h-auto xsm:items-center  xxsm:items-center flex flex-col xsm:h-[90%] xxsm:h-[70%] items-center w-full bg-[#343434]/90 rounded-2xl xsm:rounded xxsm:rounded'>
+              <form className='w-[100%] flex flex-col items-center xsm:mr-4 xsm:w-full  xxsm:mr-4 xxsm:w-full gap-4' onSubmit={(e) => handleForm(e)} encType='multipart/form-data'>
                 <div className='flex flex-col items-center w-[100%]'>
                   <span className="text-6xl mt-4 w-full font-semibold text-center font-mono text-slate-300">GAME ZONE</span>
                 </div>
                 <div className="mt-2 w-full">
                   <fieldset className='flex text-center justify-center'>
-                    <input ref={email} className="border-b-4 px-4 w-4/5 h-12 py-2 text-xl rounded-md outline-none bg-slate-600 text-white " type="email" name="Email" placeholder="Email" />
+                    <input ref={email} className="border-b-4 px-4 w-4/5 h-12 py-2 text-xl rounded-md  outline-none bg-slate-600 text-white " type="email" name="Email" placeholder="Email" />
                   </fieldset>
                 </div>
                 <div className="mt-2 w-4/5 flex">
@@ -148,13 +148,13 @@ const Register = (props) => {
                 {props.setShow ? (
                   <span className="my-4 text-lg text-white"> Already have an account? <span className="cursor-pointer text-lg text-cyan-600 font-bold hover:text-teal-700 " onClick={() => props.setShow(true)}>Log in</span></span>
                 ) : (
-                  <Anchor to="/signin" className="my-4 text-white text-lg">Already have an account? <span className="cursor-pointer text-lg text-white font-bold hover:text-teal-700">Sign in</span></Anchor>
+                  <Anchor to="/signin" className="mt-4 xsm:my-2 xsm:text-base xxsm:my-2 xxsm:text-base md:text-base text-white text-lg">Already have an account? <span className="cursor-pointer text-lg text-white font-bold hover:text-teal-700">Sign in</span></Anchor>
                 )}
               </div>
             </div>
           </div>
         </div >
-        <div className='xsm:w-full h-[92vh] w-1/2 flex justify-center items-center bg-center bg-cover bg-[url(/src/assets/image/imagen-gamer2.jpg)]'></div>
+        <div className='xsm:hidden xxsm:hidden h-[92vh] w-1/2 flex justify-center items-center bg-center bg-cover bg-[url(/src/assets/image/imagen-gamer2.jpg)]'></div>
       </div>
     </>
   )
