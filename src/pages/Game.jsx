@@ -69,10 +69,12 @@ export default function Game() {
             <h2 className="text-3xl text-center text-white">{String(storeGame.title)}</h2>
             <img src={games.company_id?.logo} className="w-[80%] h-[70%]" alt="" />
           </div>
-          <div className="flex flex-col justify-center gap-2 h-[50%]">
-            <p className="text-white text-lg ml-4">{games.company_id?.name}</p>
-            <p className='text-white text-lg ml-4'>Stock: {games.stock}</p>
-            <p className='text-white text-lg ml-4'>USD ${games.price}</p>
+          <div className="flex flex-col gap-2 h-[50%] w-full">
+            <div className="flex flex-col ml-4 gap-2">
+              <p className="text-white text-lg ml-4">{games.company_id?.name}</p>
+              <p className='text-white text-lg ml-4'>Stock: {games.stock}</p>
+              <p className='text-white text-lg ml-4'>USD ${games.price}</p>
+            </div>
             <div className="rounded-md font-bold flex gap-4 flex-wrap items-center justify-center mt-2">
               <button id={games._id}
                 onClick={handleComprar}
@@ -80,11 +82,11 @@ export default function Game() {
                   <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
                 </svg>
               </button>
-              <button className='border-2 text-white font-bold w-48 h-12 rounded-md px-1 cursor-pointer flex justify-center items-center shadow-lg hover:shadow-red-200/50 gap-2 hover:bg-red-700 hover:scale-105'>
+              {/* <button className='border-2 text-white font-bold w-48 h-12 rounded-md px-1 cursor-pointer flex justify-center items-center shadow-lg hover:shadow-red-200/50 gap-2 hover:bg-red-700 hover:scale-105'>
                 Add to Favorites <svg xmlns=" http:www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-heart" viewBox="0 0 16 16">
                   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                 </svg>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
