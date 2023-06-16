@@ -153,7 +153,7 @@ export default function Navbar() {
                 <li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl mb-4 xsm:mb-2 xsm:px-4 xxsm:mb-2 xxsm:px-4" to="/">Home</Anchor></li>
                 {role == 0 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl  xsm:mb-2 xxsm:mb-2" to="/new-role">New Role</Anchor></li>
                 </>) : ("")}
-                {role == 3 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl xsm:mb-2 xxsm:mb-2" to="/admin">Panel</Anchor></li>
+                {role == 3 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl xsm:mb-2 xxsm:mb-2" to="/admin">Admin Panel</Anchor></li>
                 </>) : ("")}
                 {role == 1 || role == 2 ? (<><li><Anchor className="flex justify-center py-2 text-white hover:scale-110 transition-all shadow-xl hover:shadow-yellow-600/50 h-6 rounded-xl xsm:mb-2 xxsm:mb-2" to="/game-form">New game</Anchor></li>
                 </>) : ("")}
