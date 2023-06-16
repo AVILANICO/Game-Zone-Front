@@ -15,7 +15,6 @@ async()=>{
     } catch (error) {
         return {cart:[]}
     }
-    console.log(res)
 }) 
 const actions = { carts }
 

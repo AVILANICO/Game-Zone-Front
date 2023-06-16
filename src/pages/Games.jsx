@@ -10,16 +10,18 @@ import inputs_filter_actions from '../store/actions/inputs_filters'
 import game_action from '../store/actions/game'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import cartActions from '../store/actions/carts'
-import priceActions from '../store/actions/change_price'
+// import cartActions from '../store/actions/carts'
+// import priceActions from '../store/actions/change_price'
 import gameon from '../assets/image/gameon.PNG'
+
 
 const { game_delete } = game_action
 const { categories_read } = categories_action;
 const { game_all } = all_games
 const { inputs_filter } = inputs_filter_actions
-const { captureCart } = cartActions
-const { changePrice } = priceActions
+
+// const { captureCart } = cartActions
+// const { changePrice } = priceActions
 
 
 let token = localStorage.getItem("token")
@@ -28,15 +30,16 @@ let headers = { headers: { "Authorization": `bearer ${token}` } }
 
 export default function Mygames() {
 
-    const games_all = useSelector(store => store.game_all.games)
-    const categorias = useSelector(store => store.categories.categories)
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const [idcompras, setIdcompras] = useState()
-    const role = localStorage.getItem('role')
-    const [newCategories, setNewCategories] = useState([]);
-    const { title } = useSelector(store => store.inputs)
-    const buscador = useRef()
+  const games_all = useSelector(store => store.game_all.games)
+  console.log(games_all);
+  const categorias = useSelector(store => store.categories.categories)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [idcompras, setIdcompras] = useState()
+  const role = localStorage.getItem('role')
+  const [newCategories, setNewCategories] = useState([]);
+  const { title } = useSelector(store => store.inputs)
+  const buscador = useRef()
 
     useEffect(() => {
         dispatch(categories_read())
@@ -82,43 +85,44 @@ export default function Mygames() {
         ))
     }
 
-    const alertDelete = (httpCb) => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#00BA88',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                httpCb()
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success',
-                )
-            }
-            else {
-                Swal.fire(
-                    'Cancelled',
-                    'Your game is safe :)',
-                    'error'
-                )
-            }
-        })
-    }
+    
+  const alertDelete = (httpCb) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#00BA88',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        httpCb()
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success',
+        )
+      }
+      else {
+        Swal.fire(
+          'Cancelled',
+          'Your game is safe :)',
+          'error'
+        )
+      }
+    })
+  }
 
-    const handleComprar = async () => {
-        try {
-            await axios.post('http://localhost:8000/carrito/' + idcompras, null, headers);
-            toast.success('Producto agregado al carrito')
-        } catch (error) {
-            toast.error(error.response.data.message);
-        }
+  const handleComprar = async () => {
+    let url = 'http://localhost:8000/carrito/'
+    try {
+      await axios.post(url + idcompras, null, headers);
+      toast.success('Producto agregado al carrito')
+    } catch (error) {
+      toast.error(error.response.data.message);
     }
-
+  }
     return (
         <>
             {role == 3 ? (
