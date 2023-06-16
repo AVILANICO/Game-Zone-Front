@@ -46,7 +46,7 @@ export default function Navbar() {
 
 
   const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago('TEST-c564dc63-10fa-48f4-bc68-76bb45a91dfc');
+  initMercadoPago('TEST-9c80778e-f030-4735-bfc5-d79a31b041df');
 
 
   const handleMenuClick = () => {
@@ -66,19 +66,6 @@ export default function Navbar() {
       })
       .catch(err => alert(err))
   }
-
-
-  // async function handleQuantity(e) {
-  //   e.target.disabled = true
-  //   try {
-  //     let body = { cantidad: e.target.value }
-  //     await axios.put(VITE_API + 'carrito/' + e.target.id, body, headers)
-  //     dispatch(changePrice())
-  //   } catch (error) {
-  //     console.log(error);
-  //     e.target.disabled = false
-  //   }
-  // }
 
   const [realQuantiti, setRealQuantiti] = useState(1)
   console.log(realQuantiti);
@@ -140,7 +127,7 @@ export default function Navbar() {
   const products = prueba;
 
 
-  const totalPrice = products.reduce((total, product) => total + product.price * realQuantiti, 0);
+  const totalPrice = products.reduce((total, product) => total + (product.price * realQuantiti), 0);
 
   useEffect(
     () => {
@@ -214,7 +201,7 @@ export default function Navbar() {
                     <div className="flex h-full flex-col overflow-y-scroll bg-[#1D1D1D] shadow-xl">
                       <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                         <div className="flex items-start justify-between">
-                          <Dialog.Title className="text-lg font-medium text-gray-900">
+                          <Dialog.Title className="text-lg font-medium text-white">
                             Shopping cart
                           </Dialog.Title>
                           <div className="ml-3 flex h-7 items-center">
@@ -253,7 +240,7 @@ export default function Navbar() {
                                             {product.title}
                                           </a>
                                         </h3>
-                                        <p className="ml-4">$ {product.price * realQuantiti}</p>
+                                        <p className="ml-4">$ {(product.price * realQuantiti).toFixed(1).toLocaleString('es-ES')}</p>
                                       </div>
                                       <p className="mt-1 text-sm text-gray-500">
                                         {product.color}
@@ -295,7 +282,7 @@ export default function Navbar() {
                       <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                         <div className="flex justify-between text-base font-medium text-white">
                           <p>Subtotal</p>
-                          $ {totalPrice}
+                          $ {totalPrice.toFixed(1)}
                         </div>
                         <p className="mt-0.5 text-sm text-gray-500">
                           Shipping and taxes calculated at pay.
