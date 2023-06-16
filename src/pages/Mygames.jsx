@@ -16,7 +16,6 @@ export default function Mygames() {
 
   const categories = useSelector(store => store.categories.categories)
   const games = useSelector(store => store.game.game)
-  console.log(games);
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const authorName = games.find(each => each.author_id)?.author_id.name;
@@ -51,6 +50,8 @@ export default function Mygames() {
     }
     return filteredGames;
   };
+  console.log(filterGames());
+
 
   const resetFilters = (event) => {
     event.preventDefault();
@@ -90,9 +91,11 @@ export default function Mygames() {
                         borderRadius: '26px',
                         fontSize: "18px",
                         textAlign: "center",
-                        ...(newCategories.includes(each._id) ? { backgroundColor: each.color, color: "white" } : {})
+                        ...(newCategories.includes(each._id) ? { backgroundColor: '#155E75', color: "white" } : {})
                       }}>
+
                         {each.name.charAt(0).toUpperCase() + each.name.slice(1)}
+
                         <input name="category_id" onChange={handleCategoryChange} style={{ appearance: 'none' }} type="checkbox" value={each._id} id={each._id} checked={newCategories.includes(each._id)} />
                       </label>
                     </div>

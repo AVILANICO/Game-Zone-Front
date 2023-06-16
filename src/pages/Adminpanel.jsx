@@ -50,7 +50,7 @@ export default function AdminPanel() {
         <>
             <div className="w-full  bg-[#EAEAEA] ">
                 <div className='flex h-12' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)' }} >
-                    <p className='text-3xl font-mono rounded relative bottom-8 pt-10 px-2 '>ADMIN PANEL</p>
+                    <p className='text-3xl font-mono rounded  flex items-center px-2 '>ADMIN PANEL</p>
                 </div>
                 <div className='flex mt-9'>
                     <div className='h-[3rem] w-[10%] bg-white rounded-xl'>
@@ -78,7 +78,7 @@ export default function AdminPanel() {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
 
-                                 New game
+                                New game
                                 <input type="checkbox" className="" style={{ appearance: 'none' }} value="hola" name="hola" />
 
                             </Anchor>
@@ -102,7 +102,7 @@ export default function AdminPanel() {
                                         </button>
                                         <button className={`${view ? 'h-[vh] w-1/2 bg-[#636363] rounded-[0px_10px_0px_0px] text-white font-bold cursor-pointer pointer-events-none' : 'w-1/2 bg-gray-100 justify-center text-black font-bold cursor-pointer'} `}>
                                             <label htmlFor="" className="flex flex-row justify-center w-full" onClick={handleClick}>
-                                                Authors
+                                                Sellers
                                                 <input type="checkbox" className="" style={{ appearance: 'none' }} value="hola" name="hola" />
 
                                             </label>

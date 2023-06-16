@@ -96,8 +96,6 @@ const Register = (props) => {
           icon: 'success',
           title: 'Check your email to verify your account!',
         })
-
-        navigate('/signin')
       })
       .catch(err => {
         Swal.fire({
@@ -113,7 +111,7 @@ const Register = (props) => {
         <div className="xsm:w-full xsm:mt-40 flex justify-center w-1/2">
           <div className="flex justify-center items-center w-[30vw]">
             <div className='xsm:w-screen h-4/5 xsm:items-center flex flex-col items-center w-full bg-[#343434]/90 rounded-2xl'>
-              <form className='xxsm:w-[16rem] w-[100%] flex flex-col items-center xsm:mr-4 xsm:w-full gap-4' onSubmit={(e) => handleForm(e)} encType='multipart/form-data'>
+              <form className='w-[100%] flex flex-col items-center xsm:mr-4 xsm:w-full gap-4' onSubmit={(e) => handleForm(e)} encType='multipart/form-data'>
                 <div className='flex flex-col items-center w-[100%]'>
                   <span className="text-6xl mt-4 w-full font-semibold text-center font-mono text-slate-300">GAME ZONE</span>
                 </div>

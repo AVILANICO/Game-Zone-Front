@@ -8,7 +8,8 @@ const one_game = createAction(
         title: objeto.title,
         description: objeto.title,
         cover_photo: objeto.cover_photo,
-        price: objeto.price
+        price: objeto.price,
+        stock: objeto.stock
       }
     }               
   } 

@@ -15,6 +15,7 @@ export default function AuthorForm() {
     const cityCountry = useRef();
     const date = useRef();
     const photo = useRef();
+    const cover_photo = useRef()
     useEffect(() => {
         const inputDate = document.querySelector('#date-input');
         const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
@@ -36,6 +37,7 @@ export default function AuthorForm() {
             city: city.trim(),
             country: country.trim(),
             photo: photo.current.value,
+            cover_photo: cover_photo.current.value
             /* user_id: user.id, */
         };
         let token = localStorage.getItem("token")
@@ -62,20 +64,21 @@ export default function AuthorForm() {
     }
 
     return (
-        <form onSubmit={handleForm} className='h-screen bg-white flex flex-col items-center justify-center'>
-            <h1 className='flex justify-center text-[2.5rem]'>New Author</h1>
+        <form onSubmit={handleForm} className='h-[92vh] bg-black flex flex-col items-center justify-center'>
+            <h1 className='flex justify-center text-white text-[2.5rem]'>New Seller</h1>
             <img
-                className="rounded-full object-cover object-center h-16 w-16"
-                src="./src/assets/image/companies.png"
+                className="rounded-full object-cover object-center h-40 w-40"
+                src="https://illustoon.com/photo/3199.png"
                 alt="user avatar"
             />
             <div className='mt-5 flex flex-col items-center justify-center w-[60%]  text-black font-montserrat font-normal	text-base'>
-                <input className='w-full border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="Insert name" ref={name} />
-                <input className='w-full border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="Insert last name" ref={last_name} />
-                <input className='w-full border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="City, country" ref={cityCountry} />
-                <input className='w-full border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder={$currentDate} readOnly id="date-input" ref={date} />
-                <input className='w-full border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="url" placeholder="URL profile image" onChange={handleProfileImageChange} ref={photo} />
-                <button className="text-white not-italic font-medium text-2xl leading-[95.19%] bg-gradient-to-r from-btn1 from-(-13.10%) to-btn2 to-58.69% rounded-full flex flex-row justify-center items-center gap-2.5 w-60 h-[55px] p-4 mt-5" type="submit">Send</button>
+                <input className='w-2/5 text-white border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="Insert name" ref={name} />
+                <input className='w-2/5 text-white border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="Insert last name" ref={last_name} />
+                <input className='w-2/5 text-white border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="text" placeholder="City, country" ref={cityCountry} />
+                <input className='w-2/5 border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2 text-white' type="text" placeholder={'Current Date: ' + $currentDate} readOnly id="date-input" ref={date} />
+                <input className='w-2/5 text-white border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="url" placeholder="URL profile image" onChange={handleProfileImageChange} ref={photo} />
+                <input className='w-2/5 text-white border-b-gray-300 bg-transparent border-b-2 border-white my-4 px-2' type="url" placeholder="URL cover photo" ref={cover_photo} />
+                <button className="text-white not-italic font-medium text-2xl leading-[95.19%] bg-[#0184D6] hover:bg-[#10387D] rounded-full flex flex-row justify-center items-center gap-2.5 w-60 h-[55px] p-4 mt-5" type="submit">Send</button>
             </div>
         </form>
     );

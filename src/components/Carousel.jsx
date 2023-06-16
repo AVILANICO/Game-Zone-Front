@@ -1,9 +1,7 @@
-/* import videito from '../assets/video/video-completo.mp4' */
+import ReactPlayer from 'react-player'
+
 export default function Carousel() {
   return (
-    <video className="bgimg-1" autoPlay muted loop>
-      {/* <source src={videito} type="video/mp4" />
-      Your browser does not support the video tag. */}
-    </video>
+    <ReactPlayer url='https://vimeo.com/835614158?share=copy' width='100%' height='100%' playing loop muted />
   )
 }
