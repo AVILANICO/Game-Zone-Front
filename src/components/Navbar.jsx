@@ -17,15 +17,36 @@ const { changePrice } = priceActions
 export default function Navbar() {
 
   const [showMenu, setShowMenu] = useState(false);
-  const [open, setOpen]  = useState(false);
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate()
   let prueba = useSelector(store => store.cart.cart)
+  console.log(prueba);
   let dispatch = useDispatch()
-  let option = []
   const [carrito, setCarrito] = useState([]);
+  let stockGames = useSelector(store => store.cart.cart)
+  let stockArray = stockGames.map(product => product.stock);
+  console.log(stockGames)
+  console.log(stockArray);
+
+  let resultArray = stockArray.map(cantidad => Array.from({ length: cantidad }, (_, index) => index + 1));
+  console.log(resultArray);
+
+  let arreglosInternos = [].concat(...resultArray);
+
+  console.log(arreglosInternos);
+
+  const [stockQuantities, setStockQuantities] = useState([]);
+
+  useEffect(() => {
+    const quantities = arreglosInternos;
+    setStockQuantities(quantities);
+  }, [stockGames]);
+
+  // console.log(stockQuantities);
+
 
   const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago('TEST-c564dc63-10fa-48f4-bc68-76bb45a91dfc');
+  initMercadoPago('TEST-9c80778e-f030-4735-bfc5-d79a31b041df');
 
 
   const handleMenuClick = () => {
@@ -46,22 +67,32 @@ export default function Navbar() {
       .catch(err => alert(err))
   }
 
-  async function handleQuantity(e){
-    e.target.disabled = true
+  const [realQuantiti, setRealQuantiti] = useState(1)
+  console.log(realQuantiti);
+
+  async function handleQuantity(e) {
+    e.target.disabled = true;
+    setRealQuantiti(e.target.value)
     try {
-      let body ={cantidad:e.target.value}
-      await axios.put(VITE_API + 'carrito/' + e.target.id, body, headers)
-      dispatch(changePrice())
+      let quantity = e.target.value;
+      let productId = e.target.id;
+      let product = products.find((p) => p._id === productId);
+      let totalPrice = quantity * product.price;
+      console.log(totalPrice);
+
+      let body = { cantidad: quantity, price: totalPrice };
+      await axios.put(VITE_API + 'carrito/' + productId, body, headers);
+      dispatch(changePrice());
     } catch (error) {
       console.log(error);
-      e.target.disabled=false
+      e.target.disabled = false;
     }
   }
-  
+
   const handleDeleteOne = async (e) => {
     try {
-      await axios.delete(VITE_API+'carrito/'+ e.target.id, headers);
-      
+      await axios.delete(VITE_API + 'carrito/' + e.target.id, headers);
+
       dispatch(carts())
       dispatch(changePrice())
 
@@ -85,8 +116,8 @@ export default function Navbar() {
       unit_price: totalPrice,
     }
     try {
-        await axios.post(VITE_API + 'payment', data, headers)
-      .then(response => setPreferenceId(response.data.preferenceId))
+      await axios.post(VITE_API + 'payment', data, headers)
+        .then(response => setPreferenceId(response.data.preferenceId))
 
     } catch (error) {
       console.log(error);
@@ -94,8 +125,10 @@ export default function Navbar() {
   }
 
   const products = prueba;
-  // console.log(products);
-  const totalPrice = products.reduce((total, product) => total + product.price, 0);
+
+
+  const totalPrice = products.reduce((total, product) => total + (product.price * realQuantiti), 0);
+
   useEffect(
     () => {
       axios.get(VITE_API + 'carrito', headers)
@@ -139,158 +172,150 @@ export default function Navbar() {
           </div>
         )}
       </div>
-    <Transition.Root show={open} as={Fragment}>
-          <Dialog as="div" className="relative z-10" onClose={setOpen}>
-              <Transition.Child
-              as={Fragment}
-              enter="ease-in-out duration-500"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="ease-in-out duration-500"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-              >
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-              </Transition.Child>
-              <div className="fixed inset-0 overflow-hidden">
-              <div className="absolute inset-0 overflow-hidden">
-                  <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-                  <Transition.Child
-                      as={Fragment}
-                      enter="transform transition ease-in-out duration-500 sm:duration-700"
-                      enterFrom="translate-x-full"
-                      enterTo="translate-x-0"
-                      leave="transform transition ease-in-out duration-500 sm:duration-700"
-                      leaveFrom="translate-x-0"
-                      leaveTo="translate-x-full"
-                  >
-                      <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                      <div className="flex h-full flex-col overflow-y-scroll bg-[#1D1D1D] shadow-xl">
-                          <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                          <div className="flex items-start justify-between">
-                              <Dialog.Title className="text-lg font-medium text-gray-900">
-                              Shopping cart
-                              </Dialog.Title>
-                              <div className="ml-3 flex h-7 items-center">
-                              <button
-                                  type="button"
-                                  className="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                                  onClick={() => setOpen(false)}
-                              >
-                                  <span className="sr-only">Close panel</span>
-                                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                              </button>
-                              </div>
+      <Transition.Root show={open} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={setOpen}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-in-out duration-500"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in-out duration-500"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+          <div className="fixed inset-0 overflow-hidden">
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                <Transition.Child
+                  as={Fragment}
+                  enter="transform transition ease-in-out duration-500 sm:duration-700"
+                  enterFrom="translate-x-full"
+                  enterTo="translate-x-0"
+                  leave="transform transition ease-in-out duration-500 sm:duration-700"
+                  leaveFrom="translate-x-0"
+                  leaveTo="translate-x-full"
+                >
+                  <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+                    <div className="flex h-full flex-col overflow-y-scroll bg-[#1D1D1D] shadow-xl">
+                      <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                        <div className="flex items-start justify-between">
+                          <Dialog.Title className="text-lg font-medium text-white">
+                            Shopping cart
+                          </Dialog.Title>
+                          <div className="ml-3 flex h-7 items-center">
+                            <button
+                              type="button"
+                              className="-m-2 p-2 text-gray-400 hover:text-gray-500"
+                              onClick={() => setOpen(false)}
+                            >
+                              <span className="sr-only">Close panel</span>
+                              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                            </button>
                           </div>
+                        </div>
 
-                          <div className="mt-8">
-                              <div className="flow-root">
-                              <ul
-                                  role="list"
-                                  className="-my-6 divide-y divide-gray-200"
-                              >
-                                  {products.map((product) => (
-                                  <li key={product._id} className="flex py-6">
-                                      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                      <img
-                                          src={product.cover_photo}
-                                          alt='foto'
-                                          className="h-full w-full object-cover object-center"
-                                      />
+                        <div className="mt-8">
+                          <div className="flow-root">
+                            <ul
+                              role="list"
+                              className="-my-6 divide-y divide-gray-200"
+                            >
+                              {products.map((product) => (
+                                <li key={product._id} className="flex py-6">
+                                  <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                    <img
+                                      src={product.cover_photo}
+                                      alt='foto'
+                                      className="h-full w-full object-cover object-center"
+                                    />
+                                  </div>
+
+                                  <div className="ml-4 flex flex-1 flex-col">
+                                    <div>
+                                      <div className="flex justify-between text-base font-medium text-white">
+                                        <h3>
+                                          <a href={product.href}>
+                                            {product.title}
+                                          </a>
+                                        </h3>
+                                        <p className="ml-4">$ {(product.price * realQuantiti).toFixed(1).toLocaleString('es-ES')}</p>
                                       </div>
-
-                                      <div className="ml-4 flex flex-1 flex-col">
-                                      <div>
-                                          <div className="flex justify-between text-base font-medium text-white">
-                                          <h3>
-                                              <a href={product.href}>
-                                              {product.title}
-                                              </a>
-                                          </h3>
-                                          <p className="ml-4">$ {product.price}</p>
-                                          </div>
-                                          <p className="mt-1 text-sm text-gray-500">
-                                          {product.color}
-                                          </p>
-                                      </div>
-                                      <div className="flex flex-1 items-end justify-between text-sm">
-                                          <p className="text-gray-500">
-                                          <select onChange={handleQuantity} id={product._id} className="py-1 px-2 border mr-6 focus:outline-none">
-                                          {
-                                            option.map((each,index) => {
-                                            return each.value!=product.cantidad?(
-
-                                            <option key={index}>{each.value}</option>
-                                            ):(
-                                            <option key={index} selected>{each.value}</option>
-                                            )
-                                            })
-                                          }
+                                      <p className="mt-1 text-sm text-gray-500">
+                                        {product.color}
+                                      </p>
+                                    </div>
+                                    <div className="flex flex-1 items-end justify-between text-sm">
+                                      <p className="text-gray-500">
+                                        <select onChange={handleQuantity} id={product._id} className="py-1 px-2 border mr-6 focus:outline-none">
+                                          {stockQuantities.map((quantity, index) => (
+                                            <option key={index} value={quantity}>{quantity}</option>
+                                          ))}
                                         </select>
-                                          </p>
-
-                                          <div className="flex">
-                                          <button
-                                              onClick={handleDeleteOne}
-                                              id={product._id}
-                                              type="button"
-                                              className="font-medium text-white hover:text-[#044674]"
-                                          >
-                                              Remove
-                                          </button>
-                                          </div>
+                                      </p>
+                                      <div className="flex">
+                                        <button
+                                          onClick={handleDeleteOne}
+                                          id={product._id}
+                                          type="button"
+                                          className="font-medium text-white hover:text-[#044674]"
+                                        >
+                                          Remove
+                                        </button>
                                       </div>
-                                      </div>
-                                  </li>
-                                  ))}
-                              </ul>
-                              </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
-                          </div>
-                          {/* <div className="mt-6 ">
+                        </div>
+                      </div>
+                      {/* <div className="mt-6 ">
                               <button
                               className="flex items-center justify-center rounded-md border border-transparent bg-[#044674] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-500"
                               >
                               Delete All
                               </button>
                           </div> */}
-                          <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                          <div className="flex justify-between text-base font-medium text-white">
-                              <p>Subtotal</p>
-                              $ {totalPrice}
-                          </div>
-                          <p className="mt-0.5 text-sm text-gray-500">
-                              Shipping and taxes calculated at pay.
+                      <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                        <div className="flex justify-between text-base font-medium text-white">
+                          <p>Subtotal</p>
+                          $ {totalPrice.toFixed(1)}
+                        </div>
+                        <p className="mt-0.5 text-sm text-gray-500">
+                          Shipping and taxes calculated at pay.
+                        </p>
+                        <div className="mt-6 flex items-center justify-center rounded-md border border-transparent bg-[#044674] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-500">
+                          <button
+                            onClick={createPreference}
+                          >
+                            Process to pay
+                          </button>
+                        </div>
+                        {preferenceId && <Wallet initialization={{ preferenceId }} />}
+                        <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+                          <p>
+                            or
+                            <button
+                              type="button"
+                              className="font-medium text-white hover:text-indigo-500"
+                              onClick={() => setOpen(false)}
+                            >
+                              Continue Shopping
+                              <span aria-hidden="true"> &rarr;</span>
+                            </button>
                           </p>
-                          <div className="mt-6 flex items-center justify-center rounded-md border border-transparent bg-[#044674] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-500">
-                              <button
-                              onClick={createPreference}
-                              >
-                              Process to pay
-                              </button>
-                          </div>
-                              {preferenceId && <Wallet initialization={{ preferenceId }} />}
-                          <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                              <p>
-                              or
-                              <button
-                                  type="button"
-                                  className="font-medium text-white hover:text-indigo-500"
-                                  onClick={() => setOpen(false)}
-                              >
-                                  Continue Shopping
-                                  <span aria-hidden="true"> &rarr;</span>
-                              </button>
-                              </p>
-                          </div>
-                          </div>
+                        </div>
                       </div>
-                      </Dialog.Panel>
-                  </Transition.Child>
-                  </div>
+                    </div>
+                  </Dialog.Panel>
+                </Transition.Child>
               </div>
-              </div>
-          </Dialog>
+            </div>
+          </div>
+        </Dialog>
       </Transition.Root>
       <div className="flex">
         <svg onClick={hanldelOpenCarrito} xmlns="http:www.w3.org/2000/svg" width="36" height="auto" fill="white" className="bi bi-cart4 cursor-pointer hover:scale-95 mt-4" viewBox="0 0 16 16">

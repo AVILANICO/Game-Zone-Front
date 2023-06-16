@@ -10,16 +10,18 @@ import inputs_filter_actions from '../store/actions/inputs_filters'
 import game_action from '../store/actions/game'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import cartActions from '../store/actions/carts'
-import priceActions from '../store/actions/change_price'
+// import cartActions from '../store/actions/carts'
+// import priceActions from '../store/actions/change_price'
 import gameon from '../assets/image/gameon.PNG'
+
 
 const { game_delete } = game_action
 const { categories_read } = categories_action;
 const { game_all } = all_games
 const { inputs_filter } = inputs_filter_actions
-const { captureCart } = cartActions
-const { changePrice } = priceActions
+
+// const { captureCart } = cartActions
+// const { changePrice } = priceActions
 
 
 let token = localStorage.getItem("token")
@@ -112,13 +114,15 @@ export default function Mygames() {
   }
 
   const handleComprar = async () => {
+    let url = 'http://localhost:8000/carrito/'
     try {
-      await axios.post('http://localhost:8000/carrito/' + idcompras, null, headers);
+      await axios.post(url + idcompras, null, headers);
       toast.success('Producto agregado al carrito')
     } catch (error) {
       toast.error(error.response.data.message);
     }
   }
+
 
   return (
     <>
@@ -214,7 +218,7 @@ export default function Mygames() {
             <div className="flex gap-4 p-6 w-full justify-center items-center h-full">
               <form className="flex justify-center gap-4 h-full w-[80vw]">
                 <div className="flex items-center justify-center xsm:gap-1 gap-4 w-full h-20 rounded-3xl">
-                  <button onClick={resetFilters} className="hover:scale-125 transition-all flex flex-row items-center justify-center w-10 h-10 bg-[#999999] text-white p-[1rem] rounded-full text-[12px] cursor-pointer" style={{ backgroundColor: newCategories.length === 0 ? 'green' : '' }}>
+                  <button onClick={resetFilters} className="hover:scale-125 transition-all flex flex-row items-center justify-center w-12 h-12 bg-[#999999] text-white p-[1rem] rounded-full text-[12px] cursor-pointer" style={{ backgroundColor: newCategories.length === 0 ? '#071A2D' : '' }}>
                     All
                     <input name="category_id" onChange={handleCategoryChange} style={{ appearance: 'none' }} type="checkbox" checked={newCategories.length === 0} />
                   </button>
