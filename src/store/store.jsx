@@ -1,25 +1,26 @@
 import { configureStore } from "@reduxjs/toolkit";
-import reducer_one_manga from './reducers/one_manga.js'
-import reducer_one_chapter from './reducers/one_chapter.js'
+import reducer_one_game from './reducers/one_game.js'
 import inputs_reducer from './reducers/inputs_filter'
 import companies from './reducers/companies'
 import authors from './reducers/authors'
 import categories_read from "./reducers/categories"
-import manga_read from "./reducers/manga.js"
-import read_chapters from './reducers/chapters'
-import chapters_reducer from './reducers/chapter_bar.js'
+import game_read from "./reducers/game.js"
+import cartReducer from './reducers/carts.js'
+import priceReducer from './reducers/change_price.js'
+import game_all from './reducers/all_games.js'
+
 
 const store = configureStore({
   reducer: {
-    one_manga: reducer_one_manga,
-    one_chapter: reducer_one_chapter,
+    one_game: reducer_one_game,
     inputs: inputs_reducer,
-    title_order: chapters_reducer,
     companies: companies,
     authors: authors,
     categories: categories_read,
-    manga: manga_read,
-    chapters: read_chapters
+    game: game_read,
+    cart: cartReducer,
+    price: priceReducer,
+    game_all: game_all
   }
 })
 export default store;

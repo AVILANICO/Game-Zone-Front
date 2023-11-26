@@ -1,47 +1,212 @@
-import footer from "../assets/image/footer.png"
-import logo from "../assets/image/logo-minga.png"
+import { Link as Anchor, useNavigate } from "react-router-dom";
+
 
 export default function Footer() {
+
   return (
-    <footer className="w-auto  xsm:hidden ">
-      <div className="">
-        <img src={footer} className="w-[100%]" />
+    <footer
+      className="bg-neutral-100  text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left border-t border-gray-400 ">
+      <div
+        className="   flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
+        <div className="mr-12 hidden lg:block">
+          <span>Get connected with us on social networks:</span>
+        </div>
+
+        <div className="flex justify-center">
+          <Anchor to="#!" className="mr-6 text-neutral-600 dark:text-neutral-200">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+            </svg>
+          </Anchor>
+          <Anchor to="#!" className="mr-6 text-neutral-600 dark:text-neutral-200">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
+          </Anchor>
+          <Anchor to="#!" className="mr-6 text-neutral-600 dark:text-neutral-200">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                d="M7 11v2.4h3.97c-.16 1.029-1.2 3.02-3.97 3.02-2.39 0-4.34-1.979-4.34-4.42 0-2.44 1.95-4.42 4.34-4.42 1.36 0 2.27.58 2.79 1.08l1.9-1.83c-1.22-1.14-2.8-1.83-4.69-1.83-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.721-2.84 6.721-6.84 0-.46-.051-.81-.111-1.16h-6.61zm0 0 17 2h-3v3h-2v-3h-3v-2h3v-3h2v3h3v2z"
+                fillRule="evenodd"
+                clipRule="evenodd" />
+            </svg>
+          </Anchor>
+          <Anchor to="#!" className="mr-6 text-neutral-600 dark:text-neutral-200">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </Anchor>
+          <Anchor to="#!" className="mr-6 text-neutral-600 dark:text-neutral-200">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+            </svg>
+          </Anchor>
+          <Anchor to="#!" className="text-neutral-600 dark:text-neutral-200">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+          </Anchor>
+        </div>
       </div>
-      <div className="flex justify-around items-center h-32 w-[100%]">
-        <div className="flex gap-20">
-          <h5 >Home</h5>
-          <h5>Mangas</h5>
-        </div>
-        <div className="">
-          <img src={logo} className="w-[3rem]" />
-        </div>
-        <div>
-          <div className="flex gap-6 w-44">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-facebook" viewBox="0 0 16 16">
-              <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-twitter" viewBox="0 0 16 16">
-              <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-vimeo" viewBox="0 0 16 16">
-              <path d="M15.992 4.204c-.071 1.556-1.158 3.687-3.262 6.393-2.175 2.829-4.016 4.243-5.522 4.243-.933 0-1.722-.861-2.367-2.583L3.55 7.523C3.07 5.8 2.556 4.94 2.007 4.94c-.118 0-.537.253-1.254.754L0 4.724a209.56 209.56 0 0 0 2.334-2.081c1.054-.91 1.845-1.388 2.373-1.437 1.243-.123 2.01.728 2.298 2.553.31 1.968.526 3.19.646 3.666.36 1.631.756 2.446 1.186 2.445.334 0 .836-.53 1.508-1.587.671-1.058 1.03-1.863 1.077-2.415.096-.913-.263-1.37-1.077-1.37a3.022 3.022 0 0 0-1.185.261c.789-2.573 2.291-3.825 4.508-3.756 1.644.05 2.419 1.117 2.324 3.2z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-youtube" viewBox="0 0 16 16">
-              <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
-            </svg>
+
+
+      <div className=" px-10  py-10 text-center md:text-left bg-[#343434]">
+        <div className="flex justify-around gap-4 md:grid-cols-2 lg:grid-cols-4">
+
+          <div className="w-[20vw]">
+            <p className="text-justify">
+              At Game Zone, we are passionate about bringing you the best online gaming experience. We are your ultimate destination for the most exciting and captivating games. Our wide selection of titles from different genres and platforms will keep you entertained and immersed in virtual worlds full of action and adventure.
+            </p>
           </div>
-          <div className="rounded-none bg-gradient-to-b from-[#F9A8D4] to-[#F472B6] h-10 w-44 my-4 text-white flex items-center justify-center gap-4">
-            <button className="">Donate</button>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart" viewBox="0 0 16 16">
-              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-            </svg>
+
+          <div className="">
+            <h6
+              className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              Category
+            </h6>
+            <p className="mb-4">
+              <Anchor to="#!" className="text-neutral-600 dark:text-neutral-200"
+              >Sport</Anchor>
+            </p>
+            <p className="mb-4">
+              <Anchor to="#!" className="text-neutral-600 dark:text-neutral-200"
+              >Shooter </Anchor>
+            </p>
+            <p className="mb-4">
+              <Anchor to="#!" className="text-neutral-600 dark:text-neutral-200"
+              >Race</Anchor>
+            </p>
+            <p className="mb-4" >
+              <Anchor to="#!" className="text-neutral-600 dark:text-neutral-200"
+              >MultiPlayer</Anchor>
+            </p>
+            <p className="mb-4">
+              <Anchor to="#!" className="text-neutral-600 dark:text-neutral-200"
+              >Survival </Anchor>
+            </p>
+
+          </div>
+
+          <div className="">
+            <h6
+              className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              Useful links
+            </h6>
+            <p className="mb-4">
+              <Anchor to="#!" className="text-neutral-600 dark:text-neutral-200"
+              >Pricing</Anchor>
+            </p>
+            <p className="mb-4">
+              <Anchor to="#!" className="text-neutral-600 dark:text-neutral-200"
+              >Settings</Anchor>
+            </p>
+            <p className="mb-4">
+              <Anchor to="#!" className="text-neutral-600 dark:text-neutral-200"
+              >Orders</Anchor>
+            </p>
+            <p >
+              <Anchor to="#!" className="text-neutral-600 dark:text-neutral-200"
+              >Help</Anchor>
+            </p>
+          </div>
+
+          <div >
+            <h6
+              className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              Contact
+            </h6>
+            <p className="mb-4 flex items-center justify-center md:justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="mr-3 h-5 w-5">
+                <path
+                  d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                <path
+                  d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+              </svg>
+              Córdoba, Dean Funes 918, Argentina
+            </p>
+            <p className="mb-4 flex items-center justify-center md:justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="mr-3 h-5 w-5">
+                <path
+                  d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                <path
+                  d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+              </svg>
+              gamezone@gmail.com
+            </p>
+            <p className="mb-4 flex items-center justify-center md:justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="mr-3 h-5 w-5">
+                <path
+                  fillRule="evenodd"
+                  d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                  clipRule="evenodd" />
+              </svg>
+              + 54 3527-423746
+            </p>
+            <p className="flex items-center justify-center md:justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="mr-3 h-5 w-5">
+                <path
+                  fillRule="evenodd"
+                  d="M7.875 1.5C6.839 1.5 6 2.34 6 3.375v2.99c-.426.053-.851.11-1.274.174-1.454.218-2.476 1.483-2.476 2.917v6.294a3 3 0 003 3h.27l-.155 1.705A1.875 1.875 0 007.232 22.5h9.536a1.875 1.875 0 001.867-2.045l-.155-1.705h.27a3 3 0 003-3V9.456c0-1.434-1.022-2.7-2.476-2.917A48.716 48.716 0 0018 6.366V3.375c0-1.036-.84-1.875-1.875-1.875h-8.25zM16.5 6.205v-2.83A.375.375 0 0016.125 3h-8.25a.375.375 0 00-.375.375v2.83a49.353 49.353 0 019 0zm-.217 8.265c.178.018.317.16.333.337l.526 5.784a.375.375 0 01-.374.409H7.232a.375.375 0 01-.374-.409l.526-5.784a.373.373 0 01.333-.337 41.741 41.741 0 018.566 0zm.967-3.97a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H18a.75.75 0 01-.75-.75V10.5zM15 9.75a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V10.5a.75.75 0 00-.75-.75H15z"
+                  clipRule="evenodd" />
+              </svg>
+              + 54 2345-678947
+            </p>
           </div>
         </div>
       </div>
-      <div className="border-b border-gray-400 w-[80%] items-center m-auto">
+      <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+        <span >© 2023 Copyright:</span>
+        <Anchor
+          className="font-semibold text-neutral-600 dark:text-neutral-400">
+          <Anchor to={'https://github.com/AVILANICO'}>Avila Nicolass</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/FranciscoPedicino'}> Pedicino Francisco</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/DiegoCuellar777'} > Diego Cuellar</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/AVILANICO '}> Hurtado Laureano</Anchor>,<Anchor style={{ backgroundColor: "transparent" }} to={'https://github.com/LuisH05'}> Luis Hernandez</Anchor>
+        </Anchor>
       </div>
     </footer>
-
   )
 }
 
